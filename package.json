@@ -22,7 +22,15 @@
     },
     "dependencies": {
         "@inertiajs/inertia-react": "^0.8.1",
+<<<<<<< HEAD
+=======
+        "@reduxjs/toolkit": "^2.2.5",
+        "moment": "^2.30.1",
+        "react-big-calendar": "^1.13.0",
+>>>>>>> 3ca657d (add react redux state management: store, jobsSlice, coursesSlice, interviewsSlice, reflectionsSlice)
         "react-icons": "^5.0.1",
+        "react-redux": "^9.1.2",
+        "redux": "^5.0.1",
         "styled-components": "^6.1.11"
     }
 }
