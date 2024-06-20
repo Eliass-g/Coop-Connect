@@ -1,19 +1,40 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 import NavBar from "./Components/NavBar";
+<<<<<<< HEAD
 
 const Interviews = () => {
     const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
     const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
+=======
+import Modal from "../Profile/Partials/AddEventModal";
+import "react-big-calendar/lib/css/react-big-calendar.css";
+import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
+import { Calendar, momentLocalizer } from "react-big-calendar";
+import moment from "moment";
+import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import { DndProvider } from "react-dnd";
+import {
+    getInterviewsForInterviewee,
+    postInterview,
+    selectInterviewsStatus,
+    selectInterviews,
+} from "@/Features/interviews/interviewsSlice";
+const localizer = momentLocalizer(moment);
+const DnDCalendar = withDragAndDrop(Calendar);
 
-    const renderCalendar = (month, year) => {
-        const daysInMonth = new Date(year, month + 1, 0).getDate();
-        const firstDayIndex = new Date(year, month, 1).getDay();
-        const prevDays = firstDayIndex === 0 ? 6 : firstDayIndex - 1;
-        const prevMonthDays = new Date(year, month, 0).getDate();
-        const nextMonthDays = 42 - (daysInMonth + prevDays);
+const Interviews = () => {
+    const [showModal, setShowModal] = useState(false);
+    const [selectedDate, setSelectedDate] = useState(null);
+    const [events, setEvents] = useState([]);
+>>>>>>> b2370f7 (update interviews backend, connect redux and backend to student interview page)
 
+    const [userId, setUserId] = useState(null);
+
+<<<<<<< HEAD
         const daysArray = [
             ...Array(prevDays)
                 .fill(null)
@@ -64,6 +85,119 @@ const Interviews = () => {
     const isPrevDisabled =
         currentMonth === today.getMonth() &&
         currentYear === today.getFullYear();
+=======
+    useEffect(() => {
+        const fetchUserId = async () => {
+            try {
+                const response = await axios.get(
+                    `http://127.0.0.1:8000/api/user-id`
+                );
+                setUserId(response.data.user.id);
+            } catch (error) {
+                console.error("Error fetching user ID:", error);
+            }
+        };
+        fetchUserId();
+    }, []);
+
+    const dispatch = useDispatch();
+
+    const data = useSelector(selectInterviews);
+    const interviews = data.interviews;
+    const interviewsStatus = useSelector(selectInterviewsStatus);
+
+    useEffect(() => {
+        dispatch(
+            getInterviewsForInterviewee({
+                intervieweeId: userId,
+            })
+        );
+    }, [userId]);
+
+    function transformedInterviews(interviews) {
+        const result = interviews.map((interview) => ({
+            ...interview,
+            start: interview.startDate,
+            end: interview.endDate,
+        }));
+        return result;
+    }
+
+    useEffect(() => {
+        setEvents(transformedInterviews(interviews));
+    }, [interviews]);
+
+    useEffect(() => {
+        if (interviewsStatus.postInterview == "succeeded") {
+            console.log("True Check", transformedInterviews(data.postInterview));
+            setEvents(...events, transformedInterviews(data.postInterview));
+        }
+    }, [interviews.postInterview]);
+
+    console.log("Fetched User ID:", userId);
+    console.log("interviews", events);
+
+    function getTodayDate() {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, "0"); // Months are zero-indexed
+        const day = String(today.getDate()).padStart(2, "0");
+
+        return `${year}-${month}-${day}`;
+    }
+
+    const handleEventResize = ({ event, start, end }) => {
+        const nextEvents = events.map((existingEvent) => {
+            return existingEvent.id === event.id
+                ? { ...existingEvent, start, end }
+                : existingEvent;
+        });
+
+        setEvents(nextEvents);
+    };
+
+    const handleEventDrop = ({ event, start, end }) => {
+        const nextEvents = events.map((existingEvent) => {
+            return existingEvent.id === event.id
+                ? { ...existingEvent, start, end }
+                : existingEvent;
+        });
+
+        setEvents(nextEvents);
+    };
+
+    const openModal = (day) => {
+        setSelectedDate(day);
+        setShowModal(true);
+    };
+
+    const closeModal = () => {
+        setSelectedDate(null);
+        setShowModal(false);
+    };
+
+    const handleAddEvent = (title, description, start, end) => {
+        // Format start and end dates to ISO 8601 string format
+        /*         const formattedStart = start.toISOString(); // Convert Date object to ISO string
+        const formattedEnd = end.toISOString(); */
+
+        // Create newEvent object with formatted dates
+
+        dispatch(
+            postInterview({
+                title: "test",
+                startDate: "2024-06-18 23:15:47",
+                endDate: "2024-06-19 00:15:47",
+                status: "scheduled",
+                description: "test",
+                intervieweeId: userId,
+                interviewerId: 2,
+            })
+        );
+
+        closeModal();
+    };
+>>>>>>> b2370f7 (update interviews backend, connect redux and backend to student interview page)
 
     return (
         <NavBar header={"Interviews"}>
@@ -71,6 +205,7 @@ const Interviews = () => {
                 <Container>
                     <Wrapper>
                         <Header>Schedule your Interviews</Header>
+<<<<<<< HEAD
                         <CalendarWrapper>
                             <CalendarHeader>
                                 <Month>
@@ -136,6 +271,34 @@ const Interviews = () => {
                     </Wrapper>
                 </Container>
             </MainContainer>
+=======
+                        <CalendarDiv>
+                            <DndProvider backend={HTML5Backend}>
+                                <DnDCalendar
+                                    defaultDate={new Date(getTodayDate())}
+                                    defaultView="month"
+                                    events={events}
+                                    localizer={localizer}
+                                    onEventDrop={handleEventDrop}
+                                    resizable
+                                    onEventResize={handleEventResize}
+                                    style={{ height: "100%" }}
+                                    selectable
+                                    onSelectSlot={openModal}
+                                />
+                            </DndProvider>
+                        </CalendarDiv>
+                    </Wrapper>
+                </Container>
+            </MainContainer>
+            {showModal && (
+                <Modal
+                    onClose={closeModal}
+                    onSubmit={handleAddEvent}
+                    defaultDate={new Date(getTodayDate())}
+                />
+            )}
+>>>>>>> b2370f7 (update interviews backend, connect redux and backend to student interview page)
         </NavBar>
     );
 };
@@ -177,21 +340,11 @@ const Header = styled.div`
     font: 600 32px Poppins, sans-serif;
 `;
 
-const CalendarWrapper = styled.div`
-    border-radius: 16px;
-    box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.1),
-        0px 2px 4px -1px rgba(0, 0, 0, 0.06);
-    border-color: rgba(123, 117, 127, 1);
-    border-style: solid;
-    border-width: 1px;
-    background-color: #fff;
-    display: flex;
-    margin-top: 40px;
-    flex-direction: column;
-    padding: 30px;
-    @media (max-width: 991px) {
-        max-width: 100%;
-        padding: 0 20px;
+const CalendarDiv = styled.div`
+    background-color: #ffffff;
+height: 80vh;
+margin-bottom: 3vh;
+margin-top: 3vh;
     }
 `;
 
