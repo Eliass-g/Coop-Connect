@@ -1,8 +1,15 @@
 import * as React from "react";
 import styled from "styled-components";
 import NavBar from "./Components/NavBar";
+import { useSelector, useDispatch } from "react-redux";
+import {
+    searchJobsBySkillAndLocation,
+    selectJobsStatus,
+    selectJobs,
+} from "@/Features/jobs/jobsSlice";
 
 function Jobs() {
+<<<<<<< HEAD
     const jobPostings = [
         {
             title: "Full-Stack Developer",
@@ -28,6 +35,33 @@ function Jobs() {
         location: "Toronto, ON",
         description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
         reasons: `It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).`,
+=======
+    const [featuredJob, setFeaturedJob] = useState(null);
+    const [searchTerms, setSearchTerms] = useState("");
+    const [searchLocation, setLocation] = useState("");
+
+    const dispatch = useDispatch();
+
+    const jobs = useSelector(selectJobs);
+    const jobsStatus = useSelector(selectJobsStatus);
+
+    const handleSearch = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await dispatch(
+                searchJobsBySkillAndLocation({
+                    searchTerm: searchTerms
+                        .split(",")
+                        .map((searchTerm) => searchTerm.trim()),
+                    location: searchLocation,
+                })
+            );
+            setFeaturedJob(response.payload[0]); // Assuming payload is an array of jobs returned
+        } catch (error) {
+            console.error("Error searching jobs:", error);
+            // Handle error state if necessary
+        }
+>>>>>>> feb0b09 (add redux integration to student pages: home, jobs, profile)
     };
 
     return (
@@ -40,14 +74,27 @@ function Jobs() {
                             Get amazing opportunities through jobs at CO-OP
                             Connect!
                         </TextDescription>
+<<<<<<< HEAD
                         <SearchForm>
+=======
+                        <SearchForm onSubmit={handleSearch}>
+>>>>>>> feb0b09 (add redux integration to student pages: home, jobs, profile)
                             <SearchField>
                                 <img
                                     src="https://cdn.builder.io/api/v1/image/assets/TEMP/7ac6f5e8995015505b63112c3fe0ce83293960aae84ac26f166dcf6eb5607efc?apiKey=d66532d056b14640a799069157705b77&"
                                     alt="search icon"
                                 />
                                 <SearchInput
+<<<<<<< HEAD
                                     placeholder="Job Titles, Keywords"
+=======
+                                    type="text"
+                                    placeholder="Job Titles, Keywords"
+                                    value={searchTerms}
+                                    onChange={(e) =>
+                                        setSearchTerms(e.target.value)
+                                    }
+>>>>>>> feb0b09 (add redux integration to student pages: home, jobs, profile)
                                     aria-label="Job Titles, Keywords"
                                 />
                             </SearchField>
@@ -57,6 +104,7 @@ function Jobs() {
                                     alt="location icon"
                                 />
                                 <SearchInput
+<<<<<<< HEAD
                                     placeholder="Location"
                                     aria-label="Location"
                                 />
@@ -117,6 +165,96 @@ function Jobs() {
                                 </JobCardFeatured>
                             </FeaturedJob>
                         </JobList>
+=======
+                                    type="text"
+                                    value={searchLocation}
+                                    onChange={(e) =>
+                                        setLocation(e.target.value)
+                                    }
+                                    aria-label="Location"
+                                />
+                            </SearchField>
+                            <SearchButton type="submit">View Jobs</SearchButton>
+                        </SearchForm>
+                        {jobs && (
+                            <JobList>
+                                {jobs && jobs.length > 0 ? (
+                                    <JobColumn>
+                                        {jobs.map((job) => (
+                                            <JobCard key={job.title}>
+                                                <JobTitle>{job.title}</JobTitle>
+                                                <JobMeta>
+                                                    <div>{job.company}</div>
+                                                    <div>{job.location}</div>
+                                                </JobMeta>
+                                                <SkillsList>
+                                                    {job.skills.map(
+                                                        (tag, index) => (
+                                                            <SkillBadge
+                                                                key={index}
+                                                            >
+                                                                {tag}
+                                                            </SkillBadge>
+                                                        )
+                                                    )}
+                                                </SkillsList>
+                                                <JobDescription>
+                                                    {job.description}
+                                                </JobDescription>
+                                                <Divider />
+                                                <ViewButton>
+                                                    VIEW POSTING
+                                                </ViewButton>
+                                            </JobCard>
+                                        ))}
+                                    </JobColumn>
+                                ) : (
+                                    <p>No jobs found.</p>
+                                )}{" "}
+                                {featuredJob && (
+                                    <FeaturedJob>
+                                        <JobCardFeatured>
+                                            <JobTitle>
+                                                {featuredJob.title}
+                                            </JobTitle>
+                                            <CompanyInfo>
+                                                <CompanyImage
+                                                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/b8ae9cd831463a8906ed092974d8aff01723eb0ccd0c5c446d59bc3e96d9c74c?apiKey=d66532d056b14640a799069157705b77&"
+                                                    alt="company logo"
+                                                />
+                                                <CompanyDetails>
+                                                    <CompanyName>
+                                                        {featuredJob.title}
+                                                    </CompanyName>
+                                                    <CompanyLocation>
+                                                        {featuredJob.title}
+                                                    </CompanyLocation>
+                                                </CompanyDetails>
+                                            </CompanyInfo>
+                                            <ApplyButton>
+                                                Apply Here!
+                                            </ApplyButton>
+
+                                            <JobFullDescription>
+                                                <strong>
+                                                    What is Lorem Ipsum?
+                                                </strong>
+                                                <br />
+                                                {featuredJob.description}
+                                                <br />
+                                                <br />
+                                                <strong>
+                                                    Why do we use it?
+                                                </strong>
+                                                <br />
+                                                {featuredJob.title}
+                                            </JobFullDescription>
+                                        </JobCardFeatured>
+                                    </FeaturedJob>
+                                )}
+                            </JobList>
+                        )}
+>>>>>>> feb0b09 (add redux integration to student pages: home, jobs, profile)
                     </SearchInnerContainer>
                 </SearchContainer>
             </MainContainer>

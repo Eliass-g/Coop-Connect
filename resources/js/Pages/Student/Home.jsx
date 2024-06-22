@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import * as React from "react";
 import styled from "styled-components";
 import NavBar from "./Components/NavBar";
@@ -29,6 +30,32 @@ function Home() {
                 "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
         },
     ];
+=======
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import styled from "styled-components";
+import NavBar from "./Components/NavBar";
+import { Link } from "@inertiajs/react";
+import {
+    searchJobsbySkill,
+    selectJobsStatus,
+    selectJobs,
+} from "@/Features/jobs/jobsSlice";
+
+function Home() {
+    const dispatch = useDispatch();
+
+    const jobs = useSelector(selectJobs);
+    const jobsStatus = useSelector(selectJobsStatus);
+
+    useEffect(() => {
+        dispatch(
+            searchJobsbySkill({
+                skills: [],
+            })
+        );
+    }, [dispatch]);
+>>>>>>> feb0b09 (add redux integration to student pages: home, jobs, profile)
 
     return (
         <NavBar>
@@ -45,7 +72,13 @@ function Home() {
                         when an unknown printer took a galley of type and
                         scrambled it t
                     </Description>
+<<<<<<< HEAD
                     <Button>View Jobs</Button>
+=======
+                    <Link href="/student/jobs">
+                        <Button>View Jobs</Button>
+                    </Link>
+>>>>>>> feb0b09 (add redux integration to student pages: home, jobs, profile)
                 </SearchSection>
                 <JobsSection>
                     <JobsHeader>Recommended Jobs</JobsHeader>
@@ -53,6 +86,7 @@ function Home() {
                         <u>View</u> some of these recommended jobs!
                     </JobsSubHeader>
                     <JobListings>
+<<<<<<< HEAD
                         {jobs.map((job, index) => (
                             <JobCard key={index}>
                                 <JobTitle>{job.title}</JobTitle>
@@ -72,6 +106,36 @@ function Home() {
                                 <JobButton>VIEW POSTING</JobButton>
                             </JobCard>
                         ))}
+=======
+                        {jobsStatus === "loading" ? (
+                            <EmptyMessage>Loading...</EmptyMessage>
+                        ) : jobs.length === 0 ? (
+                            <EmptyMessage>
+                                Add some skills to your profile to see some jobs
+                                to apply for
+                            </EmptyMessage>
+                        ) : (
+                            jobs.map((job, index) => (
+                                <JobCard key={index}>
+                                    <JobTitle>{job.title}</JobTitle>
+                                    <CompanyName>{job.company}</CompanyName>
+                                    <Location>{job.location}</Location>
+                                    <SkillsList>
+                                        {job.skills.map((tag, index) => (
+                                            <SkillBadge key={index}>
+                                                {tag}
+                                            </SkillBadge>
+                                        ))}
+                                    </SkillsList>
+                                    <JobDescription>
+                                        {job.description}
+                                    </JobDescription>
+                                    <Divider />
+                                    <JobButton>VIEW POSTING</JobButton>
+                                </JobCard>
+                            ))
+                        )}
+>>>>>>> feb0b09 (add redux integration to student pages: home, jobs, profile)
                     </JobListings>
                 </JobsSection>
             </MainContainer>

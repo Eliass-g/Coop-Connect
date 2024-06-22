@@ -1,5 +1,11 @@
 import * as React from "react";
 import styled from "styled-components";
+import { useSelector, useDispatch } from "react-redux";
+import {
+    searchJobsbySkill,
+    selectJobsStatus,
+    selectJobs,
+} from "@/Features/jobs/jobsSlice";
 
 const JobContainer = styled.section`
     border-radius: 10px;
@@ -107,6 +113,7 @@ const ViewButton = styled.button`
     cursor: pointer;
 `;
 
+<<<<<<< HEAD
 const jobs = [
     {
         title: "Front-End Developer",
@@ -125,12 +132,30 @@ const jobs = [
 ];
 
 function Matches() {
+=======
+function Matches() {
+    const dispatch = useDispatch();
+
+    const jobs = useSelector(selectJobs);
+    const jobsStatus = useSelector(selectJobsStatus);
+
+    useEffect(() => {
+        dispatch(
+            searchJobsbySkill({
+                skills: [],
+            })
+        );
+    }, [dispatch]);
+
+    const displayedJobs = jobs.slice(0, 3);
+
+>>>>>>> feb0b09 (add redux integration to student pages: home, jobs, profile)
     return (
         <JobContainer>
             <Title>Matches</Title>
             <Subtitle>Some recommended jobs for you to check out!</Subtitle>
             <JobList>
-                {jobs.map((job, index) => (
+                {displayedJobs.map((job, index) => (
                     <JobCard key={index} hasMargin={index !== 0}>
                         <JobTitle>{job.title}</JobTitle>
                         <JobDetails>

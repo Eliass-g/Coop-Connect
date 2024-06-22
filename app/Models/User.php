@@ -42,6 +42,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+<<<<<<< HEAD
+=======
+        'skills' => 'array',
+
+>>>>>>> feb0b09 (add redux integration to student pages: home, jobs, profile)
     ];
 
     /**

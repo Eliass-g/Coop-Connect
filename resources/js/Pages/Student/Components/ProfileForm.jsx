@@ -2,6 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 
 function ProfileForm() {
+<<<<<<< HEAD
     const [userData, setUserData] = React.useState({
         name: "John Doe",
         email: "email123@gmail.com",
@@ -9,6 +10,23 @@ function ProfileForm() {
         educationInstitute: "School Name",
         preferredPosition: "Junior Software Developer",
     });
+=======
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                const response = await axios.get(
+                    `http://127.0.0.1:8000/api/user-id`
+                );
+                setUser(response.data.user);
+            } catch (error) {
+                console.error("Error fetching user ID:", error);
+            }
+        };
+        fetchUser();
+    }, []);
+>>>>>>> feb0b09 (add redux integration to student pages: home, jobs, profile)
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -24,7 +42,15 @@ function ProfileForm() {
             <ProfileSection>
                 <ProfileContainer>
                     <ProfileImageWrapper>
+<<<<<<< HEAD
                         <ProfileImage loading="lazy" src="" alt="Profile" />
+=======
+                        <ProfileImage
+                            loading="lazy"
+                            src="{user.school}"
+                            alt="Profile"
+                        />
+>>>>>>> feb0b09 (add redux integration to student pages: home, jobs, profile)
                     </ProfileImageWrapper>
                     <ProfileBio>
                         <BioHeader>Bio:</BioHeader>
@@ -63,8 +89,12 @@ function ProfileForm() {
                     <DetailValue
                         type="text"
                         name="accountTypes"
+<<<<<<< HEAD
                         value={userData.accountTypes.join(", ")}
                         onChange={handleChange}
+=======
+                        value={user.role}
+>>>>>>> feb0b09 (add redux integration to student pages: home, jobs, profile)
                     />
                 </ProfileDetailItem>
                 <ProfileDetailItem>
