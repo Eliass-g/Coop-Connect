@@ -21,6 +21,23 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+<<<<<<< HEAD
+=======
+        'role',
+        'status',
+        'school',
+        'class',
+        'profile_image',
+        'company_name',
+        'company',
+        'working',
+        'interviewing',
+        'searching',
+        'skills',
+        'name',
+        'email',
+        'password',
+>>>>>>> 42ed0af (add backend/functionality to teacher home page, employer jobs page, edit jobs)
         'role'
     ];
 
@@ -81,6 +98,20 @@ class User extends Authenticatable
     {
         return $this->hasMany(Interviews::class, 'interviewer_id');
     }
+<<<<<<< HEAD
+=======
+    public function applications()
+    {
+        return $this->hasMany(Application::class);
+    }
+
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
+
+>>>>>>> 40b014e (add backend/functionality to teacher home page, employer jobs page, edit jobs)
 
     /**
      * Check if the user has a specific role.

@@ -40,6 +40,57 @@ Route::get('/fetchconversationid', [ConversationController::class, 'fetchConvers
 
 Route::post('/uploaddocs', [DocumentsController::class, 'upload']);
 Route::get('/fetchdocs', [DocumentsController::class, 'fetchDoc']);
+<<<<<<< HEAD
+=======
+Route::delete("/deletedoc/{id}", [DocumentsController::class, "deleteDoc"]);
+
+Route::get('/user-id', function () {
+    return response()->json(['user' => Auth::user()]);
+})->middleware('auth:sanctum');
+
+Route::get('/download/{id}', [DocumentsController::class, 'download'])->name('file.download');
+
+<<<<<<< HEAD
+=======
+Route::post('/update-profile/{user}', [UserController::class, 'updateProfile'])->name('profile.update')->middleware('auth');
+Route::get('/usersindex', [UserController::class, 'index'])->name('users.index');
+Route::get('/studentStatusPercents', [UserController::class, 'getStudentStatusPercentages'])->name('users.getStudentStatusPercentages');
+
+Route::middleware('auth:sanctum')->post('/apply/{jobId}', [ApplicationController::class, 'apply']);
+Route::middleware('auth:sanctum')->get('/check-application/{jobId}', [ApplicationController::class, 'checkApplication']);
+Route::get('/jobs/user/{userId}', [JobController::class, 'getJobsByUserId']);
+>>>>>>> 40b014e (add backend/functionality to teacher home page, employer jobs page, edit jobs)
+
+
+
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/reflections', [ReflectionController::class, 'index']);
+    Route::post('/reflections', [ReflectionController::class, 'store']);
+    Route::put('/reflections/{id}', [ReflectionController::class, 'update']);
+    Route::delete('/reflections/{id}', [ReflectionController::class, 'destroy']);
+});
+
+
+Route::get('/applications/create', [ApplicationController::class, 'create'])->name('applications.create');
+Route::post('/applications', [ApplicationController::class, 'store'])->name('applications.store');
+Route::get('/applications/{application}', [ApplicationController::class, 'show'])->name('applications.show');
+
+
+Route::get('/jobs', [JobController::class, 'index'])->name('jobs.index');
+Route::get('/jobs/create', [JobController::class, 'create'])->name('jobs.create');
+Route::get('/jobs/match/{user_id}', [JobController::class, 'matchSkills'])->name('jobs.match')->middleware('auth');
+Route::get('/jobs/search/{user_id}', [JobController::class, 'searchJobs'])
+    ->name('jobs.search')
+    ->middleware('auth');
+
+Route::post('/jobs', [JobController::class, 'store'])->name('jobs.store');
+Route::get('/jobs/{job}', [JobController::class, 'show'])->name('jobs.show');
+Route::get('/jobs/{job}/edit', [JobController::class, 'edit'])->name('jobs.edit');
+Route::put('/jobs/{job}', [JobController::class, 'update'])->name('jobs.update');
+Route::delete('/jobs/{job}', [JobController::class, 'destroy'])->name('jobs.destroy');
+
+>>>>>>> 42ed0af (add backend/functionality to teacher home page, employer jobs page, edit jobs)
 Route::delete("/deletedoc/{doc_id}", [DocumentsController::class, "deleteDoc"]);
 
 Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\Api\V1'], function () {

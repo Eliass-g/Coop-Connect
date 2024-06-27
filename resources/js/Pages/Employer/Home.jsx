@@ -1,8 +1,80 @@
 import * as React from "react";
 import styled from "styled-components";
 import NavBar from "./Components/NavBar";
+<<<<<<< HEAD
+=======
+import { Link } from "@inertiajs/react";
+<<<<<<< HEAD
+>>>>>>> 42ed0af (add backend/functionality to teacher home page, employer jobs page, edit jobs)
 
 function Home() {
+=======
+import EditJobModal from "../Profile/Partials/EditJobModal";
+EditJobModal;
+const appUrl = import.meta.env.VITE_APP_URL;
+import {
+    getJobsforEmployer,
+    patchJob,
+    selectJobs,
+    selectJobsStatus,
+} from "@/Features/jobs/jobsSlice";
+import { useDispatch, useSelector } from "react-redux";
+
+const Home = () => {
+    const [user, setUser] = useState(null);
+    const [editModalIsOpen, setEditModalIsOpen] = useState(false);
+    const [jobToEdit, setJobToEdit] = useState(null);
+
+    const dispatch = useDispatch();
+    const jobs = useSelector(selectJobs);
+    const jobsStatus = useSelector(selectJobsStatus);
+
+    useEffect(() => {
+        const fetchUserAndJobs = async () => {
+            try {
+                const response = await axios.get(`${appUrl}/api/user-id`);
+                const userData = response.data.user;
+                userData.skills = userData.skills || "[]";
+                setUser(userData);
+
+                // Fetch jobs for the user
+                dispatch(getJobsforEmployer({ userId: userData.id }));
+            } catch (error) {
+                console.error("Error fetching user ID or jobs:", error);
+            }
+        };
+
+        fetchUserAndJobs();
+    }, [dispatch]);
+
+    const openEditModal = (job) => {
+        setJobToEdit(job);
+        setEditModalIsOpen(true);
+    };
+
+    const closeEditModal = () => {
+        setEditModalIsOpen(false);
+    };
+
+    const handleSave = async (updatedJob) => {
+        // Dispatch the patchJob action and wait for it to complete
+        dispatch(
+            patchJob({
+                jobsId: updatedJob.id,
+                title: updatedJob.title,
+                description: updatedJob.description,
+                company: updatedJob.company,
+                location: updatedJob.location,
+                postingStatus: updatedJob.postingStatus,
+                jobType: updatedJob.jobType,
+            })
+        );
+
+        closeEditModal();
+    };
+
+
+>>>>>>> 40b014e (add backend/functionality to teacher home page, employer jobs page, edit jobs)
     return (
         <NavBar header={"Job Postings"}>
             <MainContainer>
@@ -27,11 +99,26 @@ function Home() {
                         <UnderlineText>edit</UnderlineText> your company’s
                         current job postings.
                     </EditingInstructions>
+<<<<<<< HEAD
                     <PostingsGrid>
                         {jobPostings.map((post, i) => {
                             return <JobPosting key={i} post={post} />;
                         })}
                     </PostingsGrid>
+=======
+                    {jobsStatus === "loading" && <p>Loading...</p>}
+                    {jobs.length > 0 && (
+                        <PostingsGrid>
+                            {jobs.map((post, i) => (
+                                <JobPosting
+                                    key={i}
+                                    post={post}
+                                    openEditModal={openEditModal}
+                                />
+                            ))}
+                        </PostingsGrid>
+                    )}
+>>>>>>> 40b014e (add backend/functionality to teacher home page, employer jobs page, edit jobs)
                 </CurrentPostingsSection>
             </MainContainer>
         </NavBar>
@@ -59,34 +146,6 @@ function JobPosting({ post }) {
         </JobCard>
     );
 }
-
-// Dummy data
-const jobPostings = [
-    {
-        title: "Front-End Developer",
-        companyName: "Company Name",
-        location: "Location",
-        tags: ["Javascript", "HTML", "Development", "+3"],
-        description:
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-    },
-    {
-        title: "Front-End Developer",
-        companyName: "Company Name",
-        location: "Location",
-        tags: ["Javascript", "HTML", "Development", "+3"],
-        description:
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-    },
-    {
-        title: "Front-End Developer",
-        companyName: "Company Name",
-        location: "Location",
-        tags: ["Javascript", "HTML", "Development", "+3"],
-        description:
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-    },
-];
 
 // Styled Components
 const UnderlineText = styled.span`

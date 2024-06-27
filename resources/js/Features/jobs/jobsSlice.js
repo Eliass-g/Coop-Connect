@@ -49,6 +49,16 @@ export const jobsSlice = createSlice({
             .addCase(getJobsforUser.rejected, (state, action) => {
                 state.status.jobs = "failed";
             })
+            .addCase(getJobsforEmployer.pending, (state, action) => {
+                state.status.jobs = "loading";
+            })
+            .addCase(getJobsforEmployer.fulfilled, (state, action) => {
+                state.jobs = action.payload;
+                state.status.jobs = "succeeded";
+            })
+            .addCase(getJobsforEmployer.rejected, (state, action) => {
+                state.status.jobs = "failed";
+            })
             .addCase(getUsersForJob.pending, (state, action) => {
                 state.status.jobs = "loading";
             })
@@ -105,6 +115,10 @@ export const jobsSlice = createSlice({
             })
             .addCase(patchJob.fulfilled, (state, action) => {
                 state.status.patchJob = "succeeded";
+                console.log(action.payload);
+                state.jobs = state.jobs.map((job) =>
+                    job.id === action.payload.id ? action.payload : job
+                );
             })
             .addCase(patchJob.rejected, (state, action) => {
                 state.status.patchJob = "failed";
@@ -144,6 +158,18 @@ export const getJobsforUser = createAsyncThunk(
         const { userId } = params;
         const response = await axios({
             url: `/jobs/user/${userId}`,
+            method: "GET",
+        });
+        return response.data.data;
+    }
+);
+
+export const getJobsforEmployer = createAsyncThunk(
+    "jobs/getJobsforEmployer",
+    async (params) => {
+        const { userId } = params;
+        const response = await axios({
+            url: `/jobs?userId[eq]=${userId}`,
             method: "GET",
         });
         return response.data.data;
@@ -265,6 +291,7 @@ export const patchJob = createAsyncThunk("jobs/patchJob", async (params) => {
         url: `/jobs/${jobsId}`,
         method: "PATCH",
         data: {
+            jobsId,
             title,
             description,
             skills,
@@ -274,6 +301,7 @@ export const patchJob = createAsyncThunk("jobs/patchJob", async (params) => {
             company,
         },
     });
+    console.log(response.data.data);
     return response.data.data;
 });
 
