@@ -2,6 +2,36 @@ import * as React from "react";
 import styled from "styled-components";
 import NavBar from "./Components/NavBar";
 import downarrow from "@/Pages/Images/Icon.svg";
+<<<<<<< HEAD
+=======
+import { Link } from "@inertiajs/react";
+import {
+    Container,
+    Card,
+    FormWrapper,
+    Title,
+    Subtitle,
+    FormContainer,
+    Form,
+    SectionTitle,
+    SectionHeading,
+    SectionDescription,
+    InputField,
+    ProgressBar,
+    ProgressItem,
+    StyledInput,
+    Tag,
+    TagName,
+    TagIcon,
+    TagContainer,
+    Label,
+    HorizontalRule,
+    ButtonGroup,
+    ActionButton,
+    SubmitButton,
+    ButtonContainerPost2,
+} from "./Styling/Post2.styles";
+>>>>>>> c9b0256 (clean up code, remove unnecessary controllers, separate styling)
 
 function Post2() {
     const skills = ["Tag", "Tag", "Tag", "Tag", "Tag", "Tag", "Tag"];
@@ -66,6 +96,7 @@ function Post2() {
     );
 }
 
+<<<<<<< HEAD
 const Container = styled.section`
     align-self: stretch;
     display: flex;
@@ -302,4 +333,18 @@ const SubmitButton = styled.button`
         white-space: initial;
     }
 `;
+<<<<<<< HEAD
+=======
+
+const ButtonContainerPost2 = styled.div`
+    display: flex;
+flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+    flex-shrink: 0;
+`;
+=======
+>>>>>>> 14a0769 (clean up code, remove unnecessary controllers, separate styling)
+>>>>>>> c9b0256 (clean up code, remove unnecessary controllers, separate styling)
 export default Post2;

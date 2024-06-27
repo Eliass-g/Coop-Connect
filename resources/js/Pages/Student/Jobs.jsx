@@ -3,6 +3,7 @@ import styled from "styled-components";
 import NavBar from "./Components/NavBar";
 import { useSelector, useDispatch } from "react-redux";
 import {
+<<<<<<< HEAD
     searchJobsBySkillAndLocation,
     selectJobsStatus,
     selectJobs,
@@ -39,12 +40,105 @@ function Jobs() {
     const [featuredJob, setFeaturedJob] = useState(null);
     const [searchTerms, setSearchTerms] = useState("");
     const [searchLocation, setLocation] = useState("");
+=======
+    MainContainer,
+    SearchContainer,
+    SearchInnerContainer,
+    SubHeading,
+    TextDescription,
+    SearchForm,
+    SearchField,
+    SearchInput,
+    SearchButton,
+    JobList,
+    JobColumn,
+    JobCard,
+    JobTitle,
+    JobMeta,
+    JobTags,
+    Tag,
+    JobDescription,
+    Divider,
+    ViewButton,
+    FeaturedJob,
+    JobCardFeatured,
+    CompanyImage,
+    CompanyInfo,
+    CompanyName,
+    CompanyLocation,
+    ApplyButton,
+    JobFullDescription,
+    SkillsList,
+    SkillBadge,
+} from "./Styling/Jobs.styles";
+
+function Jobs() {
+    const jobPostings = [
+        {
+            title: "Full-Stack Developer",
+            company: "Microsoft",
+            location: "Toronto, ON",
+            tags: ["Javascript", "HTML", "Development", "+3"],
+            description:
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+        },
+        {
+            title: "Web Developer",
+            company: "Atlassian",
+            location: "Houston, TX",
+            tags: ["Javascript", "HTML", "Development", "+3"],
+            description:
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+        },
+    ];
+
+    const [userId, setUserId] = useState(null);
+    const [featuredJob, setFeaturedJob] = useState(null);
+    const [searchTerm, setSearchTerm] = useState("");
+    const [searchLocation, setLocation] = useState("");
+    const [showModal, setShowModal] = useState(false);
+    const [selectedJob, setSelectedJob] = useState(null);
+>>>>>>> 14a0769 (clean up code, remove unnecessary controllers, separate styling)
 
     const dispatch = useDispatch();
 
     const jobs = useSelector(selectJobs);
     const jobsStatus = useSelector(selectJobsStatus);
 
+<<<<<<< HEAD
+=======
+    useEffect(() => {
+        // Fetch the XSRF token from cookies and set it in Axios headers
+        const csrfToken = document.cookie
+            .split("; ")
+            .find((row) => row.startsWith("XSRF-TOKEN="))
+            ?.split("=")[1];
+        axios.defaults.headers.common["X-XSRF-TOKEN"] = csrfToken;
+
+        // Function to fetch the user ID
+        const fetchUserId = async () => {
+            try {
+                const response = await axios.get(`${appUrl}/api/user-id`);
+                setUserId(response.data.user.id);
+            } catch (error) {
+                console.error("Error fetching user ID:", error);
+            }
+        };
+
+        fetchUserId();
+    }, []);
+
+    useEffect(() => {
+        dispatch(getJobs());
+    }, [dispatch]);
+
+    useEffect(() => {
+        if (jobs.length > 0) {
+            setFeaturedJob(jobs[0]);
+        }
+    }, [jobs]);
+
+>>>>>>> 14a0769 (clean up code, remove unnecessary controllers, separate styling)
     const handleSearch = async (e) => {
         e.preventDefault();
         try {
@@ -90,9 +184,15 @@ function Jobs() {
 =======
                                     type="text"
                                     placeholder="Job Titles, Keywords"
+<<<<<<< HEAD
                                     value={searchTerms}
                                     onChange={(e) =>
                                         setSearchTerms(e.target.value)
+=======
+                                    value={searchTerm}
+                                    onChange={(e) =>
+                                        setSearchTerm(e.target.value)
+>>>>>>> 14a0769 (clean up code, remove unnecessary controllers, separate styling)
                                     }
 >>>>>>> feb0b09 (add redux integration to student pages: home, jobs, profile)
                                     aria-label="Job Titles, Keywords"
@@ -178,6 +278,7 @@ function Jobs() {
                         </SearchForm>
                         {jobs && (
                             <JobList>
+<<<<<<< HEAD
                                 {jobs && jobs.length > 0 ? (
                                     <JobColumn>
                                         {jobs.map((job) => (
@@ -211,6 +312,37 @@ function Jobs() {
                                 ) : (
                                     <p>No jobs found.</p>
                                 )}{" "}
+=======
+                                <JobColumn>
+                                    {jobs.map((job) => (
+                                        <JobCard key={job.title}>
+                                            <JobTitle>{job.title}</JobTitle>
+                                            <JobMeta>
+                                                <div>{job.company}</div>
+                                                <div>{job.location}</div>
+                                            </JobMeta>
+                                            <SkillsList>
+                                                {job.skills.map(
+                                                    (tag, index) => (
+                                                        <SkillBadge key={index}>
+                                                            {tag}
+                                                        </SkillBadge>
+                                                    )
+                                                )}
+                                            </SkillsList>
+                                            <JobDescription>
+                                                {job.description}
+                                            </JobDescription>
+                                            <Divider />
+                                            <ViewButton
+                                                onClick={() => openModal(job)}
+                                            >
+                                                VIEW POSTING
+                                            </ViewButton>
+                                        </JobCard>
+                                    ))}
+                                </JobColumn>
+>>>>>>> 14a0769 (clean up code, remove unnecessary controllers, separate styling)
                                 {featuredJob && (
                                     <FeaturedJob>
                                         <JobCardFeatured>
@@ -231,10 +363,20 @@ function Jobs() {
                                                     </CompanyLocation>
                                                 </CompanyDetails>
                                             </CompanyInfo>
+<<<<<<< HEAD
                                             <ApplyButton>
                                                 Apply Here!
                                             </ApplyButton>
 
+=======
+                                            <ApplyButton
+                                                onClick={() =>
+                                                    openModal(featuredJob)
+                                                }
+                                            >
+                                                Apply Here!
+                                            </ApplyButton>
+>>>>>>> 14a0769 (clean up code, remove unnecessary controllers, separate styling)
                                             <JobFullDescription>
                                                 <strong>
                                                     What is Lorem Ipsum?
@@ -262,6 +404,7 @@ function Jobs() {
     );
 }
 
+<<<<<<< HEAD
 const MainContainer = styled.main`
     align-self: stretch;
     display: flex;
@@ -551,4 +694,6 @@ const JobFullDescription = styled.p`
     }
 `;
 
+=======
+>>>>>>> c9b0256 (clean up code, remove unnecessary controllers, separate styling)
 export default Jobs;

@@ -11,6 +11,22 @@ import {
     selectReflectionsStatus,
     selectReflections,
 } from "@/Features/reflections/reflectionsSlice";
+import {
+    Section,
+    Container,
+    FormWrapper,
+    Header,
+    Description,
+    FormContainer,
+    Form,
+    Label,
+    TextareaWrapper,
+    Textarea,
+    Image,
+    Button,
+    ErrorMessage,
+    SuccessMessage,
+} from "./Styling/Reflections.styles";
 
 const badWords = [
     "bitch",
@@ -179,6 +195,7 @@ function Reflections() {
     );
 }
 
+<<<<<<< HEAD
 const Section = styled.section`
     align-self: stretch;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -323,4 +340,6 @@ const SuccessMessage = styled.p`
 `;
 
 >>>>>>> df4e85a (added redux statemanagement to reflections page)
+=======
+>>>>>>> c9b0256 (clean up code, remove unnecessary controllers, separate styling)
 export default Reflections;

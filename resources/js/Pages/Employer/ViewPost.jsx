@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import * as React from "react";
 import styled from "styled-components";
 import NavBar from "./Components/NavBar";
@@ -42,6 +43,133 @@ function ViewPost() {
         },
     ];
 
+=======
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import NavBar from "./Components/NavBar";
+import ApplicantModal from "../Profile/Partials/ApplicantModal";
+import EditJobModal from "../Profile/Partials/EditJobModal";
+import {
+    MainContainer,
+    Container,
+    Title,
+    JobPostingCard,
+    JobInfo,
+    JobInfoLeft,
+    CompanyLogo,
+    JobDetails,
+    JobTitle,
+    CompanyName,
+    JobDescription,
+    StatusIcon,
+    JobInfoRight,
+    StatusTag,
+    JobTypeTag,
+    LocationTag,
+    ApplicantSection,
+    ApplicantTitle,
+    Applicants,
+    ApplicantCard,
+    ApplicantInfo,
+    ApplicantImage,
+    ApplicantDetails,
+    ApplicantName,
+    SchoolInfo,
+    Location,
+    ApplicantDescription,
+    ViewButton,
+} from "./Styling/ViewPost.styles";
+
+const appUrl = import.meta.env.VITE_APP_URL;
+const csrfToken = document.cookie
+    .split("; ")
+    .find((row) => row.startsWith("XSRF-TOKEN="))
+    ?.split("=")[1];
+axios.defaults.headers.common["X-XSRF-TOKEN"] = csrfToken;
+
+function ViewPost() {
+    const [job, setJob] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [selectedApplicant, setSelectedApplicant] = useState(null);
+    const [editModalIsOpen, setEditModalIsOpen] = useState(false);
+
+    // Extract job ID from URL using useParams hook
+    const jobId = parseInt(window.location.pathname.split("/").pop(), 10);
+
+    useEffect(() => {
+        // Fetch job details including applications based on jobId
+        const fetchJobDetails = async () => {
+            try {
+                const response = await fetch(`${appUrl}/api/jobs/${jobId}`); // Replace with your API endpoint
+                if (!response.ok) {
+                    throw new Error("Failed to fetch job details");
+                }
+                const data = await response.json();
+                setJob(data);
+                console.log(data);
+                setLoading(false);
+            } catch (error) {
+                console.error("Error fetching job details:", error);
+            }
+        };
+
+        fetchJobDetails();
+    }, [jobId]);
+
+    if (loading || !job) {
+        return <div>Loading...</div>; // You can show a loading indicator here
+    }
+
+    console.log("Job from URL:", job);
+
+    // Check if job.applications exists and is an array
+    const applicants =
+        job.applications && Array.isArray(job.applications)
+            ? job.applications.map((app) => app.user)
+            : [];
+
+    const openModal = (applicant) => {
+        setSelectedApplicant(applicant);
+        setModalIsOpen(true);
+    };
+
+    const closeModal = () => {
+        setModalIsOpen(false);
+        setSelectedApplicant(null);
+    };
+
+    const openEditModal = () => {
+        setEditModalIsOpen(true);
+    };
+
+    const closeEditModal = () => {
+        setEditModalIsOpen(false);
+    };
+
+    const handleSave = async (updatedJob) => {
+        try {
+            const response = await fetch(`${appUrl}/api/jobs/${job.id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(updatedJob),
+            });
+
+            if (!response.ok) {
+                throw new Error("Failed to update job");
+            }
+
+            const data = await response.json();
+            setJob(data); // Update state with the updated job data
+            closeEditModal();
+        } catch (error) {
+            console.error("Error updating job:", error);
+        }
+    };
+
+>>>>>>> 14a0769 (clean up code, remove unnecessary controllers, separate styling)
     return (
         <NavBar header={"Job Postings"}>
             <MainContainer>
@@ -55,6 +183,7 @@ function ViewPost() {
                                     alt="Company Logo"
                                 />
                                 <JobDetails>
+<<<<<<< HEAD
                                     <JobTitle>Front-End Developer</JobTitle>
                                     <CompanyName>Microsoft</CompanyName>
                                     <JobDescription>
@@ -65,17 +194,39 @@ function ViewPost() {
                                         unknown printer took a galley of type
                                         and scrambled it to make a type specimen
                                         book.
+=======
+                                    <JobTitle>{job.title}</JobTitle>
+                                    <CompanyName>{job.company}</CompanyName>
+                                    <JobDescription>
+                                        {job.description}
+>>>>>>> 14a0769 (clean up code, remove unnecessary controllers, separate styling)
                                     </JobDescription>
                                 </JobDetails>
                                 <StatusIcon
                                     src="https://cdn.builder.io/api/v1/image/assets/TEMP/0f00bd98ccee0cca896d493616005574e2e5aaa7076659900adbd3e310f5af87?apiKey=d66532d056b14640a799069157705b77&"
                                     alt="Status Icon"
+<<<<<<< HEAD
                                 />
                             </JobInfoLeft>
                             <JobInfoRight>
                                 <StatusTag>Posting Status: Open</StatusTag>
                                 <JobTypeTag>Job Type: Full-Time</JobTypeTag>
                                 <LocationTag>Work Location: Remote</LocationTag>
+=======
+                                    onClick={openEditModal}
+                                />
+                            </JobInfoLeft>
+                            <JobInfoRight>
+                                <StatusTag>
+                                    Posting Status: {job.posting_status}
+                                </StatusTag>
+                                <JobTypeTag>
+                                    Job Type: {job.job_type}
+                                </JobTypeTag>
+                                <LocationTag>
+                                    Work Location: {job.location}
+                                </LocationTag>
+>>>>>>> 14a0769 (clean up code, remove unnecessary controllers, separate styling)
                             </JobInfoRight>
                         </JobInfo>
                         <ApplicantSection>
@@ -85,7 +236,14 @@ function ViewPost() {
                                     <ApplicantCard key={applicant.id}>
                                         <ApplicantInfo>
                                             <ApplicantImage
+<<<<<<< HEAD
                                                 src={applicant.imgSrc}
+=======
+                                                src={
+                                                    applicant.profile_image ||
+                                                    "https://via.placeholder.com/150"
+                                                }
+>>>>>>> 14a0769 (clean up code, remove unnecessary controllers, separate styling)
                                                 alt={applicant.name}
                                             />
                                             <ApplicantDetails>
@@ -93,7 +251,11 @@ function ViewPost() {
                                                     {applicant.name}
                                                 </ApplicantName>
                                                 <SchoolInfo>
+<<<<<<< HEAD
                                                     {applicant.schoolInfo}
+=======
+                                                    {applicant.school || "N/A"}
+>>>>>>> 14a0769 (clean up code, remove unnecessary controllers, separate styling)
                                                 </SchoolInfo>
                                                 <Location>
                                                     {applicant.location}
@@ -101,9 +263,19 @@ function ViewPost() {
                                             </ApplicantDetails>
                                         </ApplicantInfo>
                                         <ApplicantDescription>
+<<<<<<< HEAD
                                             {applicant.description}
                                         </ApplicantDescription>
                                         <ViewButton>View Applicant</ViewButton>
+=======
+                                            {applicant.description || "N/A"}
+                                        </ApplicantDescription>
+                                        <ViewButton
+                                            onClick={() => openModal(applicant)}
+                                        >
+                                            View Applicant
+                                        </ViewButton>
+>>>>>>> 14a0769 (clean up code, remove unnecessary controllers, separate styling)
                                     </ApplicantCard>
                                 ))}
                             </Applicants>
@@ -111,10 +283,25 @@ function ViewPost() {
                     </JobPostingCard>
                 </Container>
             </MainContainer>
+<<<<<<< HEAD
+=======
+            <ApplicantModal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                applicant={selectedApplicant}
+            />
+            <EditJobModal
+                isOpen={editModalIsOpen}
+                onRequestClose={closeEditModal}
+                job={job}
+                onSave={handleSave}
+            />
+>>>>>>> 14a0769 (clean up code, remove unnecessary controllers, separate styling)
         </NavBar>
     );
 }
 
+<<<<<<< HEAD
 const MainContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -379,4 +566,6 @@ const ViewButton = styled.button`
     cursor: pointer;
 `;
 
+=======
+>>>>>>> 14a0769 (clean up code, remove unnecessary controllers, separate styling)
 export default ViewPost;

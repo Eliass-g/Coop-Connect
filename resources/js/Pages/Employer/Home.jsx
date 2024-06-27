@@ -19,9 +19,34 @@ import {
     selectJobsStatus,
 } from "@/Features/jobs/jobsSlice";
 import { useDispatch, useSelector } from "react-redux";
+import {
+    UnderlineText,
+    MainContainer,
+    CreateJobSection,
+    JobTitle,
+    JobSubtitle,
+    JobDescription,
+    PostJobButton,
+    CurrentPostingsSection,
+    SectionTitle,
+    EditingInstructions,
+    PostingsGrid,
+    JobCard,
+    JobCardTitle,
+    CompanyName,
+    Location,
+    Tags,
+    Tag,
+    JobDescriptionText,
+    Divider,
+    CardButtons,
+    ViewPostingButton,
+    EditPostingButton,
+    SkillsList,
+    SkillBadge,
+} from "./Styling/Home.styles";
 
 const Home = () => {
-    const [user, setUser] = useState(null);
     const [editModalIsOpen, setEditModalIsOpen] = useState(false);
     const [jobToEdit, setJobToEdit] = useState(null);
 
@@ -35,7 +60,6 @@ const Home = () => {
                 const response = await axios.get(`${appUrl}/api/user-id`);
                 const userData = response.data.user;
                 userData.skills = userData.skills || "[]";
-                setUser(userData);
 
                 // Fetch jobs for the user
                 dispatch(getJobsforEmployer({ userId: userData.id }));
@@ -73,8 +97,11 @@ const Home = () => {
         closeEditModal();
     };
 
+<<<<<<< HEAD
 
 >>>>>>> 40b014e (add backend/functionality to teacher home page, employer jobs page, edit jobs)
+=======
+>>>>>>> 14a0769 (clean up code, remove unnecessary controllers, separate styling)
     return (
         <NavBar header={"Job Postings"}>
             <MainContainer>
@@ -147,6 +174,7 @@ function JobPosting({ post }) {
     );
 }
 
+<<<<<<< HEAD
 // Styled Components
 const UnderlineText = styled.span`
     text-decoration: underline;
@@ -369,4 +397,6 @@ const EditPostingButton = styled.button`
     padding: 8px 16px;
 `;
 
+=======
+>>>>>>> 14a0769 (clean up code, remove unnecessary controllers, separate styling)
 export default Home;

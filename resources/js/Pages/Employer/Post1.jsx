@@ -2,6 +2,37 @@ import * as React from "react";
 import styled from "styled-components";
 import NavBar from "./Components/NavBar";
 import downarrow from "../Images/Icon.svg";
+<<<<<<< HEAD
+=======
+import { Link } from "@inertiajs/react";
+<<<<<<< HEAD
+=======
+import { useDispatch, useSelector } from "react-redux";
+import {
+    updateJobFormData,
+    selectJobFormData,
+} from "@/Features/jobs/jobsSlice";
+import { Inertia } from "@inertiajs/inertia";
+import {
+    Container,
+    Card,
+    FormWrapper,
+    Title,
+    Subtitle,
+    Form,
+    SectionTitle,
+    FormRow,
+    FormField,
+    Label,
+    Input,
+    Select,
+    HorizontalRule,
+    SubmitButton,
+    BackButton,
+    ButtonContainerPost,
+} from "./Styling/Post1.styles";
+>>>>>>> 14a0769 (clean up code, remove unnecessary controllers, separate styling)
+>>>>>>> c9b0256 (clean up code, remove unnecessary controllers, separate styling)
 
 function Post1() {
     return (
@@ -78,6 +109,7 @@ function Post1() {
     );
 }
 
+<<<<<<< HEAD
 const Container = styled.section`
     align-self: stretch;
     display: flex;
@@ -226,4 +258,40 @@ const SubmitButton = styled.button`
         white-space: initial;
     }
 `;
+<<<<<<< HEAD
+=======
+
+const BackButton = styled.button`
+    justify-content: center;
+    border-radius: 12px;
+    border: 2px solid rgba(107, 83, 140, 1);
+    align-self: start;
+    margin-top: 20px;
+    color: var(--Schemes-Primary, #6b538c);
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+    padding: 8px 16px;
+    font: 700 16px/150% Roboto, sans-serif;
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+
+    &:hover {
+        background-color: lightcoral; /* Light red color on hover */
+    }
+
+    @media (max-width: 991px) {
+        white-space: initial;
+    }
+`;
+
+const ButtonContainerPost = styled.div`
+    display: flex;
+flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+    flex-shrink: 0;
+`;
+=======
+>>>>>>> 14a0769 (clean up code, remove unnecessary controllers, separate styling)
+>>>>>>> c9b0256 (clean up code, remove unnecessary controllers, separate styling)
 export default Post1;

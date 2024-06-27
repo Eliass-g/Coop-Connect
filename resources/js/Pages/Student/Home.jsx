@@ -41,6 +41,33 @@ import {
     selectJobsStatus,
     selectJobs,
 } from "@/Features/jobs/jobsSlice";
+<<<<<<< HEAD
+=======
+import {
+    MainContainer,
+    SearchSection,
+    SearchTitle,
+    Tagline,
+    Description,
+    Button,
+    JobsSection,
+    JobsHeader,
+    JobsSubHeader,
+    JobListings,
+    JobCardContainer,
+    JobTitle,
+    CompanyName,
+    Location,
+    SkillsList,
+    SkillBadge,
+    JobDescription,
+    Divider,
+    JobButton,
+    EmptyMessage,
+} from "./Styling/Home.styles";
+
+const appUrl = import.meta.env.VITE_APP_URL;
+>>>>>>> 14a0769 (clean up code, remove unnecessary controllers, separate styling)
 
 function Home() {
     const dispatch = useDispatch();
@@ -143,6 +170,7 @@ function Home() {
     );
 }
 
+<<<<<<< HEAD
 const MainContainer = styled.main`
     display: flex;
     flex-direction: column;
@@ -347,4 +375,18 @@ const JobButton = styled.button`
     cursor: pointer;
 `;
 
+<<<<<<< HEAD
+=======
+const EmptyMessage = styled.div`
+    color: #ff6347; /* Tomato color for visibility */
+    font-size: 1.2em;
+    padding: 20px;
+    text-align: center;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+`;
+
+=======
+>>>>>>> 14a0769 (clean up code, remove unnecessary controllers, separate styling)
+>>>>>>> c9b0256 (clean up code, remove unnecessary controllers, separate styling)
 export default Home;

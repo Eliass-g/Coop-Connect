@@ -23,6 +23,22 @@ import {
     selectInterviewsStatus,
     selectInterviews,
 } from "@/Features/interviews/interviewsSlice";
+import {
+    MainContainer,
+    Container,
+    Wrapper,
+    Header,
+    CalendarDiv,
+    CalendarHeader,
+    Month,
+    NavIcons,
+    Icon,
+    DaysOfWeek,
+    Day,
+    DatesGrid,
+    DateCell,
+} from "./Styling/Interviews.styles";
+
 const localizer = momentLocalizer(moment);
 const DnDCalendar = withDragAndDrop(Calendar);
 
@@ -129,7 +145,10 @@ const Interviews = () => {
 
     useEffect(() => {
         if (interviewsStatus.postInterview == "succeeded") {
-            console.log("True Check", transformedInterviews(data.postInterview));
+            console.log(
+                "True Check",
+                transformedInterviews(data.postInterview)
+            );
             setEvents(...events, transformedInterviews(data.postInterview));
         }
     }, [interviews.postInterview]);
@@ -180,11 +199,31 @@ const Interviews = () => {
         // Format start and end dates to ISO 8601 string format
         /*         const formattedStart = start.toISOString(); // Convert Date object to ISO string
         const formattedEnd = end.toISOString(); */
+<<<<<<< HEAD
+=======
+        const formattedStart = `${start.getFullYear()}-${String(
+            start.getMonth() + 1
+        ).padStart(2, "0")}-${String(start.getDate()).padStart(
+            2,
+            "0"
+        )} ${String(start.getHours()).padStart(2, "0")}:${String(
+            start.getMinutes()
+        ).padStart(2, "0")}:${String(start.getSeconds()).padStart(2, "0")}`;
+        const formattedEnd = `${end.getFullYear()}-${String(
+            end.getMonth() + 1
+        ).padStart(2, "0")}-${String(end.getDate()).padStart(2, "0")} ${String(
+            end.getHours()
+        ).padStart(2, "0")}:${String(end.getMinutes()).padStart(
+            2,
+            "0"
+        )}:${String(end.getSeconds()).padStart(2, "0")}`;
+>>>>>>> 14a0769 (clean up code, remove unnecessary controllers, separate styling)
 
         // Create newEvent object with formatted dates
 
         dispatch(
             postInterview({
+<<<<<<< HEAD
                 title: "test",
                 startDate: "2024-06-18 23:15:47",
                 endDate: "2024-06-19 00:15:47",
@@ -192,6 +231,15 @@ const Interviews = () => {
                 description: "test",
                 intervieweeId: userId,
                 interviewerId: 2,
+=======
+                title,
+                startDate: formattedStart,
+                endDate: formattedEnd,
+                status: "scheduled",
+                description,
+                intervieweeId: userId, // Assuming userId is defined
+                interviewerId: userId,
+>>>>>>> 14a0769 (clean up code, remove unnecessary controllers, separate styling)
             })
         );
 
@@ -302,6 +350,7 @@ const Interviews = () => {
         </NavBar>
     );
 };
+<<<<<<< HEAD
 
 const MainContainer = styled.div`
     display: flex;
@@ -447,5 +496,7 @@ const TodayDateCell = styled(DateCell)`
     background: var(--Schemes-Primary, #6b538c);
     color: #fff; // Ensures the text is readable
 `;
+=======
+>>>>>>> c9b0256 (clean up code, remove unnecessary controllers, separate styling)
 
 export default Interviews;
