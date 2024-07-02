@@ -64,6 +64,7 @@ function Jobs() {
     JobCardFeatured,
     CompanyImage,
     CompanyInfo,
+    CompanyDetails,
     CompanyName,
     CompanyLocation,
     ApplyButton,

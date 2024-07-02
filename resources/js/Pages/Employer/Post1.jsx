@@ -1,9 +1,12 @@
 import * as React from "react";
 import styled from "styled-components";
 import NavBar from "./Components/NavBar";
+<<<<<<< HEAD
 import downarrow from "../Images/Icon.svg";
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> 1bd0d88 (fix bugs, add roles when user signs up, redirect user to role's homepage upon sign up or login)
 import { Link } from "@inertiajs/react";
 <<<<<<< HEAD
 =======
