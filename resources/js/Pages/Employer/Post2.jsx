@@ -84,9 +84,26 @@ function Post2() {
                                 ))}
                             </TagContainer>
                             <HorizontalRule />
+<<<<<<< HEAD
                             <ButtonGroup>
                                 <ActionButton>Go Back</ActionButton>
+=======
+<<<<<<< HEAD
+                            <ButtonGroup><Link href="/employer/post1">
+                                <ActionButton>Go Back</ActionButton></Link>
+>>>>>>> 33b1357 (add role access restriction)
                                 <SubmitButton>Finished</SubmitButton>
+=======
+                            <ButtonGroup>
+                                <Link href="/employer/post1">
+                                    <ActionButton>Go Back</ActionButton>
+                                </Link>
+                                <Link href="/employer/home">
+                                    <SubmitButton onClick={handleSubmit}>
+                                        Finished
+                                    </SubmitButton>
+                                </Link>
+>>>>>>> 9793cbe (add role access restriction)
                             </ButtonGroup>
                         </FormContainer>
                     </FormWrapper>

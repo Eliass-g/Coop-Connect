@@ -17,9 +17,13 @@ return new class extends Migration {
             $table->string('class')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
+<<<<<<< HEAD
             $table->enum('role', ['student', 'teacher', 'employee'])->default('student');
 <<<<<<< HEAD
 =======
+=======
+            $table->enum('role', ['student', 'teacher', 'employee', 'admin'])->default('student');
+>>>>>>> 9793cbe (add role access restriction)
             $table->enum('status', ['searching', 'interviewing', 'working'])->default('searching');
             $table->string('description')->nullable();
 >>>>>>> 40b014e (add backend/functionality to teacher home page, employer jobs page, edit jobs)
