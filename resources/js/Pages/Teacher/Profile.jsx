@@ -87,4 +87,52 @@ function Profile() {
     );
 }
 
+const ClearProfileButton = styled.button`
+    justify-content: center;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #6b538c, #a97bbf);
+    align-self: start;
+    margin-top: 20px;
+    color: #fff;
+    letter-spacing: 0.5px;
+    padding: 8px 16px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 150%;
+    font-family: Roboto, sans-serif;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+
+    &:hover {
+        background: linear-gradient(135deg, #543b6f, #8e6aae);
+        transform: scale(1.05);
+    }
+`;
+
+
+const SuccessMessage = styled.div`
+    color: green;
+    margin-top: 10px;
+    font: 500 14px Poppins, sans-serif;
+`;
+
+const DropzoneContainer = styled.div`
+    border: 2px dashed #6b538c;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    color: #6b538c;
+    font-family: Poppins, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.1px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+        background-color: #f3e8ff;
+    }
+`;
+
 export default Profile;

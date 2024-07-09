@@ -21,6 +21,13 @@
         "vite": "^5.0.0"
     },
     "dependencies": {
+<<<<<<< HEAD
+=======
+        "@fullcalendar/core": "^6.1.14",
+        "@fullcalendar/daygrid": "^6.1.14",
+        "@fullcalendar/react": "^6.1.14",
+        "@inertiajs/inertia": "^0.11.1",
+>>>>>>> 3568b30 (create page for viewing applicants, accepting applicants, modal for declining applicants)
         "@inertiajs/inertia-react": "^0.8.1",
 <<<<<<< HEAD
 =======

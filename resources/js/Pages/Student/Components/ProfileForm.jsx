@@ -12,6 +12,34 @@ function ProfileForm() {
     });
 =======
     const [user, setUser] = useState(null);
+<<<<<<< HEAD
+=======
+    const [droppedImage, setDroppedImage] = useState(null);
+
+    // Fetch user data on component mount
+    useEffect(() => {
+        const fetchUserData = async () => {
+            try {
+                const response = await axios.get(`${appUrl}/api/user-id`);
+                const userData = response.data.user;
+                userData.skills = userData.skills || "[]";
+                setUser(userData);
+            } catch (error) {
+                console.error("Error fetching user data:", error);
+            }
+        };
+
+        fetchUserData();
+    }, []);
+
+    const handleDrop = (acceptedFiles) => {
+        if (acceptedFiles && acceptedFiles.length > 0) {
+            const file = acceptedFiles[0];
+            const imageUrl = URL.createObjectURL(file);
+            setDroppedImage(imageUrl);
+        }
+    };
+>>>>>>> b6cf7b6 (create page for viewing applicants, accepting applicants, modal for declining applicants)
 
     useEffect(() => {
         const fetchUser = async () => {

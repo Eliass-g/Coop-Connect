@@ -157,4 +157,12 @@ const Interviews = () => {
     );
 };
 
+const CalendarDiv = styled.div`
+    background-color: #ffffff;
+    height: 80vh;
+    margin-bottom: 3vh;
+    margin-top: 3vh;
+
+`;
+
 export default Interviews;
