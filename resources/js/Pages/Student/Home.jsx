@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import * as React from "react";
 import styled from "styled-components";
 import NavBar from "./Components/NavBar";
@@ -31,15 +32,26 @@ function Home() {
         },
     ];
 =======
+=======
+>>>>>>> 913bdfa (employer side: updates to view job postings, view single job posting, related backend, creation of view applicants, decline applicant, accept applicant, related backend; student side: creation of view single job posting, apply to job posting, related backend)
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
+=======
+import React, { useEffect, useState } from "react";
+>>>>>>> 0541389 (employer side: updates to view job postings, view single job posting, related backend, creation of view applicants, decline applicant, accept applicant, related backend; student side: creation of view single job posting, apply to job posting, related backend)
 import NavBar from "./Components/NavBar";
 import { Link } from "@inertiajs/react";
 import {
+<<<<<<< HEAD
     searchJobsbySkill,
     selectJobsStatus,
     selectJobs,
+=======
+    selectJobs,
+    selectJobsStatus,
+    searchJobsbySkill,
+>>>>>>> 0541389 (employer side: updates to view job postings, view single job posting, related backend, creation of view applicants, decline applicant, accept applicant, related backend; student side: creation of view single job posting, apply to job posting, related backend)
 } from "@/Features/jobs/jobsSlice";
 <<<<<<< HEAD
 =======
@@ -72,7 +84,7 @@ const appUrl = import.meta.env.VITE_APP_URL;
 function Home() {
     const dispatch = useDispatch();
 
-    const jobs = useSelector(selectJobs);
+    const jobs = useSelector(selectJobs) || [];
     const jobsStatus = useSelector(selectJobsStatus);
 
     useEffect(() => {
@@ -84,6 +96,29 @@ function Home() {
     }, [dispatch]);
 >>>>>>> feb0b09 (add redux integration to student pages: home, jobs, profile)
 
+<<<<<<< HEAD
+=======
+    const JobCard = ({ job }) => {
+        return (
+            <JobCardContainer>
+                <JobTitle>{job.title}</JobTitle>
+                <CompanyName>{job.company}</CompanyName>
+                <Location>{job.location}</Location>
+                <SkillsList>
+                    {job.skills.map((tag, index) => (
+                        <SkillBadge key={index}>{tag}</SkillBadge>
+                    ))}
+                </SkillsList>
+                <JobDescription>{job.description}</JobDescription>
+                <Divider />
+                <Link href={`/student/viewpost/${job.id}`}>
+                    <JobButton>VIEW POSTING</JobButton>
+                </Link>
+            </JobCardContainer>
+        );
+    };
+
+>>>>>>> 0541389 (employer side: updates to view job postings, view single job posting, related backend, creation of view applicants, decline applicant, accept applicant, related backend; student side: creation of view single job posting, apply to job posting, related backend)
     return (
         <NavBar>
             <MainContainer>
@@ -143,6 +178,7 @@ function Home() {
                             </EmptyMessage>
                         ) : (
                             jobs.map((job, index) => (
+<<<<<<< HEAD
                                 <JobCard key={index}>
                                     <JobTitle>{job.title}</JobTitle>
                                     <CompanyName>{job.company}</CompanyName>
@@ -160,6 +196,9 @@ function Home() {
                                     <Divider />
                                     <JobButton>VIEW POSTING</JobButton>
                                 </JobCard>
+=======
+                                <JobCard key={index} job={job} />
+>>>>>>> 0541389 (employer side: updates to view job postings, view single job posting, related backend, creation of view applicants, decline applicant, accept applicant, related backend; student side: creation of view single job posting, apply to job posting, related backend)
                             ))
                         )}
 >>>>>>> feb0b09 (add redux integration to student pages: home, jobs, profile)

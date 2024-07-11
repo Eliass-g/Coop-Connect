@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import * as React from "react";
 import styled from "styled-components";
 import NavBar from "./Components/NavBar";
@@ -45,59 +46,31 @@ function ViewPost() {
 
 =======
 import React, { useEffect, useState } from "react";
+=======
+import React, { useState, useEffect } from "react";
+>>>>>>> 0541389 (employer side: updates to view job postings, view single job posting, related backend, creation of view applicants, decline applicant, accept applicant, related backend; student side: creation of view single job posting, apply to job posting, related backend)
 import styled from "styled-components";
 import NavBar from "./Components/NavBar";
-import ApplicantModal from "../Profile/Partials/ApplicantModal";
-import EditJobModal from "../Profile/Partials/EditJobModal";
 import {
-    MainContainer,
-    Container,
-    Title,
-    JobPostingCard,
-    JobInfo,
-    JobInfoLeft,
-    CompanyLogo,
-    JobDetails,
-    JobTitle,
-    CompanyName,
-    JobDescription,
-    StatusIcon,
-    JobInfoRight,
-    StatusTag,
-    JobTypeTag,
-    LocationTag,
-    ApplicantSection,
-    ApplicantTitle,
-    Applicants,
-    ApplicantCard,
-    ApplicantInfo,
-    ApplicantImage,
-    ApplicantDetails,
-    ApplicantName,
-    SchoolInfo,
-    Location,
-    ApplicantDescription,
-    ViewButton,
-} from "./Styling/ViewPost.styles";
-
-const appUrl = import.meta.env.VITE_APP_URL;
-const csrfToken = document.cookie
-    .split("; ")
-    .find((row) => row.startsWith("XSRF-TOKEN="))
-    ?.split("=")[1];
-axios.defaults.headers.common["X-XSRF-TOKEN"] = csrfToken;
+    deleteJob,
+    selectJob,
+    selectJobs,
+    selectJobsStatus,
+} from "@/Features/jobs/jobsSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { usePage, Link } from "@inertiajs/react";
 
 function ViewPost() {
-    const [job, setJob] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [selectedApplicant, setSelectedApplicant] = useState(null);
-    const [editModalIsOpen, setEditModalIsOpen] = useState(false);
+    const { props } = usePage();
+    const { jobId } = props;
 
-    // Extract job ID from URL using useParams hook
-    const jobId = parseInt(window.location.pathname.split("/").pop(), 10);
+    const dispatch = useDispatch();
+    const job = useSelector(selectJobs);
+    const jobStatus = useSelector(selectJobsStatus);
 
     useEffect(() => {
+        dispatch(selectJob({ jobId: jobId }));
+    }, [dispatch]);
         // Fetch job details including applications based on jobId
         const fetchJobDetails = async () => {
             try {
@@ -134,39 +107,9 @@ function ViewPost() {
         setModalIsOpen(true);
     };
 
-    const closeModal = () => {
-        setModalIsOpen(false);
-        setSelectedApplicant(null);
-    };
-
-    const openEditModal = () => {
-        setEditModalIsOpen(true);
-    };
-
-    const closeEditModal = () => {
-        setEditModalIsOpen(false);
-    };
-
-    const handleSave = async (updatedJob) => {
-        try {
-            const response = await fetch(`${appUrl}/api/jobs/${job.id}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(updatedJob),
-            });
-
-            if (!response.ok) {
-                throw new Error("Failed to update job");
-            }
-
-            const data = await response.json();
-            setJob(data); // Update state with the updated job data
-            closeEditModal();
-        } catch (error) {
-            console.error("Error updating job:", error);
-        }
+    const handleDelete = () => {
+        dispatch(deleteJob({ jobId: jobId }));
+        console.log(`Delete job posting with ID: ${jobId}`);
     };
 
 >>>>>>> 14a0769 (clean up code, remove unnecessary controllers, separate styling)
@@ -202,6 +145,7 @@ function ViewPost() {
 >>>>>>> 14a0769 (clean up code, remove unnecessary controllers, separate styling)
                                     </JobDescription>
                                 </JobDetails>
+<<<<<<< HEAD
                                 <StatusIcon
                                     src="https://cdn.builder.io/api/v1/image/assets/TEMP/0f00bd98ccee0cca896d493616005574e2e5aaa7076659900adbd3e310f5af87?apiKey=d66532d056b14640a799069157705b77&"
                                     alt="Status Icon"
@@ -215,20 +159,39 @@ function ViewPost() {
 =======
                                     onClick={openEditModal}
                                 />
+=======
+                                <Link href={`/employer/editpost1/${jobId}`}>
+                                    <StatusIcon
+                                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/0f00bd98ccee0cca896d493616005574e2e5aaa7076659900adbd3e310f5af87?apiKey=d66532d056b14640a799069157705b77&"
+                                        alt="Status Icon"
+                                    />
+                                </Link>
+>>>>>>> 0541389 (employer side: updates to view job postings, view single job posting, related backend, creation of view applicants, decline applicant, accept applicant, related backend; student side: creation of view single job posting, apply to job posting, related backend)
                             </JobInfoLeft>
                             <JobInfoRight>
                                 <StatusTag>
                                     Posting Status: {job.postingStatus}
                                 </StatusTag>
-                                <JobTypeTag>
-                                    Job Type: {job.jobType}
-                                </JobTypeTag>
+                                <JobTypeTag>Job Type: {job.jobType}</JobTypeTag>
                                 <LocationTag>
                                     Work Location: {job.location}
                                 </LocationTag>
 >>>>>>> 14a0769 (clean up code, remove unnecessary controllers, separate styling)
                             </JobInfoRight>
+                            <ActionButtons>
+                                <Link
+                                    href={`/employer/viewapplicants/${jobId}`}
+                                >
+                                    <ActionButton>View Applicants</ActionButton>
+                                </Link>
+                                <Link href={`/employer/home`}>
+                                    <ActionButton onClick={handleDelete}>
+                                        Delete Job Posting
+                                    </ActionButton>
+                                </Link>
+                            </ActionButtons>
                         </JobInfo>
+<<<<<<< HEAD
                         <ApplicantSection>
                             <ApplicantTitle>Applicants</ApplicantTitle>
                             <Applicants>
@@ -297,11 +260,19 @@ function ViewPost() {
                 onSave={handleSave}
             />
 >>>>>>> 14a0769 (clean up code, remove unnecessary controllers, separate styling)
+=======
+                    </JobPostingCard>
+                </Container>
+            </MainContainer>
+>>>>>>> 0541389 (employer side: updates to view job postings, view single job posting, related backend, creation of view applicants, decline applicant, accept applicant, related backend; student side: creation of view single job posting, apply to job posting, related backend)
         </NavBar>
     );
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0541389 (employer side: updates to view job postings, view single job posting, related backend, creation of view applicants, decline applicant, accept applicant, related backend; student side: creation of view single job posting, apply to job posting, related backend)
 const MainContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -464,6 +435,7 @@ const LocationTag = styled.span`
     padding: 10px;
 `;
 
+<<<<<<< HEAD
 const ApplicantSection = styled.section`
     margin-top: 20px;
 `;
@@ -568,4 +540,29 @@ const ViewButton = styled.button`
 
 =======
 >>>>>>> 14a0769 (clean up code, remove unnecessary controllers, separate styling)
+=======
+const ActionButtons = styled.div`
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 10px;
+`;
+
+const ActionButton = styled.button`
+    font-family: Poppins, sans-serif;
+    background-color: var(--Palettes-Primary-40, #773dc3);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: var(--Palettes-Primary-30, #542a93);
+    }
+`;
+
+>>>>>>> 0541389 (employer side: updates to view job postings, view single job posting, related backend, creation of view applicants, decline applicant, accept applicant, related backend; student side: creation of view single job posting, apply to job posting, related backend)
 export default ViewPost;

@@ -85,9 +85,9 @@ function Post1() {
                                         name="workplaceType"
                                         aria-label="Workplace Type"
                                     >
-                                        <option value="onsite">Onsite</option>
-                                        <option value="remote">Remote</option>
-                                        <option value="hybrid">Hybrid</option>
+                                        <option value="Onsite">Onsite</option>
+                                        <option value="Remote">Remote</option>
+                                        <option value="Hybrid">Hybrid</option>
                                     </Select>
                                 </FormField>
                                 <FormField>

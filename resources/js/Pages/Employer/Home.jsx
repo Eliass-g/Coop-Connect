@@ -47,9 +47,6 @@ import {
 } from "./Styling/Home.styles";
 
 const Home = () => {
-    const [editModalIsOpen, setEditModalIsOpen] = useState(false);
-    const [jobToEdit, setJobToEdit] = useState(null);
-
     const dispatch = useDispatch();
     const jobs = useSelector(selectJobs);
     const jobsStatus = useSelector(selectJobsStatus);
@@ -71,6 +68,7 @@ const Home = () => {
         fetchUserAndJobs();
     }, [dispatch]);
 
+<<<<<<< HEAD
     const openEditModal = (job) => {
         setJobToEdit(job);
         setEditModalIsOpen(true);
@@ -102,6 +100,8 @@ const Home = () => {
 >>>>>>> 40b014e (add backend/functionality to teacher home page, employer jobs page, edit jobs)
 =======
 >>>>>>> 14a0769 (clean up code, remove unnecessary controllers, separate styling)
+=======
+>>>>>>> 0541389 (employer side: updates to view job postings, view single job posting, related backend, creation of view applicants, decline applicant, accept applicant, related backend; student side: creation of view single job posting, apply to job posting, related backend)
     return (
         <NavBar header={"Job Postings"}>
             <MainContainer>
@@ -122,9 +122,18 @@ const Home = () => {
                 <CurrentPostingsSection>
                     <SectionTitle>Current Company Postings</SectionTitle>
                     <EditingInstructions>
+<<<<<<< HEAD
                         <UnderlineText>View</UnderlineText> or{" "}
+=======
+<<<<<<< HEAD
+                        <Link href="/employer/viewpost">
+                        <UnderlineText>View</UnderlineText></Link> or{" "}
+>>>>>>> 913bdfa (employer side: updates to view job postings, view single job posting, related backend, creation of view applicants, decline applicant, accept applicant, related backend; student side: creation of view single job posting, apply to job posting, related backend)
                         <UnderlineText>edit</UnderlineText> your company’s
                         current job postings.
+=======
+                        View or edit your company's current job postings.
+>>>>>>> 0541389 (employer side: updates to view job postings, view single job posting, related backend, creation of view applicants, decline applicant, accept applicant, related backend; student side: creation of view single job posting, apply to job posting, related backend)
                     </EditingInstructions>
 <<<<<<< HEAD
                     <PostingsGrid>
@@ -137,11 +146,7 @@ const Home = () => {
                     {jobs.length > 0 && (
                         <PostingsGrid>
                             {jobs.map((post, i) => (
-                                <JobPosting
-                                    key={i}
-                                    post={post}
-                                    openEditModal={openEditModal}
-                                />
+                                <JobPosting key={i} post={post} />
                             ))}
                         </PostingsGrid>
                     )}
@@ -150,10 +155,16 @@ const Home = () => {
             </MainContainer>
         </NavBar>
     );
+<<<<<<< HEAD
 }
 
 // Reusable Components
 function JobPosting({ post }) {
+=======
+};
+
+const JobPosting = ({ post }) => {
+>>>>>>> 0541389 (employer side: updates to view job postings, view single job posting, related backend, creation of view applicants, decline applicant, accept applicant, related backend; student side: creation of view single job posting, apply to job posting, related backend)
     return (
         <JobCard>
             <JobCardTitle>{post.title}</JobCardTitle>
@@ -167,8 +178,17 @@ function JobPosting({ post }) {
             <JobDescriptionText>{post.description}</JobDescriptionText>
             <Divider />
             <CardButtons>
+<<<<<<< HEAD
                 <ViewPostingButton>VIEW POSTING</ViewPostingButton>
                 <EditPostingButton>EDIT POSTING</EditPostingButton>
+=======
+                <Link href={`/employer/viewpost/${post.id}`}>
+                    <ViewPostingButton>VIEW POSTING</ViewPostingButton>
+                </Link>
+                <Link href={`/employer/editpost1/${post.id}`}>
+                    <EditPostingButton>EDIT POSTING</EditPostingButton>
+                </Link>
+>>>>>>> 0541389 (employer side: updates to view job postings, view single job posting, related backend, creation of view applicants, decline applicant, accept applicant, related backend; student side: creation of view single job posting, apply to job posting, related backend)
             </CardButtons>
         </JobCard>
     );

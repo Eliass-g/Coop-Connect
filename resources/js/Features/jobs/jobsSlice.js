@@ -4,6 +4,20 @@ axios.defaults.baseURL = "http://127.0.0.1:8000/api/v1";
 
 const initialState = {
     jobs: [],
+<<<<<<< HEAD
+=======
+    jobFormData: {
+        jobsId: "",
+        title: "",
+        description: "",
+        location: "",
+        postingStatus: "Open",
+        jobType: "",
+        company: "",
+        skills: [],
+        userId: "",
+    },
+>>>>>>> 0541389 (employer side: updates to view job postings, view single job posting, related backend, creation of view applicants, decline applicant, accept applicant, related backend; student side: creation of view single job posting, apply to job posting, related backend)
     status: {
         jobs: "idle",
         postJob: "idle",
@@ -73,6 +87,7 @@ export const jobsSlice = createSlice({
                 state.status.jobs = "loading";
             })
             .addCase(searchJobsbySkill.fulfilled, (state, action) => {
+                console.log(action.payload);
                 state.jobs = action.payload;
                 state.status.jobs = "succeeded";
             })
@@ -115,10 +130,13 @@ export const jobsSlice = createSlice({
             })
             .addCase(patchJob.fulfilled, (state, action) => {
                 state.status.patchJob = "succeeded";
-                console.log(action.payload);
-                state.jobs = state.jobs.map((job) =>
-                    job.id === action.payload.id ? action.payload : job
-                );
+                if (state.jobs.length > 0) {
+                    state.jobs = state.jobs.map((job) =>
+                        job.id === action.payload.id ? action.payload : job
+                    );
+                } else {
+                    state.jobs = action.payload;
+                }
             })
             .addCase(patchJob.rejected, (state, action) => {
                 state.status.patchJob = "failed";
@@ -306,14 +324,27 @@ export const patchJob = createAsyncThunk("jobs/patchJob", async (params) => {
 });
 
 export const deleteJob = createAsyncThunk("jobs/deleteJob", async (params) => {
-    const { userId } = params;
+    const { jobId } = params;
     const response = await axios({
-        url: `/jobs/${userId}`,
+        url: `/jobs/${jobId}`,
         method: "DELETE",
-        data: { userId },
     });
     return response.data.data;
 });
+
+export const applyJob = createAsyncThunk(
+    "userjobs/applyJob",
+    async (params) => {
+        const { userId, jobId, resume } = params;
+        const status = "Pending";
+        const response = await axios({
+            url: `/userjobs`,
+            method: "POST",
+            data: { userId, jobId, resume, status },
+        });
+        return response.data.data;
+    }
+);
 
 export const selectJobs = (state) => state.jobs.jobs;
 export const selectJobsStatus = (state) => state.jobs.status.jobs;
