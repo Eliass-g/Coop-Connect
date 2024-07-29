@@ -63,6 +63,86 @@ function ProfileForm() {
             [name]: value,
         }));
     };
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+    const addSkill = () => {
+        if (user.newSkill.trim() !== "") {
+            setUser((prevData) => ({
+                ...prevData,
+                skills: [...prevData.skills, prevData.newSkill.trim()],
+                newSkill: "", // Clear the input field after adding the skill
+            }));
+        }
+    };
+
+    const removeSkill = (index) => {
+        const updatedSkills = [...user.skills];
+        updatedSkills.splice(index, 1);
+        setUser((prevData) => ({
+            ...prevData,
+            skills: updatedSkills,
+        }));
+    };
+
+    const handleSubmit = async () => {
+        try {
+            const formData = new FormData();
+
+            // Check if droppedImage is set and append it to formData
+            if (droppedImage) {
+                // If droppedImage is a File object (if using Dropzone), directly append it
+                if (droppedImage instanceof File) {
+                    formData.append("profile_image", droppedImage);
+                } else {
+                    // If droppedImage is a URL (if using an image preview), fetch the file and append
+                    const response = await fetch(droppedImage);
+                    const blob = await response.blob();
+                    formData.append("profile_image", blob, "profile_image.png"); // Adjust filename as needed
+                }
+            }
+
+            // Append other form fields
+            formData.append("description", user.description);
+            formData.append("name", user.name);
+            formData.append("email", user.email);
+            formData.append("role", user.role);
+            formData.append("school", user.school);
+            formData.append("positiontitle", user.positiontitle);
+            formData.append("skills", (user.skills));
+
+            const response = await axios.post(
+                `${appUrl}/api/update-profile/${user.id}`,
+                formData,
+                {
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                        Authorization: `Bearer ${localStorage.getItem(
+                            "accessToken"
+                        )}`,
+                    },
+                }
+            );
+
+            console.log("Profile updated:", response.data);
+            window.location.reload();
+        } catch (error) {
+            console.error("Error updating profile:", error);
+        }
+    };
+
+    const handleClear = () => {
+        // Update user state to clear profile image
+        setUser({ ...user, profile_image: null });
+    };
+
+>>>>>>> e0e590c (format viewapplicants to match viewapplicantions, fix student home state management)
+    if (!user) {
+        return <div>Loading...</div>;
+    }
+>>>>>>> 757c3dd (format viewapplicants to match viewapplicantions, fix student home state management)
 
     return (
         <ProfileWrapper>
