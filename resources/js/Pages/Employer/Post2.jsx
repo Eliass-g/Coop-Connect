@@ -34,7 +34,66 @@ import {
 >>>>>>> c9b0256 (clean up code, remove unnecessary controllers, separate styling)
 
 function Post2() {
+<<<<<<< HEAD
     const skills = ["Tag", "Tag", "Tag", "Tag", "Tag", "Tag", "Tag"];
+=======
+    const [userId, setUserId] = useState(null);
+    const [currentSkill, setCurrentSkill] = useState("");
+
+    useEffect(() => {
+        const fetchUserId = async () => {
+            try {
+                const response = await axios.get(
+                    `http://127.0.0.1:8000/api/user-id`
+                );
+                setUserId(response.data.user.id);
+                dispatch(updateJobFormData({ userId: response.data.user.id }));
+<<<<<<< HEAD
+                console.log(response.data.user.id);
+=======
+>>>>>>> 042e20d (view applications and applicants display and data adjustments)
+            } catch (error) {
+                console.error("Error fetching user ID:", error);
+            }
+        };
+        fetchUserId();
+    }, []);
+
+    const dispatch = useDispatch();
+    const jobFormData = useSelector(selectJobFormData);
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        dispatch(updateJobFormData({ [name]: value }));
+    };
+
+    const handleSubmit = (e) => {
+        // Dispatch postJob action with jobFormData
+        dispatch(postJob(jobFormData));
+        dispatch(resetJobFormData());
+    };
+
+    const handleSkillChange = (e) => {
+        setCurrentSkill(e.target.value);
+    };
+
+    const handleSkillKeyDown = (e) => {
+        if (e.key === "Enter" && currentSkill.trim()) {
+            e.preventDefault();
+            const updatedSkills = [...jobFormData.skills, currentSkill.trim()];
+            dispatch(updateJobFormData({ skills: updatedSkills }));
+            setCurrentSkill("");
+        }
+    };
+
+    const removeSkill = (skillToRemove) => {
+        const updatedSkills = jobFormData.skills.filter(
+            (skill) => skill !== skillToRemove
+        );
+        dispatch(updateJobFormData({ skills: updatedSkills }));
+    };
+
+>>>>>>> 46d5365 (view applications and applicants display and data adjustments)
     return (
         <NavBar header={"Posting Jobs"}>
             <Container>
@@ -70,15 +129,31 @@ function Post2() {
                                 Add some skill keywords to the job.
                             </SectionDescription>
                             <Label htmlFor="skillInput">Skill to add</Label>
+<<<<<<< HEAD
                             <StyledInput id="skillInput" />
                             <TagContainer>
                                 {skills.map((skill, index) => (
+=======
+                            <StyledInput
+                                id="skillInput"
+                                name="skills"
+                                value={currentSkill}
+                                onChange={handleSkillChange}
+                                onKeyDown={handleSkillKeyDown}
+                            />
+                            <TagContainer>
+                                {jobFormData.skills.map((skill, index) => (
+>>>>>>> 46d5365 (view applications and applicants display and data adjustments)
                                     <Tag key={index}>
                                         <TagName>{skill}</TagName>
                                         <TagIcon
                                             loading="lazy"
                                             src="https://cdn.builder.io/api/v1/image/assets/TEMP/f4297c66e6d9622e462ebb187a46dd67cf9ee2c5dfcfd5088583249a1e3bfc3e?apiKey=d66532d056b14640a799069157705b77&"
                                             alt={`${skill} Icon`}
+<<<<<<< HEAD
+=======
+                                            onClick={() => removeSkill(skill)}
+>>>>>>> 46d5365 (view applications and applicants display and data adjustments)
                                         />
                                     </Tag>
                                 ))}
