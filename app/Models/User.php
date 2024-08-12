@@ -34,10 +34,13 @@ class User extends Authenticatable
         'interviewing',
         'searching',
         'skills',
+<<<<<<< HEAD
         'name',
         'email',
         'password',
 >>>>>>> 42ed0af (add backend/functionality to teacher home page, employer jobs page, edit jobs)
+=======
+>>>>>>> a1a03bf (added functionality for remember me feature and added getInterviews to userJobsSlice to be used with calendars)
         'role'
     ];
 
