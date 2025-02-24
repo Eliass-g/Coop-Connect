@@ -16,10 +16,6 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             JobsSeeder::class,
             UserJobsSeeder::class,
-            CoursesSeeder::class,
-            UserCoursesSeeder::class,
-            ReflectionsSeeder::class,
-            InterviewsSeeder::class,
         ]);
     }
 }

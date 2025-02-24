@@ -1,414 +1,495 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { useForm } from "@inertiajs/react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+    updateUserPassword,
+    deleteUser,
+    getUser,
+    selectUser,
+} from "@/Features/users/userSlice";
+import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Modal from "./ConfirmationModal";
+import {
+    Main,
+    Section,
+    FormSection,
+    AccountHeader,
+    AccountTitle,
+    AccountDetail,
+    FormColumn,
+    FormContent,
+    FormTitle,
+    FormDetail,
+    FormButtonColumn,
+    DeleteButton,
+    SettingsSection,
+    SettingsHeader,
+    SettingsColumn,
+    SettingsContent,
+    SettingsTitle,
+    SettingsDetail,
+    SettingsControls,
+    CurrentSelection,
+    SettingsOptions,
+    OptionButton,
+    DummySection,
+    SettingsButton,
+    PasswordChangeForm,
+    FormField,
+    Label,
+    Input,
+    SubmitButton,
+    Message,
+    OtherOptionButton,
+    SaveOptionButton,
+    DemoNotice,
+} from "../Styling/SettingsPage.styles";
+
+const appUrl = import.meta.env.VITE_APP_URL;
 
 function SettingsPanel() {
+    const dispatch = useDispatch();
+    const user = useSelector(selectUser);
+    const { post } = useForm();
+    const [activeTab, setActiveTab] = useState("account");
+    const [currentPassword, setCurrentPassword] = useState("");
+    const [newPassword, setNewPassword] = useState("");
+    const [confirmNewPassword, setConfirmNewPassword] = useState("");
+    const [message, setMessage] = useState("");
+    const [privacySetting, setPrivacySetting] = useState("Private");
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [notificationsEnabled, setNotificationsEnabled] = useState(
+        user?.notifications ?? false
+    );
+    const darkMode = false;
+    const fontSize = "1em";
+    const [messageType, setMessageType] = useState("success"); // "success" or "error"
+
+    useEffect(() => {
+        dispatch(getUser());
+    }, [dispatch]);
+
+    const userID = user?.id;
+
+    const handleTabClick = (tab) => {
+        if (activeTab !== tab) {
+            setActiveTab(tab);
+        }
+    };
+
+    const handlePasswordChange = (e) => {
+        e.preventDefault();
+        const passwordData = {
+            current_password: currentPassword,
+            new_password: newPassword,
+            new_password_confirmation: confirmNewPassword,
+        };
+
+        dispatch(updateUserPassword(passwordData))
+            .unwrap()
+            .then(() => {
+                setMessageType("success");
+                setMessage("Password updated successfully");
+                dispatch(getUser());
+            })
+            .catch((error) => {
+                setMessageType("error");
+                setMessage("Password change unsuccessful");
+            });
+
+        setTimeout(() => {
+            setMessage("");
+            setMessageType("success");
+            setCurrentPassword("");
+            setNewPassword("");
+            setConfirmNewPassword("");
+        }, 3000);
+    };
+
+    const handlePrivacyChange = (setting) => {
+        setPrivacySetting(setting);
+    };
+
+    const handleDeleteAccount = () => {
+        setShowDeleteModal(true);
+    };
+
+    const confirmDeleteAccount = () => {
+        dispatch(deleteUser(userID))
+            .unwrap()
+            .then(() => {
+                setMessage("Account deleted successfully");
+                setShowDeleteModal(false);
+                // Assuming `post` is a function to log out the user
+                post(route("logout")).then(() => {
+                    window.location.reload();
+                });
+            })
+            .catch((error) => {
+                setMessage(error.message || "An error occurred");
+            });
+    };
+
+    const handleNotificationsToggle = () => {
+        setNotificationsEnabled(!notificationsEnabled);
+    };
+
     return (
-        <Main>
-            <Section className="account-section">
-                <AccountHeader>
-                    <AccountTitle>Account</AccountTitle>
-                    <AccountDetail>Password</AccountDetail>
-                    <AccountDetail>Password</AccountDetail>
-                    <AccountDetail>Password</AccountDetail>
+        <Main darkMode={darkMode} fontSize={fontSize}>
+            <Section
+                fontSize={fontSize}
+                darkMode={darkMode}
+                className="account-section"
+            >
+                <AccountHeader fontSize={fontSize} darkMode={darkMode}>
+                    <AccountDetail
+                        fontSize={fontSize}
+                        darkMode={darkMode}
+                        onClick={() => handleTabClick("account")}
+                        active={activeTab === "account"}
+                    >
+                        Account
+                    </AccountDetail>
+
+                    <AccountDetail
+                        fontSize={fontSize}
+                        darkMode={darkMode}
+                        onClick={() => handleTabClick("notifications")}
+                        active={activeTab === "notifications"}
+                    >
+                        Notifications
+                    </AccountDetail>
+                    <AccountDetail
+                        fontSize={fontSize}
+                        darkMode={darkMode}
+                        onClick={() => handleTabClick("preferences")}
+                        active={activeTab === "preferences"}
+                    >
+                        Preferences
+                    </AccountDetail>
                 </AccountHeader>
-                <FormSection>
-                    <FormColumn>
-                        <FormContent>
-                            <FormTitle>Delete Account</FormTitle>
-                            <FormDetail>
-                                Delete your account from the CO-OP Connect
-                                platform permanently. This will remove access to
-                                the account. Your account information will also
-                                be deleted.
-                            </FormDetail>
-                        </FormContent>
-                    </FormColumn>
-                    <FormButtonColumn>
-                        <DeleteButton>Delete Account</DeleteButton>
-                    </FormButtonColumn>
-                </FormSection>
+
+                {activeTab === "account" && (
+                    <>
+                        {/* <FormSection fontSize={fontSize} darkMode={darkMode}>
+                        <FormColumn fontSize={fontSize} darkMode={darkMode}>
+                            <FormContent fontSize={fontSize} darkMode={darkMode}>
+                                <FormTitle fontSize={fontSize} darkMode={darkMode}>Delete Account</FormTitle>
+                                <FormDetail fontSize={fontSize} darkMode={darkMode}>
+                                    Delete your account from the platform permanently. This will remove access to the account. Your account information will also be deleted.
+                                </FormDetail>
+                            </FormContent>
+                        </FormColumn>
+                        <FormButtonColumn fontSize={fontSize}>
+                            <DeleteButton fontSize={fontSize} onClick={handleDeleteAccount}>Delete Account</DeleteButton>
+                        </FormButtonColumn>
+                    </FormSection> */}
+
+                        <SettingsSection
+                            fontSize={fontSize}
+                            darkMode={darkMode}
+                        >
+                            <DemoNotice fontSize={fontSize} darkMode={darkMode}>
+                                DEMO NOT FUNCTIONAL (Profile Privacy)
+                            </DemoNotice>
+                            <SettingsHeader
+                                fontSize={fontSize}
+                                darkMode={darkMode}
+                            >
+                                <SettingsColumn
+                                    fontSize={fontSize}
+                                    darkMode={darkMode}
+                                >
+                                    <SettingsContent
+                                        fontSize={fontSize}
+                                        darkMode={darkMode}
+                                    >
+                                        <SettingsTitle
+                                            darkMode={darkMode}
+                                            fontSize={fontSize}
+                                        >
+                                            Profile Privacy
+                                        </SettingsTitle>
+                                        <SettingsDetail
+                                            fontSize={fontSize}
+                                            darkMode={darkMode}
+                                        >
+                                            Anyone can find and view the
+                                            contents of your profile. Your
+                                            profile will be viewable from job
+                                            postings and search functions.
+                                        </SettingsDetail>
+                                    </SettingsContent>
+                                </SettingsColumn>
+                                <SettingsControls
+                                    fontSize={fontSize}
+                                    darkMode={darkMode}
+                                >
+                                    <CurrentSelection>
+                                        Currently Selected: {privacySetting}
+                                    </CurrentSelection>
+                                    <SettingsOptions
+                                        fontSize={fontSize}
+                                        darkMode={darkMode}
+                                    >
+                                        <OptionButton
+                                            fontSize={fontSize}
+                                            darkMode={darkMode}
+                                            className={
+                                                privacySetting === "Private"
+                                                    ? "private"
+                                                    : ""
+                                            }
+                                            onClick={() =>
+                                                handlePrivacyChange("Private")
+                                            }
+                                        >
+                                            Private
+                                        </OptionButton>
+                                        <OptionButton
+                                            fontSize={fontSize}
+                                            darkMode={darkMode}
+                                            className={
+                                                privacySetting === "Public"
+                                                    ? "public"
+                                                    : ""
+                                            }
+                                            onClick={() =>
+                                                handlePrivacyChange("Public")
+                                            }
+                                        >
+                                            Public
+                                        </OptionButton>
+                                    </SettingsOptions>
+                                </SettingsControls>
+                            </SettingsHeader>
+                        </SettingsSection>
+                        <PasswordChangeForm
+                            fontSize={fontSize}
+                            darkMode={darkMode}
+                            onSubmit={handlePasswordChange}
+                        >
+                            <FormField fontSize={fontSize} darkMode={darkMode}>
+                                <Label fontSize={fontSize} darkMode={darkMode}>
+                                    Current Password
+                                </Label>
+                                <Input
+                                    fontSize={fontSize}
+                                    darkMode={darkMode}
+                                    type="password"
+                                    placeholder="Current Password"
+                                    value={currentPassword}
+                                    onChange={(e) =>
+                                        setCurrentPassword(e.target.value)
+                                    }
+                                />
+                            </FormField>
+                            <FormField fontSize={fontSize} darkMode={darkMode}>
+                                <Label fontSize={fontSize} darkMode={darkMode}>
+                                    New Password
+                                </Label>
+                                <Input
+                                    fontSize={fontSize}
+                                    darkMode={darkMode}
+                                    type="password"
+                                    placeholder="New Password"
+                                    value={newPassword}
+                                    onChange={(e) =>
+                                        setNewPassword(e.target.value)
+                                    }
+                                />
+                            </FormField>
+                            <FormField fontSize={fontSize} darkMode={darkMode}>
+                                <Label fontSize={fontSize} darkMode={darkMode}>
+                                    Confirm New Password
+                                </Label>
+                                <Input
+                                    fontSize={fontSize}
+                                    darkMode={darkMode}
+                                    type="password"
+                                    placeholder="Confirm New Password"
+                                    value={confirmNewPassword}
+                                    onChange={(e) =>
+                                        setConfirmNewPassword(e.target.value)
+                                    }
+                                />
+                            </FormField>
+                            {message && (
+                                <Message
+                                    fontSize={fontSize}
+                                    darkMode={darkMode}
+                                    style={{
+                                        color:
+                                            messageType === "error"
+                                                ? "red"
+                                                : "green",
+                                    }}
+                                >
+                                    {message}
+                                </Message>
+                            )}
+                            <SubmitButton
+                                fontSize={fontSize}
+                                darkMode={darkMode}
+                            >
+                                Change Password
+                            </SubmitButton>
+                        </PasswordChangeForm>
+                    </>
+                )}
+
+                {activeTab === "notifications" && (
+                    <SettingsSection fontSize={fontSize} darkMode={darkMode}>
+                        <SettingsHeader fontSize={fontSize} darkMode={darkMode}>
+                            <SettingsColumn
+                                fontSize={fontSize}
+                                darkMode={darkMode}
+                            >
+                                <SettingsContent
+                                    fontSize={fontSize}
+                                    darkMode={darkMode}
+                                >
+                                    <SettingsTitle
+                                        fontSize={fontSize}
+                                        darkMode={darkMode}
+                                    >
+                                        Notification Settings
+                                    </SettingsTitle>
+                                    <SettingsDetail
+                                        fontSize={fontSize}
+                                        darkMode={darkMode}
+                                    >
+                                        Enable or disable email notifications
+                                        for your account.
+                                    </SettingsDetail>
+                                </SettingsContent>
+                            </SettingsColumn>
+                            <SettingsControls
+                                fontSize={fontSize}
+                                darkMode={darkMode}
+                            >
+                                <OtherOptionButton
+                                    fontSize={fontSize}
+                                    darkMode={darkMode}
+                                    onClick={handleNotificationsToggle}
+                                >
+                                    {notificationsEnabled
+                                        ? "Disable Notifications"
+                                        : "Enable Notifications"}
+                                </OtherOptionButton>
+                                <SaveOptionButton
+                                    fontSize={fontSize}
+                                    darkMode={darkMode}
+                                >
+                                    Save my preferences
+                                </SaveOptionButton>
+                            </SettingsControls>
+                        </SettingsHeader>
+                        <br></br>
+                        <DemoNotice fontSize={fontSize} darkMode={darkMode}>
+                            DEMO NOT FUNCTIONAL
+                        </DemoNotice>
+                    </SettingsSection>
+                )}
+
+                {activeTab === "preferences" && (
+                    <SettingsSection fontSize={fontSize} darkMode={darkMode}>
+                        <SettingsHeader fontSize={fontSize} darkMode={darkMode}>
+                            <SettingsColumn
+                                fontSize={fontSize}
+                                darkMode={darkMode}
+                            >
+                                <SettingsContent
+                                    fontSize={fontSize}
+                                    darkMode={darkMode}
+                                >
+                                    <SettingsTitle
+                                        fontSize={fontSize}
+                                        darkMode={darkMode}
+                                    >
+                                        Accessibility Settings
+                                    </SettingsTitle>
+                                    <SettingsDetail
+                                        fontSize={fontSize}
+                                        darkMode={darkMode}
+                                    >
+                                        Adjust your viewing preferences
+                                    </SettingsDetail>
+                                </SettingsContent>
+                            </SettingsColumn>
+                            <SettingsControls
+                                fontSize={fontSize}
+                                darkMode={darkMode}
+                            >
+                                <SettingsOptions
+                                    fontSize={fontSize}
+                                    darkMode={darkMode}
+                                >
+                                    <OtherOptionButton
+                                        fontSize={fontSize}
+                                        darkMode={darkMode}
+                                        active={fontSize === "small"}
+                                    >
+                                        Small
+                                    </OtherOptionButton>
+                                    <OtherOptionButton
+                                        fontSize={fontSize}
+                                        darkMode={darkMode}
+                                        active={fontSize === "medium"}
+                                    >
+                                        Medium
+                                    </OtherOptionButton>
+                                    <OtherOptionButton
+                                        fontSize={fontSize}
+                                        darkMode={darkMode}
+                                        active={fontSize === "large"}
+                                    >
+                                        Large
+                                    </OtherOptionButton>
+                                </SettingsOptions>
+                                <OtherOptionButton
+                                    fontSize={fontSize}
+                                    darkMode={darkMode}
+                                >
+                                    {darkMode ? (
+                                        <FontAwesomeIcon icon={faSun} />
+                                    ) : (
+                                        <FontAwesomeIcon icon={faMoon} />
+                                    )}
+                                    {darkMode ? " Light Mode" : " Dark Mode"}
+                                </OtherOptionButton>
+                                <SaveOptionButton
+                                    fontSize={fontSize}
+                                    darkMode={darkMode}
+                                >
+                                    Save my preferences
+                                </SaveOptionButton>
+                            </SettingsControls>
+                        </SettingsHeader>
+                        <br></br>
+                        <DemoNotice fontSize={fontSize} darkMode={darkMode}>
+                            DEMO NOT FUNCTIONAL
+                        </DemoNotice>
+                    </SettingsSection>
+                )}
+
+                {showDeleteModal && (
+                    <Modal
+                        fontSize={fontSize}
+                        darkMode={darkMode}
+                        title="Confirm Account Deletion"
+                        onConfirm={confirmDeleteAccount}
+                        onCancel={() => setShowDeleteModal(false)}
+                    >
+                        Are you sure you want to delete your account? This
+                        action cannot be undone.
+                    </Modal>
+                )}
             </Section>
-            <SettingsSection>
-                <SettingsHeader>
-                    <SettingsColumn>
-                        <SettingsContent>
-                            <SettingsTitle>Profile Privacy</SettingsTitle>
-                            <SettingsDetail>
-                                Anyone can find and view the contents of your
-                                profile. Your profile will be viewable from job
-                                postings and search functions.
-                            </SettingsDetail>
-                        </SettingsContent>
-                    </SettingsColumn>
-                    <SettingsControls>
-                        <CurrentSelection>
-                            Currently Selected: Private
-                        </CurrentSelection>
-                        <SettingsOptions>
-                            <OptionButton className="private">
-                                Private
-                            </OptionButton>
-                            <OptionButton>Public</OptionButton>
-                        </SettingsOptions>
-                    </SettingsControls>
-                </SettingsHeader>
-            </SettingsSection>
-            <DummySection>
-                <FormColumn>
-                    <FormContent>
-                        <FormTitle>Dummy Container</FormTitle>
-                        <FormDetail>
-                            Lorem ipsum is a placeholder text commonly used to
-                            demonstrate the visual form of a document or a
-                            typeface without relying on meaningful content.
-                        </FormDetail>
-                    </FormContent>
-                </FormColumn>
-                <FormButtonColumn>
-                    <SettingsButton>Settings Button</SettingsButton>
-                </FormButtonColumn>
-            </DummySection>
-            <DummySection>
-                <FormColumn>
-                    <FormContent>
-                        <FormTitle>Dummy Container</FormTitle>
-                        <FormDetail>
-                            Lorem ipsum is a placeholder text commonly used to
-                            demonstrate the visual form of a document or a
-                            typeface without relying on meaningful content.
-                        </FormDetail>
-                    </FormContent>
-                </FormColumn>
-                <FormButtonColumn>
-                    <SettingsButton>Settings Button</SettingsButton>
-                </FormButtonColumn>
-            </DummySection>
         </Main>
     );
 }
-
-const Main = styled.main`
-    align-self: stretch;
-    border-radius: 10px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    background-color: #fff;
-    display: flex;
-    max-width: 885px;
-    flex-direction: column;
-    padding: 20px;
-`;
-
-const Section = styled.section`
-    display: flex;
-    flex-direction: column;
-    border-color: rgba(123, 117, 127, 1);
-    @media (max-width: 991px) {
-        max-width: 100%;
-    }
-`;
-
-const FormSection = styled.section`
-    border-color: rgba(123, 117, 127, 1);
-    border-style: solid;
-    border-bottom-width: 1px;
-    margin-top: 40px;
-    padding: 20px;
-    display: flex;
-    gap: 20px;
-    @media (max-width: 991px) {
-        flex-direction: column;
-        align-items: stretch;
-    }
-`;
-
-const AccountHeader = styled.header`
-    align-items: center;
-    border-radius: 6px;
-    border: 1px solid rgba(0, 0, 0, 1);
-    align-self: center;
-    display: flex;
-    width: 494px;
-    max-width: 100%;
-    gap: 20px;
-    font-size: 14px;
-    color: #334155;
-    font-weight: 500;
-    line-height: 143%;
-    justify-content: space-between;
-    padding: 5px 10px;
-    @media (max-width: 991px) {
-        flex-wrap: wrap;
-    }
-`;
-
-const AccountTitle = styled.div`
-    font-family: Inter, sans-serif;
-    border-bottom: 2px solid rgba(107, 83, 140, 1);
-    background-color: #fff;
-    align-self: stretch;
-    color: #0f172a;
-    justify-content: center;
-    padding: 6px 20px;
-    @media (max-width: 991px) {
-        white-space: normal;
-    }
-`;
-
-const AccountDetail = styled.div`
-    font-family: Inter, sans-serif;
-    align-self: stretch;
-    margin: auto 0;
-`;
-
-const FormColumn = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 77%;
-    margin-left: 0;
-    @media (max-width: 991px) {
-        width: 100%;
-    }
-`;
-
-const FormContent = styled.article`
-    display: flex;
-    flex-direction: column;
-    @media (max-width: 991px) {
-        max-width: 100%;
-        margin-top: 40px;
-    }
-`;
-
-const FormTitle = styled.h2`
-    color: #000;
-    font: 400 32px Poppins, sans-serif;
-    @media (max-width: 991px) {
-        max-width: 100%;
-    }
-`;
-
-const FormDetail = styled.p`
-    color: #7b757f;
-    letter-spacing: 0.25px;
-    margin-top: 10px;
-    font: 600 14px/20px Poppins, sans-serif;
-    @media (max-width: 991px) {
-        max-width: 100%;
-    }
-`;
-
-const FormButtonColumn = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 23%;
-    margin-left: 20px;
-    @media (max-width: 991px) {
-        width: 100%;
-    }
-`;
-
-const DeleteButton = styled.button`
-    justify-content: center;
-    border-radius: 6px;
-    background-color: #e53e3e;
-    align-self: stretch;
-    color: #fff;
-    width: 100%;
-    margin: auto 0;
-    padding: 8px 16px;
-    font: 600 16px/150% Inter, sans-serif;
-    @media (max-width: 991px) {
-        margin-top: 40px;
-    }
-`;
-
-const SettingsSection = styled.section`
-    border-color: rgba(123, 117, 127, 1);
-    border-style: solid;
-    border-bottom-width: 1px;
-    margin-top: 20px;
-    padding: 20px;
-    @media (max-width: 991px) {
-        max-width: 100%;
-    }
-`;
-
-const SettingsHeader = styled.header`
-    gap: 20px;
-    display: flex;
-    @media (max-width: 991px) {
-        flex-direction: column;
-        align-items: stretch;
-    }
-`;
-
-const SettingsColumn = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 75%;
-    margin-left: 0;
-    @media (max-width: 991px) {
-        width: 100%;
-    }
-`;
-
-const SettingsContent = styled.article`
-    display: flex;
-    flex-direction: column;
-    @media (max-width: 991px) {
-        max-width: 100%;
-        margin-top: 40px;
-    }
-`;
-
-const SettingsTitle = styled.h2`
-    color: #000;
-    font: 400 32px Poppins, sans-serif;
-    @media (max-width: 991px) {
-        max-width: 100%;
-    }
-`;
-
-const SettingsDetail = styled.p`
-    color: #7b757f;
-    letter-spacing: 0.25px;
-    margin-top: 10px;
-    font: 600 14px/20px Poppins, sans-serif;
-    @media (max-width: 991px) {
-        max-width: 100%;
-    }
-`;
-
-const SettingsControls = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 25%;
-    margin-left: 20px;
-    @media (max-width: 991px) {
-        width: 100%;
-    }
-`;
-
-const CurrentSelection = styled.div`
-    text-align: center;
-    color: #7b757f;
-    letter-spacing: 0.4px;
-    font: 600 12px/133% Poppins, sans-serif;
-`;
-
-const SettingsOptions = styled.div`
-    border-radius: 6px;
-    border: 1px solid rgba(0, 0, 0, 1);
-    background-color: #fff;
-    display: flex;
-    margin-top: 10px;
-    gap: 10px;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 143%;
-    justify-content: space-between;
-    padding: 5px 10px;
-    @media (max-width: 991px) {
-        white-space: normal;
-    }
-`;
-
-const OptionButton = styled.button`
-    font-family: Inter, sans-serif;
-    border-radius: 3px;
-    background-color: ${(props) =>
-        props.className === "private" ? "#6b538c" : "transparent"};
-    color: ${(props) => (props.className === "private" ? "#fff" : "#334155")};
-    justify-content: center;
-    padding: 6px 12px;
-    @media (max-width: 991px) {
-        white-space: normal;
-    }
-`;
-
-const DummySection = styled.section`
-    border-color: rgba(123, 117, 127, 1);
-    border-style: solid;
-    border-bottom-width: 1px;
-    padding: 20px;
-    display: flex;
-    margin-top: 20px;
-    gap: 20px;
-    @media (max-width: 991px) {
-        flex-direction: column;
-        align-items: stretch;
-    }
-`;
-
-const DummyHeader = styled.header`
-    gap: 20px;
-    display: flex;
-    @media (max-width: 991px) {
-        flex-direction: column;
-        align-items: stretch;
-    }
-`;
-
-const DummyColumn = styled.div`
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    @media (max-width: 991px) {
-        max-width: 100%;
-        margin-top: 40px;
-    }
-`;
-
-const DummyContent = styled.article`
-    display: flex;
-    flex-direction: column;
-    @media (max-width: 991px) {
-        max-width: 100%;
-        margin-top: 40px;
-    }
-`;
-
-const DummyTitle = styled.h2`
-    color: #000;
-    font: 400 32px Poppins, sans-serif;
-    @media (max-width: 991px) {
-        max-width: 100%;
-    }
-`;
-
-const DummyDetail = styled.p`
-    color: #7b757f;
-    letter-spacing: 0.25px;
-    margin-top: 10px;
-    font: 600 14px/20px Poppins, sans-serif;
-    @media (max-width: 991px) {
-        max-width: 100%;
-    }
-`;
-
-const DummyButtonColumn = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 23%;
-    margin-left: 20px;
-    @media (max-width: 991px) {
-        width: 100%;
-    }
-`;
-
-const SettingsButton = styled.button`
-    justify-content: center;
-    border-radius: 6px;
-    background-color: #6b538c;
-    align-self: stretch;
-    color: #fff;
-    width: 100%;
-    margin: auto 0;
-    padding: 8px 16px;
-    font: 600 16px/150% Inter, sans-serif;
-    @media (max-width: 991px) {
-        margin-top: 40px;
-    }
-`;
 
 export default SettingsPanel;

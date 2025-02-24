@@ -1,39 +1,39 @@
-import { useEffect } from 'react';
-import Checkbox from '@/Components/Checkbox';
-import GuestLayout from '@/Layouts/GuestLayout';
-import InputError from '@/Components/InputError';
-import InputLabel from '@/Components/InputLabel';
-import PrimaryButton from '@/Components/PrimaryButton';
-import TextInput from '@/Components/TextInput';
-import { Head, Link, useForm } from '@inertiajs/react';
+import { useEffect } from "react";
+import Checkbox from "@/Components/Checkbox";
+import GuestLayout from "@/Layouts/GuestLayout";
+import InputError from "@/Components/InputError";
+import InputLabel from "@/Components/InputLabel";
+import PrimaryButton from "@/Components/PrimaryButton";
+import TextInput from "@/Components/TextInput";
+import { Head, Link, useForm } from "@inertiajs/react";
 //import './Login.css';
-import logo from './Images/COOPCONNECTLOGO.png';
-import './Login.scss'
+import logo from "./Images/COOPCONNECTLOGO.png";
+import "./Login.scss";
 
 export default function Login({ status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
-        email: '',
-        password: '',
+        email: "",
+        password: "",
         remember: false,
     });
 
     useEffect(() => {
         return () => {
-            reset('password');
+            reset("password");
         };
     }, []);
 
     const submit = (e) => {
         e.preventDefault();
-        post(route('login'));
+        post(route("login"));
     };
 
     const handleGoogleLogin = () => {
-        window.location.href = '/auth/google/redirect';
+        window.location.href = "/auth/google/redirect";
     };
 
     const handleLinkedInLogin = () => {
-        window.location.href = '/auth/linkedin/redirect';
+        window.location.href = "/auth/linkedin/redirect";
     };
 
     return (
@@ -119,19 +119,6 @@ export default function Login({ status, canResetPassword }) {
                             </label>
                         </div>
 
-
-                        {canResetPassword && (
-                            <div className="mt-4 text-left">
-                                <Link
-                                    href={route("password.request")}
-                                    className="underline text-sm text-gray-600 hover:text-gray-900"
-                                >
-                                    Forgot your password?
-                                </Link>
-                            </div>
-                        )}
-
-
                         <div className="flex flex-col items-center mt-4">
                             <PrimaryButton disabled={processing}>
                                 Sign In
@@ -146,50 +133,6 @@ export default function Login({ status, canResetPassword }) {
                             >
                                 Sign Up
                             </Link>
-                        </div>
-
-                        <div style={{ textAlign: "center", margin: "20px 0" }}>
-                            <div
-                                style={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                }}
-                            >
-                                <div
-                                    style={{
-                                        borderBottom: "1px solid black",
-                                        width: "35%",
-                                    }}
-                                ></div>
-                                <div className="text-center">Or continue with</div>
-                                <div
-                                    style={{
-                                        borderBottom: "1px solid black",
-                                        width: "35%",
-                                        }}
-                                ></div>
-                            </div>
-                        </div>
-
-                        <div style={{ textAlign: 'center', margin: '20px 0' }}>
-                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                                <div style={{ border: '1px solid black', padding: '10px', margin: '5px', width: '300px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                <Link onClick={handleGoogleLogin} className="button-link">
-                                    <button style={{ display: 'flex', alignItems: 'center', border: 'none', background: 'none', cursor: 'pointer' }}>
-                                        <img src="/images/google-icon.png" alt="Google" style={{ width: '30px', marginRight: '10px' }} />
-                                        <span>Log in with Google</span>
-                                    </button>
-                                    </Link>
-                                </div>
-                                <div style={{ border: '1px solid black', padding: '10px', margin: '5px', width: '300px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                <Link onClick={handleLinkedInLogin} className="button-link">
-                                    <button style={{ display: 'flex', alignItems: 'center', border: 'none', background: 'none', cursor: 'pointer' }}>
-                                        <img src="/images/linkedin-icon.png" alt="LinkedIn" style={{ width: '30px', marginRight: '10px' }} />
-                                        <span>Log in with LinkedIn</span>
-                                    </button>
-                                    </Link>
-                                </div>
-                            </div>
                         </div>
                     </form>
                 </div>

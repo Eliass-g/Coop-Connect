@@ -6,6 +6,8 @@ import { createInertiaApp } from "@inertiajs/react";
 import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 import { Provider } from "react-redux";
 import { store } from "./store";
+import ChatListener from "./ChatListener";
+import NotificationListener from "./NotificationListener";
 
 const appName = import.meta.env.VITE_APP_NAME || "Laravel";
 
@@ -21,6 +23,8 @@ createInertiaApp({
 
         root.render(
             <Provider store={store}>
+                <ChatListener />
+                <NotificationListener />
                 <App {...props} />
             </Provider>
         );

@@ -22,6 +22,7 @@ class RouteServiceProvider extends ServiceProvider
     public const HOME_STUDENT = '/student/home';
     public const HOME_TEACHER = '/teacher/home';
     public const HOME_EMPLOYER = '/employer/home';
+    public const HOME_ADMIN = '/admin/home';
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
@@ -40,5 +41,8 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
         });
+
+        Route::middleware('auth')->any('/broadcasting/auth', '\Illuminate\Broadcasting\BroadcastController@authenticate');
+
     }
 }

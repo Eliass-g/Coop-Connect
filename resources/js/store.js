@@ -1,15 +1,17 @@
 import { configureStore } from "@reduxjs/toolkit";
 import jobsReducer from "./Features/jobs/jobsSlice";
-import coursesReducer from "./Features/courses/coursesSlice";
-import interviewsReducer from "./Features/interviews/interviewsSlice";
-import reflectionsReducer from "./Features/reflections/reflectionsSlice";
+import usersReducer from "./Features/users/userSlice";
+import messageReducer from "./Features/message/messageSlice";
+import userJobsReducer from "./Features/userJobs/userJobsSlice";
+import notificationsReducer from "./Features/notifications/notificationsSlice";
 
 export const store = configureStore({
     reducer: {
         jobs: jobsReducer,
-        courses: coursesReducer,
-        interviews: interviewsReducer,
-        reflections: reflectionsReducer,
+        user: usersReducer,
+        messages: messageReducer,
+        userJobs: userJobsReducer,
+        notifications: notificationsReducer,
     },
 });
 

@@ -166,28 +166,7 @@ export default function Register() {
 
                         <div className="mx-auto max-w-sm text-center flex flex-wrap justify-center">
                             <div className="mx-auto max-w-sm text-center flex flex-wrap justify-center mt-4">
-                                <div className="flex flex-col items-center mb-4">
-                                    {" "}
-                                    {/* Reduced margin */}
-                                    <input
-                                        id="radio1"
-                                        type="radio"
-                                        name="radio"
-                                        value="teacher"
-                                        checked={data.role === "teacher"}
-                                        onChange={(e) =>
-                                            setData("role", e.target.value)
-                                        }
-                                        className="hidden"
-                                    />
-                                    <label
-                                        htmlFor="radio1"
-                                        className="flex flex-col items-center cursor-pointer"
-                                    >
-                                        <span className="w-4 inline-block mb-1"></span>
-                                        Teacher
-                                    </label>
-                                </div>
+
 
                                 <div className="flex flex-col items-center mb-4">
                                     {" "}

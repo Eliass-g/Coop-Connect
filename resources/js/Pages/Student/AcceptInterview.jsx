@@ -9,6 +9,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { usePage } from "@inertiajs/react";
 import { Inertia } from "@inertiajs/inertia";
+import { sendNotification } from "@/Features/notifications/notificationsSlice";
 
 const AcceptInterview = () => {
     const [selectedSlot, setSelectedSlot] = useState(null);
@@ -24,7 +25,9 @@ const AcceptInterview = () => {
             getSingleJobDetails({
                 userJobsId: userJobsId,
             })
-        );
+        ).then(() => {
+            console.log(job);
+        });
     }, [dispatch, userJobsId]);
 
     const handleSelectSlot = (slot) => {
@@ -40,8 +43,18 @@ const AcceptInterview = () => {
                     timeSlots: [selectedSlot],
                     status: "Scheduled",
                 })
-            );
-            window.location.href = `/student/viewapplications`;
+            )
+                .then(() => {
+                    const notificationData = {
+                        recipient_id: job.user_id,
+                        redirect: `${job.id}`,
+                        message: `Accepted Interview`,
+                    };
+                    dispatch(sendNotification(notificationData));
+                })
+                .then(() => {
+                    window.location.href = `/student/viewapplications`;
+                });
         } else {
             alert("Please select a time slot.");
         }
@@ -56,7 +69,14 @@ const AcceptInterview = () => {
                     userJobsId: userJobsId,
                     status: "Declined",
                 })
-            );
+            ).then(() => {
+                const notificationData = {
+                    recipient_id: job.user_id,
+                    redirect: `${job.id}`,
+                    message: `Declined Interview`,
+                };
+                dispatch(sendNotification(notificationData));
+            });
         }
         window.location.href = `/student/viewapplications`;
     };

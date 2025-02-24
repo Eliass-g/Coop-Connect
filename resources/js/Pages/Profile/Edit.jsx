@@ -50,7 +50,7 @@ export default function Profile({ auth, mustVerifyEmail, status }) {
                                             <p className="text-sm">{match.location}</p>
                                             <p className="text-sm">{match.info}</p>
 
-                                            <button className="mt-4 px-4 py-2 bg-purple-800 text-white rounded rounded-md">
+                                            <button className="mt-4 px-4 py-2 bg-purple-800 text-white rounded-md">
                                                 View Job
                                             </button>
                                         </div>

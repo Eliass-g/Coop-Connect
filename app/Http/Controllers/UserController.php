@@ -3,14 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Courses;
+use App\Imports\UsersImport;
 use Illuminate\Http\Request;
-<<<<<<< HEAD
-=======
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\JsonResponse;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Requests\ChangePasswordRequest;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
->>>>>>> 40b014e (add backend/functionality to teacher home page, employer jobs page, edit jobs)
 
 class UserController extends Controller
 {
@@ -29,86 +32,131 @@ class UserController extends Controller
         return response()->json($students);
     }
 
-    public function getUserId()
+    public function updateProfile(Request $request)
     {
-        return response()->json(['user_id' => Auth::id()]);
-    }
 
-<<<<<<< HEAD
-=======
-    public function getStudentStatusPercentages(): JsonResponse
-    {
-        // Total number of students
-        $totalStudents = User::where('role', 'student')->count();
+        $user = auth()->user();
 
-        // Number of students in each status
-        $statusCounts = User::where('role', 'student')
-            ->select('status', DB::raw('count(*) as count'))
-            ->groupBy('status')
-            ->pluck('count', 'status');
+        // Handle profile image upload
+        if ($request->has('profile_image')) {
+            if ($request->profile_image === "null") {
+                // Remove profile image from user
+                $user->profile_image = null;
+            } elseif ($request->hasFile('profile_image')) {
+                $file = $request->file('profile_image');
+                $path = $file->store('profile_images', 'public'); // Saves to storage/app/public/profile_images
 
-        // Calculate percentages
-        $percentages = [
-            'working' => 0,
-            'interviewing' => 0,
-            'searching' => 0,
-        ];
-
-        if ($totalStudents > 0) {
-            $percentages = [
-                'working' => ($statusCounts->get('working', 0) / $totalStudents) * 100,
-                'interviewing' => ($statusCounts->get('interviewing', 0) / $totalStudents) * 100,
-                'searching' => ($statusCounts->get('searching', 0) / $totalStudents) * 100,
-            ];
+                // Save file path in the database
+                $user->profile_image = "/storage/" . $path; // Store accessible URL
+            }
         }
 
-        return response()->json($percentages);
-    }
+        // Update other fields only if they exist in the request
 
-    public function updateProfile(Request $request, User $user)
-    {
+        $user->description = $request->description === "null" ? null : $request->description;
 
-        if (Auth::user()->id !== $user->id) {
-            return response()->json(['error' => 'Unauthorized'], 403);
+
+        if ($request->filled('name')) {
+            $user->name = $request->name;
+        }
+
+        if ($request->filled('email')) {
+            $user->email = $request->email;
+        }
+
+        if ($request->has('positiontitle')) {
+            $user->positiontitle = $request->positiontitle === "null" ? null : $request->positiontitle;
+        }
+
+        if ($request->has('company')) {
+            $user->company = $request->company === "null" ? null : $request->company;
         }
 
 
-        if ($request->hasFile('profile_image')) {
-            $image = $request->file('profile_image');
-
-            // Generate a unique file name
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-
-            // Store the image in the storage/app/public/profile_images directory
-            $image->storeAs('public/profile_images', $imageName);
-
-            // Update user's profile_image field in database
-            $user->profile_image = '/storage/profile_images/' . $imageName;
-
-            // Log the uploaded image path
-            info('Uploaded image path: ' . $user->profile_image);
+        if ($request->has('school')) {
+            $user->school = $request->school === "null" ? null : $request->school;
         }
 
-        // Update other fields
-        $user->description = $request->description;
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->role = $request->role;
-        $user->school = $request->school;
-        $user->positiontitle = $request->positiontitle;
-        $user->company_name = $request->company_name;
-        $user->skills = $request->skills;
+        if ($request->has('pronouns')) {
+            $user->pronouns = $request->pronouns === "null" ? null : $request->pronouns;
+        }
 
+
+        if ($request->has('status')) {
+            $user->status = $request->status === "null" ? null : $request->status;
+        }
+
+        // Handle skills field safely
+        if ($request->has('skills')) {
+            $skills = $request->input('skills');
+
+            if (is_string($skills)) {
+                $skills = json_decode($skills, true) ?? [];
+            } elseif (!is_array($skills)) {
+                $skills = [];
+            }
+
+            $user->skills = $skills;
+        }
+
+        if ($request->has('courses')) {
+            $courses = $request->input('courses');
+
+            if (is_string($courses)) {
+                $courses = json_decode($courses, true) ?? [];
+            } elseif (!is_array($courses)) {
+                $courses = [];
+            }
+
+            $user->courses = $courses;
+        }
 
         $user->save();
-
 
         info('Updated user data: ' . json_encode($user));
 
         return response()->json(['message' => 'Profile updated successfully', 'user' => $user]);
     }
 
+    public function getAllUsers(Request $request)
+    {
 
+        $users = User::all();
 
->>>>>>> 40b014e (add backend/functionality to teacher home page, employer jobs page, edit jobs)
+        return response()->json($users);
+    }
+
+    public function changePassword(ChangePasswordRequest $request)
+    {
+        $user = Auth::user();
+
+        if (!Hash::check($request->current_password, $user->password)) {
+            return response()->json(['message' => 'Current password is incorrect'], 400);
+        }
+
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+        return response()->json(['message' => 'Password updated successfully']);
+    }
+
+    public function getUserByEmail(Request $request)
+    {
+        $email = $request->query('email'); // Get email from query params
+        $user = User::where('email', $email)->first();
+
+        if (!$user) {
+            return response()->json(['error' => 'User not found'], 404);
+        }
+
+        return response()->json($user->only(['id', 'name', 'email']));
+    }
 }
+
+
+
+
+
+
+
+

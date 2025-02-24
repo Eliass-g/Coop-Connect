@@ -4,24 +4,18 @@ axios.defaults.baseURL = "http://127.0.0.1:8000/api/v1";
 
 const initialState = {
     jobs: [],
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
     job: "",
->>>>>>> e0e590c (format viewapplicants to match viewapplicantions, fix student home state management)
     jobFormData: {
         jobsId: "",
         title: "",
         description: "",
         location: "",
         postingStatus: "Open",
-        jobType: "",
+        jobType: "Onsite",
         company: "",
         skills: [],
         userId: "",
     },
->>>>>>> 0541389 (employer side: updates to view job postings, view single job posting, related backend, creation of view applicants, decline applicant, accept applicant, related backend; student side: creation of view single job posting, apply to job posting, related backend)
     status: {
         jobs: "idle",
         job: "idle",
@@ -35,7 +29,17 @@ const initialState = {
 export const jobsSlice = createSlice({
     name: "jobs",
     initialState,
-    reducers: {},
+    reducers: {
+        updateJobFormData: (state, action) => {
+            state.jobFormData = {
+                ...state.jobFormData,
+                ...action.payload,
+            };
+        },
+        resetJobFormData: (state) => {
+            state.jobFormData = initialState.jobFormData;
+        },
+    },
     extraReducers(builder) {
         builder
             .addCase(getJobs.pending, (state, action) => {
@@ -92,7 +96,6 @@ export const jobsSlice = createSlice({
                 state.status.jobs = "loading";
             })
             .addCase(searchJobsbySkill.fulfilled, (state, action) => {
-                console.log(action.payload);
                 state.jobs = action.payload;
                 state.status.jobs = "succeeded";
             })
@@ -150,8 +153,8 @@ export const jobsSlice = createSlice({
                 state.status.deleteJob = "loading";
             })
             .addCase(deleteJob.fulfilled, (state, action) => {
-                state.status.deleteJob = "succeeded";
-            })
+                state.jobs = state.jobs.filter((job) => job.id !== action.payload);
+              })
             .addCase(deleteJob.rejected, (state, action) => {
                 state.status.deleteJob = "failed";
             });
@@ -223,7 +226,7 @@ export const searchJobsbySkill = createAsyncThunk(
             },
         });
 
-        console.log(response.data);
+
 
         return response.data.data;
     }
@@ -233,7 +236,7 @@ export const searchJobsBySkillAndLocation = createAsyncThunk(
     "jobs/searchJobsBySkillAndLocation",
     async (params) => {
         const { searchTerm, location } = params;
-        console.log("test", searchTerm);
+
         const response = await axios({
             url: "/jobs/search",
             method: "GET",
@@ -255,7 +258,9 @@ export const postJob = createAsyncThunk("jobs/postJob", async (params) => {
         postingStatus,
         jobType,
         company,
+        userId,
     } = params;
+
     const response = await axios({
         url: "/jobs",
         method: "POST",
@@ -267,6 +272,7 @@ export const postJob = createAsyncThunk("jobs/postJob", async (params) => {
             postingStatus,
             jobType,
             company,
+            userId,
         },
     });
     return response.data.data;
@@ -282,6 +288,7 @@ export const putJob = createAsyncThunk("jobs/putJob", async (params) => {
         postingStatus,
         jobType,
         company,
+        userId,
     } = params;
     const response = await axios({
         url: `/jobs/${jobsId}`,
@@ -294,6 +301,7 @@ export const putJob = createAsyncThunk("jobs/putJob", async (params) => {
             postingStatus,
             jobType,
             company,
+            userId,
         },
     });
     return response.data.data;
@@ -324,7 +332,7 @@ export const patchJob = createAsyncThunk("jobs/patchJob", async (params) => {
             company,
         },
     });
-    console.log(response.data.data);
+
     return response.data.data;
 });
 
@@ -334,7 +342,7 @@ export const deleteJob = createAsyncThunk("jobs/deleteJob", async (params) => {
         url: `/jobs/${jobId}`,
         method: "DELETE",
     });
-    return response.data.data;
+    return userId;
 });
 
 export const applyJob = createAsyncThunk(
@@ -355,6 +363,7 @@ export const selectJobs = (state) => state.jobs.jobs;
 export const selectSingleJob = (state) => state.jobs.job;
 export const selectJobsStatus = (state) => state.jobs.status.jobs;
 // Action creators are generated for each case reducer function
-export const {} = jobsSlice.actions;
+export const { updateJobFormData, resetJobFormData } = jobsSlice.actions;
+export const selectJobFormData = (state) => state.jobs.jobFormData;
 
 export default jobsSlice.reducer;

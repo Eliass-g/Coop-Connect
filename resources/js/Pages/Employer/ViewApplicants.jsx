@@ -9,6 +9,8 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { usePage, Link } from "@inertiajs/react";
 import { selectJob, selectSingleJob } from "@/Features/jobs/jobsSlice";
+import { sendMessage } from "@/Features/message/messageSlice";
+import { sendNotification } from "@/Features/notifications/notificationsSlice";
 
 // Decline Modal Component
 const DeclineModal = ({ applicant, onClose, onSubmit }) => {
@@ -81,10 +83,30 @@ const ViewApplicants = () => {
                 message: message,
                 timeSlots: [""],
             })
-        );
-        console.log(
-            `Declined ${selectedApplicant.name} with message: ${message}`
-        );
+        )
+            .then(() => {
+                const messageData = {
+                    receiver_email: selectedApplicant.email,
+                    message: message,
+                };
+                dispatch(sendMessage(messageData));
+            })
+            .then(() => {
+                const notificationData = {
+                    recipient_id: selectedApplicant.user_id,
+                    redirect: "viewapplications",
+                    message: `Rejected for Interview`,
+                };
+                dispatch(sendNotification(notificationData));
+            })
+            .then(() => {
+                const notificationData = {
+                    recipient_id: selectedApplicant.user_id,
+                    redirect: "message",
+                    message: message,
+                };
+                dispatch(sendNotification(notificationData));
+            });
     };
 
     const handleAccept = (applicant) => {
@@ -139,9 +161,7 @@ const ViewApplicants = () => {
                         </TableData>
                     )}
                     {applicant.status === "Scheduled" && (
-                        <TableData>
-                            {formatDate(applicant.timeSlots)}
-                        </TableData>
+                        <TableData>{formatDate(applicant.timeSlots)}</TableData>
                     )}
                 </TableRow>
             ));
@@ -234,13 +254,13 @@ const Tab = styled.div`
     padding: 10px 20px;
     margin: 0 10px;
     cursor: pointer;
-    background: ${({ $active }) => ($active ? "#007BFF" : "#E0E0E0")};
+    background: ${({ $active }) => ($active ? "#6b538c" : "#E0E0E0")};
     color: ${({ $active }) => ($active ? "#FFF" : "#000")};
     border-radius: 5px;
     user-select: none;
 
     &:hover {
-        background: ${({ $active }) => ($active ? "#0056b3" : "#c7c7c7")};
+        background: ${({ $active }) => ($active ? "#5A4476" : "#c7c7c7")};
     }
 `;
 

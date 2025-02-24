@@ -9,7 +9,8 @@ class StudentController extends Controller
 {
     public function home()
     {
-        return Inertia::render('Student/Home');
+        $skills = auth()->user()->skills;
+        return Inertia::render('Student/Home', ['skills' => $skills]);
     }
 
     public function jobs()
@@ -24,17 +25,8 @@ class StudentController extends Controller
 
     public function profile()
     {
-        return Inertia::render('Student/Profile');
-    }
-
-    public function reflections()
-    {
-        return Inertia::render('Student/Reflections');
-    }
-
-    public function documents()
-    {
-        return Inertia::render('Student/Document');
+        $user = auth()->user();
+        return Inertia::render('Student/Profile', ['user' => $user]);
     }
 
     public function settings()
@@ -44,7 +36,7 @@ class StudentController extends Controller
 
     public function messages()
     {
-        return Inertia::render('Messages/Messages');
+        return Inertia::render('Student/Messages/Messages');
     }
 
     public function viewapplications()

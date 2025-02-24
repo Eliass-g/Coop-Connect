@@ -11,12 +11,8 @@ export default function TestData() {
     const interviews = useSelector(selectInterviews);
 
     useEffect(() => {
-            dispatch(getInterviews());
-
+        dispatch(getInterviews());
     }, [dispatch]);
-
-
-    console.log(interviews);
 
     return <div></div>;
 }

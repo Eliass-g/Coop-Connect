@@ -1,9 +1,7 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import NavBar from "./Components/NavBar";
 import downarrow from "@/Pages/Images/Icon.svg";
-<<<<<<< HEAD
-=======
 import wordlogo from "../Images/worddocicon.png";
 import pdflogo from "../Images/pdf-icon.png";
 const appUrl = import.meta.env.VITE_APP_URL;
@@ -94,6 +92,7 @@ function DocumentDropZone({
             onDragLeave={handleDragLeave}
             onDrop={handleDrop}
             isDragging={isDragging}
+            data-testid="document-item-employer"
         >
             <DropZone>
                 {filesPreview.length > 0 ? (
@@ -122,30 +121,29 @@ function DocumentDropZone({
         </DropZoneContainer>
     );
 }
->>>>>>> 14a0769 (clean up code, remove unnecessary controllers, separate styling)
 
-const TabMenu = ({ tabs }) => (
+
+const TabMenu = ({ activeTab, handleTabChange }) => (
     <TabList>
-        {tabs.map((tab, index) => (
-            <TabItem key={index} className={index === 0 ? "active" : ""}>
-                {tab}
-            </TabItem>
-        ))}
+      <TabItem onClick={() => handleTabChange("Employer Documents")} className={activeTab === "Employer Documents" ? "active" : ""}>
+        Employer Documents
+      </TabItem>
+      <TabItem onClick={() => handleTabChange("Shortlist Documents")} className={activeTab === "Shortlist Documents" ? "active" : ""}>
+        Shortlist Documents
+      </TabItem>
+      <TabItem onClick={() => handleTabChange("Applicant Documents")} className={activeTab === "Applicant Documents" ? "active" : ""}>
+        Applicant Documents
+      </TabItem>
     </TabList>
-);
+  );
 
-<<<<<<< HEAD
-const FileItem = ({ title, size }) => (
-    <FileContainer>
-        <FileIcons>
-            <img
-=======
+
+
 const FileItem = ({ title, type, downloadDocument, doc, handleDelete }) => (
     <FileContainer>
         <FileIcons>
             <img
                 onClick={() => handleDelete(type)}
->>>>>>> 14a0769 (clean up code, remove unnecessary controllers, separate styling)
                 loading="lazy"
                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/a4cdb93b18319c472265cce9eb4f7345c821b3f3e0269b1464d286a7094472e4?apiKey=d66532d056b14640a799069157705b77&"
                 alt=""
@@ -161,10 +159,10 @@ const FileItem = ({ title, type, downloadDocument, doc, handleDelete }) => (
         <FileDetails>
             <div>
                 <FileTitle>{title}</FileTitle>
-                <FileSize>{size}</FileSize>
+                <FileSize>{type}</FileSize>
             </div>
             <FileActions>
-                <ActionButton>
+                <ActionButton onClick={() => downloadDocument(type, title)}>
                     Download{" "}
                     <img
                         loading="lazy"
@@ -185,321 +183,17 @@ const FileItem = ({ title, type, downloadDocument, doc, handleDelete }) => (
     </FileContainer>
 );
 
-<<<<<<< HEAD
-const Document = () => (
-    <NavBar header={"Documents"}>
-        <Wrapper>
-            <Content>
-                <FileSection>
-                    <SectionHeader>
-                        <TabMenu
-                            tabs={[
-                                "Progress Reports",
-                                "Student Logs",
-                                "Student Documents",
-                                "All Files",
-                            ]}
-                        />
-                    </SectionHeader>
-                    <FileList>
-                        <FileItem
-                            title="1 - Alex Norton Progress Report"
-                            size="7.05 MB"
-                        />
-                        <FileItem
-                            title="2 - Alex Norton Progress Report"
-                            size="5.05 MB"
-                        />
-                        <FileItem
-                            title="3 - Alex Norton Progress Report"
-                            size="3.05 MB"
-                        />
-                        <FileItem
-                            title="4 - Alex Norton Progress Report"
-                            size="4.05 MB"
-                        />
-                        <FileItem
-                            title="5 - Alex Norton Progress Report"
-                            size="2.05 MB"
-                        />
-                        <FileItem
-                            title="6 - Alex Norton Progress Report"
-                            size="1.05 MB"
-                        />
-                    </FileList>
-                </FileSection>
-                <FormSection>
-                    <Form>
-                        <Title>Add Documents</Title>
-                        <Label htmlFor="documentTitle">Document Title</Label>
-                        <Input
-                            type="text"
-                            id="documentTitle"
-                            aria-label="Document Title"
-                        />
-                        <Label htmlFor="fileUpload">Attach Documents</Label>
-                        <FileDropContainer>
-                            <img
-                                loading="lazy"
-                                src="https://cdn.builder.io/api/v1/image/assets/TEMP/7b639287ff19d9cea52b278a5c41582ed4e1bf799e4a4826575e0a9b46474d1b?apiKey=d66532d056b14640a799069157705b77&"
-                                alt=""
-                            />
-                            <DropText>Drag and Drop here</DropText>
-                        </FileDropContainer>
-                        <div
-                            style={{
-                                display: "flex",
-                                justifyContent: "space-between",
-                            }}
-                        >
-                            <FileTypes>
-                                Accepted File Types: .doc, .docx, .pdf only
-                            </FileTypes>
-                            <SecurityNote>
-                                <img
-                                    loading="lazy"
-                                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/8b7ec72c66d30f8ec5c35d4cec5db08f1877f1a7d86ea8b6c08df8054b4a9a85?apiKey=d66532d056b14640a799069157705b77&"
-                                    alt=""
-                                />
-                                Secure
-                            </SecurityNote>
-                        </div>
-                        <SubmitButton>Upload</SubmitButton>
-                    </Form>
-                </FormSection>
-            </Content>
-        </Wrapper>
-    </NavBar>
-);
-
-const Wrapper = styled.main`
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-`;
-
-const Content = styled.div`
-    display: flex;
-    justify-content: center;
-    @media (max-width: 991px) {
-        flex-direction: column;
-    }
-`;
-
-const FileSection = styled.section`
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    align-self: stretch;
-    flex: 1 0 0;
-    padding: 20px 0px;
-    border-radius: 10px;
-    background: #fff;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    @media (max-width: 991px) {
-        padding: 0;
-        width: 100%;
-    }
-`;
-
-const SectionHeader = styled.header`
-    display: flex;
-    justify-content: center;
-    margin-bottom: 40px;
-`;
-
-const TabList = styled.nav`
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid #000;
-    border-radius: 6px;
-    padding: 5px 10px;
-    font-size: 14px;
-    font-weight: 500;
-    color: #334155;
-    @media (max-width: 991px) {
-        flex-wrap: wrap;
-    }
-`;
-
-const TabItem = styled.div`
-    padding: 6px 20px;
-    position: relative;
-    &.active {
-        border-bottom: 2px solid #6b538c;
-        color: #0f172a;
-    }
-`;
-
-const FileList = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 0 80px;
-    @media (max-width: 991px) {
-        padding: 0 20px;
-    }
-`;
-
-const FileContainer = styled.article`
-    display: flex;
-    gap: 10px;
-    padding: 20px 10px;
-    border: 1px solid #7b757f;
-    border-radius: 10px;
-    @media (max-width: 991px) {
-        flex-wrap: wrap;
-    }
-`;
-
-const FileIcons = styled.div`
-    display: flex;
-    gap: 20px;
-    border-right: 1px solid #7b757f;
-    padding-right: 10px;
-`;
-
-const FileDetails = styled.div`
-    flex-grow: 1;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 10px;
-`;
-
-const FileTitle = styled.h2`
-    font-weight: 500;
-    font-size: 14px;
-    color: #000;
-`;
-
-const FileSize = styled.p`
-    font-size: 12px;
-    font-weight: 400;
-    color: #7b757f;
-`;
-
-const FileActions = styled.div`
-    display: flex;
-    gap: 10px;
-    align-self: end;
-`;
-
-const ActionButton = styled.button`
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 12px;
-    font-size: 14px;
-    font-weight: 600;
-    border-radius: 10px;
-    cursor: pointer;
-    background-color: ${({ outline }) => (outline ? "transparent" : "#6b538c")};
-    color: ${({ outline }) => (outline ? "#6b538c" : "#fff")};
-    border: ${({ outline }) => (outline ? "1px solid #6b538c" : "none")};
-
-    img {
-        width: 14px;
-    }
-`;
-
-const FormSection = styled.section`
-    width: 28%;
-    margin-left: 20px;
-    @media (max-width: 991px) {
-        margin-left: 0;
-        width: 100%;
-    }
-`;
-
-const Form = styled.form`
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    margin: 0 auto;
-    border-radius: 10px;
-    background: #fff;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    color: #7b757f;
-`;
-
-const Title = styled.h2`
-    font-size: 24px;
-    font-weight: 500;
-    color: #6b538c;
-`;
-
-const Label = styled.label`
-    font-size: 14px;
-    font-weight: 600;
-    margin-top: 20px;
-`;
-
-const Input = styled.input`
-    height: 48px;
-    margin-top: 8px;
-    border: 2px solid #7b757f;
-    border-radius: 6px;
-    background: #fff;
-`;
-
-const FileDropContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    padding: 22px 40px;
-    margin-top: 10px;
-    border: 2px dashed #6b538c;
-    border-radius: 10px;
-    background-color: #eddcff;
-    font-size: 16px;
-    font-weight: 600;
-    color: #6b538c;
-    @media (max-width: 991px) {
-        padding: 20px;
-    }
-`;
-
-const DropText = styled.p`
-    margin-top: 10px;
-`;
-
-const FileTypes = styled.p`
-    margin-top: 10px;
-    font-size: 10px;
-    font-weight: 400;
-`;
-
-const SecurityNote = styled.div`
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-weight: 500;
-    margin-top: 10px;
-`;
-
-const SubmitButton = styled.button`
-    align-self: center;
-    margin-top: 40px;
-    padding: 10px 24px;
-    font-size: 18px;
-    font-weight: 600;
-    color: #fff;
-    background: #6b538c;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    @media (max-width: 991px) {
-        padding: 20px;
-    }
-`;
-=======
 function Document() {
     const [filesToUpload, setFilesToUpload] = useState([]);
     const [clearPreviewsTrigger, setClearPreviewsTrigger] = useState(false);
     const [userId, setUserId] = useState(null);
     const [userDocuments, setUserDocuments] = useState([]);
+    const [activeTab, setActiveTab] = useState("Progress Reports");
+    const [shortlistDocuments, setShortlistDocuments] = useState([]);
+
+
+
+
 
     useEffect(() => {
         // Fetch the XSRF token from cookies and set it in Axios headers
@@ -537,10 +231,7 @@ function Document() {
 
                 if (response.data.status === 1) {
                     setUserDocuments(response.data.data);
-                    console.log(
-                        "Documents fetched successfully:",
-                        response.data.data
-                    );
+
                 } else {
                     console.error(
                         "Error fetching documents:",
@@ -554,6 +245,29 @@ function Document() {
 
         fetchDocuments();
     }, [userId]);
+
+    const fetchShortlistDocuments = async () => {
+        try {
+            const response = await axios.get(`http://127.0.0.1:8000/api/users/${userId}/shortlists`);
+
+            if (response.data && response.data.shortlists && response.data.shortlists.length > 0) {
+                const allDocuments = response.data.shortlists.flatMap(shortlist =>
+                    shortlist.applicants.flatMap(applicant =>
+                        applicant.documents.map(doc => ({
+                            ...doc,
+                            applicantName: applicant.name,
+                        }))
+                    )
+                );
+                setShortlistDocuments(allDocuments);
+
+            } else {
+                console.error('No shortlist documents found in the response:', response);
+            }
+        } catch (error) {
+            console.error('Error fetching shortlist documents:', error);
+        }
+    };
 
     const handleFileDrop = async (files) => {
         setFilesToUpload((prevFiles) => [...prevFiles, ...files]);
@@ -569,7 +283,7 @@ function Document() {
                 setUserDocuments((prevDocuments) =>
                     prevDocuments.filter((doc) => doc.id !== id)
                 );
-                console.log("Document deleted successfully");
+
             } else {
                 console.error(
                     "Error deleting document:",
@@ -614,7 +328,7 @@ function Document() {
                     },
                 }
             );
-            console.log("Upload successful:", response.data);
+
             setFilesToUpload([]);
             setClearPreviewsTrigger(true);
             window.location.reload();
@@ -647,46 +361,68 @@ function Document() {
             link.parentNode.removeChild(link);
             window.URL.revokeObjectURL(url);
 
-            console.log("Download successful");
-        } catch (error) {
-            console.error("Error downloading document:", error);
-        }
-    };
 
-    return (
-        <NavBar header={"Documents"}>
+    } catch (error) {
+        console.error("Error downloading document:", error);
+    }
+};
+
+const handleTabChange = (tab) => {
+    setActiveTab(tab);
+
+    // Fetch shortlist documents when Shortlist Documents tab is clicked
+    if (tab === 'Shortlist Documents') {
+        fetchShortlistDocuments();
+    }
+};
+
+return(
+
+    <NavBar header={"Documents"}>
             <Wrapper>
                 <Content>
                     <FileSection>
                         <SectionHeader>
                             <TabMenu
                                 tabs={[
+                                    "Employer Documents",
+                                    "Shortlist Documents",
+                                    "Applicant Documents",
                                     "Progress Reports",
-                                    "Student Logs",
-                                    "Student Documents",
-                                    "All Files",
                                 ]}
+                                activeTab={activeTab}
+                                setActiveTab={setActiveTab}
+                                handleTabChange={handleTabChange}
                             />
                         </SectionHeader>
                         <FileList>
-                            {userDocuments.map((doc, index) => (
-                                <FileItem
-                                    key={index}
-                                    title={doc.title}
-                                    type={doc.id}
-                                    id={doc.id}
-                                    downloadDocument={() =>
-                                        downloadDocument(doc.id, doc.title)
-                                    }
-                                    handleDelete={() => handleDelete(doc.id)}
-                                />
-                            ))}
+                            {(activeTab === 'Employer Documents' && userDocuments.length > 0) &&
+                                userDocuments.map((doc, index) => (
+                                    <FileItem
+                                        key={index}
+                                        title={doc.title}
+                                        type={doc.id}
+                                        downloadDocument={() => downloadDocument(doc.id, doc.title)}
+                                        handleDelete={() => handleDelete(doc.id)}
+                                        doc={doc}
+                                    />
+                                ))}
+                            {(activeTab === 'Shortlist Documents' && shortlistDocuments.length > 0) &&
+                                shortlistDocuments.map((doc, index) => (
+                                    <FileItem
+                                        key={index}
+                                        title={doc.title}
+                                        type={doc.applicantName}
+                                        downloadDocument={() => downloadDocument(doc.id, doc.title)}
+
+                                        doc={doc}
+                                    />
+                                ))}
                         </FileList>
                     </FileSection>
                     <FormSection>
                         <Form>
                             <Title>Add Documents</Title>
-
                             <Label htmlFor="fileUpload">Attach Documents</Label>
                             <DropZoneWrapper>
                                 <DocumentDropZone
@@ -694,34 +430,21 @@ function Document() {
                                     clearPreviewsTrigger={clearPreviewsTrigger}
                                 />
                             </DropZoneWrapper>
-                            <div
-                                style={{
-                                    display: "flex",
-                                    justifyContent: "space-between",
-                                }}
-                            >
-                                <FileTypes>
-                                    Accepted File Types: .doc, .docx, .pdf only
-                                </FileTypes>
+                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                <FileTypes>Accepted File Types: .doc, .docx, .pdf only</FileTypes>
                                 <SecurityNote>
-                                    <img
-                                        loading="lazy"
-                                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/8b7ec72c66d30f8ec5c35d4cec5db08f1877f1a7d86ea8b6c08df8054b4a9a85?apiKey=d66532d056b14640a799069157705b77&"
-                                        alt=""
-                                    />
+                                    {/* Security icon */}
                                     Secure
                                 </SecurityNote>
                             </div>
-                            <SubmitButton onClick={handleUpload}>
-                                Upload
-                            </SubmitButton>
+                            <SubmitButton onClick={handleUpload}>Upload</SubmitButton>
                         </Form>
                     </FormSection>
                 </Content>
             </Wrapper>
         </NavBar>
     );
-}
->>>>>>> 14a0769 (clean up code, remove unnecessary controllers, separate styling)
+};
+
 
 export default Document;

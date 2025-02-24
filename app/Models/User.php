@@ -21,27 +21,21 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-<<<<<<< HEAD
-=======
         'role',
         'status',
-        'school',
-        'class',
         'profile_image',
         'company_name',
         'company',
+        'positiontitle',
+        'description',
         'working',
         'interviewing',
         'searching',
         'skills',
-<<<<<<< HEAD
-        'name',
-        'email',
-        'password',
->>>>>>> 42ed0af (add backend/functionality to teacher home page, employer jobs page, edit jobs)
-=======
->>>>>>> a1a03bf (added functionality for remember me feature and added getInterviews to userJobsSlice to be used with calendars)
-        'role'
+        'role',
+        'school',
+        'courses',
+        'pronouns',
     ];
 
     /**
@@ -62,60 +56,24 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
-<<<<<<< HEAD
-=======
         'skills' => 'array',
+        'courses' => 'array',
 
->>>>>>> feb0b09 (add redux integration to student pages: home, jobs, profile)
     ];
 
     /**
      * Define a relationship to documents.
      */
-    public function documents()
-    {
-        return $this->hasMany(Document::class);
-    }
 
     public function jobs()
     {
         return $this->belongsToMany(Jobs::class, 'user_jobs');
     }
 
-    public function courses()
-    {
-        return $this->belongsToMany(Courses::class, 'user_courses');
-    }
-
-    public function reflections()
-    {
-        return $this->hasMany(Reflections::class);
-    }
-
-    public function interviewsAsInterviewee()
-    {
-        return $this->hasMany(Interviews::class, 'interviewee_id');
-    }
-
-    public function interviewsAsInterviewer()
-    {
-        return $this->hasMany(Interviews::class, 'interviewer_id');
-    }
-<<<<<<< HEAD
-=======
-    public function applications()
-    {
-        return $this->hasMany(Application::class);
-    }
-
-
     public function messages()
     {
         return $this->hasMany(Message::class);
     }
-
->>>>>>> 40b014e (add backend/functionality to teacher home page, employer jobs page, edit jobs)
-
     /**
      * Check if the user has a specific role.
      *
@@ -125,5 +83,10 @@ class User extends Authenticatable
     public function hasRole($role)
     {
         return $this->role === $role;
+    }
+
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
     }
 }

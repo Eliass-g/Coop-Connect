@@ -1,11 +1,21 @@
 import { Link, Head } from "@inertiajs/react";
 import LandingLayout from "@/Layouts/LandingLayout";
+import background from "@/Pages/Images/Landing.png";
 
 export default function About({ auth }) {
+    const backgroundStyle = {
+        backgroundImage: `url(${background})`,
+        height: "100vh",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "bottom",
+    };
+
+
     return (
         <>
             <Head title="About" />
-            <div className="">
+            <div className="" style={backgroundStyle}>
                 <LandingLayout auth={auth}/>
                 <div className="min-h-[70vh] text-center flex justify-center items-center flex-col gap-5">
                     <div className="font-bold text-center flex flex-col justify-center items-center w-[50%]">
@@ -31,7 +41,7 @@ export default function About({ auth }) {
                                 collaboration to drive success.
                             </p>
                             <p className="mt-6 text-center leading-relaxed text-gray-700">
-                                <strong>Our Journey:</strong> Founded in [Year],
+                                <strong>Our Journey:</strong> Founded in 2024,
                                 CO-OP CONNECT started with a vision to transform
                                 the educational landscape. Over the years, we
                                 have grown into a trusted platform that has

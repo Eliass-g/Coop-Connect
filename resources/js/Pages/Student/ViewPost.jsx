@@ -13,6 +13,7 @@ import {
 } from "@/Features/userJobs/userJobsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { usePage, Link } from "@inertiajs/react";
+import { sendNotification } from "@/Features/notifications/notificationsSlice";
 
 function ViewPost() {
     const { props } = usePage();
@@ -46,10 +47,18 @@ function ViewPost() {
                 userId: userId,
                 resume: resumeLink,
             })
-        ).then((response) => {
-            dispatch(checkUserJob({ userId: userId, jobsId: jobId }));
-        });
-        console.log("Resume Link:", resumeLink);
+        )
+            .then((response) => {
+                dispatch(checkUserJob({ userId: userId, jobsId: jobId }));
+            })
+            .then(() => {
+                const notificationData = {
+                    recipient_id: job.userId,
+                    redirect: `${job.id}`,
+                    message: `Applied`,
+                };
+                dispatch(sendNotification(notificationData));
+            });
         setIsModalOpen(false);
     };
 
@@ -99,7 +108,7 @@ function ViewPost() {
                         <ModalHeader>Apply for Job</ModalHeader>
                         <ModalBody>
                             <label>
-                                Resume Link:
+                                Resume Link:{" "}
                                 <input
                                     type="text"
                                     value={resumeLink}

@@ -1,11 +1,25 @@
-import * as React from "react";
-import styled from "styled-components";
+import React, { useState, useEffect } from "react";
+import styled, { keyframes } from "styled-components";
+import JobModal from "../../Profile/Partials/ViewJobModal";
+
+const appUrl = import.meta.env.VITE_APP_URL;
 import { useSelector, useDispatch } from "react-redux";
 import {
     searchJobsbySkill,
     selectJobsStatus,
     selectJobs,
 } from "@/Features/jobs/jobsSlice";
+
+const appearFromTop = keyframes`
+    0% {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+`;
 
 const JobContainer = styled.section`
     border-radius: 10px;
@@ -15,6 +29,10 @@ const JobContainer = styled.section`
     flex-direction: column;
     font-weight: 500;
     padding: 40px 30px;
+
+    @media (max-width: 991px) {
+        padding: 20px;
+    }
 `;
 
 const Title = styled.h2`
@@ -28,9 +46,6 @@ const Subtitle = styled.p`
     color: var(--Schemes-Outline, #7b757f);
     margin-top: 10px;
     font: 24px/133% Poppins, sans-serif;
-    @media (max-width: 991px) {
-        max-width: 100%;
-    }
 `;
 
 const JobList = styled.div`
@@ -42,29 +57,41 @@ const JobList = styled.div`
     color: var(--Schemes-On-Primary-Container, #260e44);
     line-height: 150%;
     padding: 0 60px 10px;
+
     @media (max-width: 991px) {
-        max-width: 100%;
         padding: 0 20px;
     }
 `;
 
 const JobCard = styled.article`
-    max-width: 400px;
+    max-width: 100%;
+    width: 100%;
     border-radius: 10px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     background-color: var(--Schemes-Primary-Container, #eddcff);
     display: flex;
-    width: 100%;
     flex-direction: column;
     padding: 20px 10px;
     margin-top: ${(props) => (props.hasMargin ? "10px" : "0")};
+    animation: ${appearFromTop} 0.8s ease forwards;
+    animation-delay: ${(props) => props.index * 0.1}s;
+    opacity: 0; /* Start hidden */
+    transition: transform 0.7s ease, box-shadow 0.3s ease;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 1001px) {
+        font-size: 16px;
+    }
 `;
 
 const JobTitle = styled.h3`
     color: var(--Schemes-On-Primary-Container, #260e44);
     text-align: center;
     font-size: 24px;
-    font-style: normal;
     font-weight: 500;
     line-height: 32px; /* 133.333% */
 `;
@@ -72,17 +99,22 @@ const JobTitle = styled.h3`
 const JobDetails = styled.section`
     align-self: center;
     display: flex;
-    margin-top: 15px;
+    flex-wrap: wrap;
     gap: 15px;
     letter-spacing: 0.15px;
+    margin-top: 15px;
+
+    @media (max-width: 991px) {
+        flex-direction: column;
+    }
 `;
 
 const CompanyInfo = styled.div`
-    justify-content: center;
     display: flex;
     flex-direction: column;
     margin: auto 0;
     padding: 3px 0;
+    flex-wrap: wrap;
 `;
 
 const CompanyName = styled.p`
@@ -100,44 +132,29 @@ const Divider = styled.hr`
 `;
 
 const ViewButton = styled.button`
-    font-family: Roboto, sans-serif;
     justify-content: center;
+    align-self: center;
     border-radius: 12px;
     background-color: var(--Schemes-Primary, #6b538c);
-    align-self: center;
     margin-top: 15px;
     color: #fff;
     font-weight: 700;
     letter-spacing: 0.5px;
     padding: 8px 16px;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+        background-color: #543b6f;
+        transform: scale(1.05);
+    }
 `;
 
-<<<<<<< HEAD
-const jobs = [
-    {
-        title: "Front-End Developer",
-        companyName: "Company Name",
-        location: "Location",
-        imgSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/f431c52a26bb3f4d9af631c4376a9111f916c5faa63eae0fe2f1f5853c8bb441?apiKey=d66532d056b14640a799069157705b77&",
-        imgAlt: "Company Logo",
-    },
-    {
-        title: "Front-End Developer",
-        companyName: "Company Name",
-        location: "Location",
-        imgSrc: "https://cdn.builder.io/api/v1/image/assets/TEMP/f431c52a26bb3f4d9af631c4376a9111f916c5faa63eae0fe2f1f5853c8bb441?apiKey=d66532d056b14640a799069157705b77&",
-        imgAlt: "Company Logo",
-    },
-];
-
-function Matches() {
-=======
 function Matches() {
     const dispatch = useDispatch();
-
     const jobs = useSelector(selectJobs);
     const jobsStatus = useSelector(selectJobsStatus);
+    const [selectedJob, setSelectedJob] = useState(null);
 
     useEffect(() => {
         dispatch(
@@ -149,7 +166,14 @@ function Matches() {
 
     const displayedJobs = jobs.slice(0, 3);
 
->>>>>>> feb0b09 (add redux integration to student pages: home, jobs, profile)
+    const handleViewJob = (job) => {
+        setSelectedJob(job);
+    };
+
+    const handleCloseModal = () => {
+        setSelectedJob(null);
+    };
+
     return (
         <JobContainer>
             <Title>Matches</Title>
@@ -165,15 +189,18 @@ function Matches() {
                                 alt={job.imgAlt}
                             />
                             <CompanyInfo>
-                                <CompanyName>{job.companyName}</CompanyName>
+                                <CompanyName>{job.company}</CompanyName>
                                 <Location>{job.location}</Location>
                             </CompanyInfo>
                         </JobDetails>
                         <Divider />
-                        <ViewButton>VIEW JOB</ViewButton>
+                        <ViewButton onClick={() => handleViewJob(job)}>VIEW JOB</ViewButton>
                     </JobCard>
                 ))}
             </JobList>
+            {selectedJob && (
+                <JobModal job={selectedJob} onClose={handleCloseModal} />
+            )}
         </JobContainer>
     );
 }

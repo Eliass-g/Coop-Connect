@@ -27,16 +27,10 @@ class StoreJobsRequest extends FormRequest
             'description' => ['required'],
             'skills' => ['required'],
             'location' => ['required'],
-<<<<<<< HEAD
-            'postingStatus' => ['required', Rule::in(['open', 'closed'])],
-            'jobType' => ['required', Rule::in(['full-time', 'part-time', 'contract', 'remote'])],
-            'company' => ['required']
-=======
             'postingStatus' => ['required', Rule::in(['Open', 'Closed'])],
             'jobType' => ['required'],
             'company' => ['required'],
             'userId' => ['required']
->>>>>>> 0541389 (employer side: updates to view job postings, view single job posting, related backend, creation of view applicants, decline applicant, accept applicant, related backend; student side: creation of view single job posting, apply to job posting, related backend)
         ];
     }
 
@@ -44,7 +38,8 @@ class StoreJobsRequest extends FormRequest
     {
         $this->merge(array_filter([
             'posting_status' => $this->postingStatus,
-            'job_type' => $this->jobType
+            'job_type' => $this->jobType,
+            'user_id' => $this->userId
         ]));
     }
 }

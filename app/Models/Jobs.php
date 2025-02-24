@@ -21,15 +21,11 @@ class Jobs extends Model
         'posting_status',
         'job_type',
         'company',
+        'user_id',
     ];
 
     public function users()
     {
         return $this->belongsToMany(User::class, 'user_jobs', 'jobs_id', 'user_id');
-    }
-
-    public function reflections()
-    {
-        return $this->hasMany(Reflections::class);
     }
 }

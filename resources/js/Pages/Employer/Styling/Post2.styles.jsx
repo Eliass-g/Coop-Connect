@@ -254,3 +254,12 @@ export const ButtonContainerPost2 = styled.div`
     flex-shrink: 0;
 `
 
+export const ErrorText = styled.p`
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+`;
+
+export const ErrorInput = styled(StyledInput)`
+    border: 2px solid red;
+`;

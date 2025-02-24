@@ -13,6 +13,8 @@ import {
 } from "@/Features/userJobs/userJobsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Inertia } from "@inertiajs/inertia";
+import { sendMessage } from "@/Features/message/messageSlice";
+import { sendNotification } from "@/Features/notifications/notificationsSlice";
 
 // Styled Components
 
@@ -60,10 +62,33 @@ const AcceptApplicant = () => {
                 message: message,
                 timeSlots: timeSlotsAsDates,
             })
-        ).then(() => {
-            console.log(userJob.jobsId);
-            window.location.href = `/employer/viewapplicants/${userJob.jobsId}`;
-        });
+        )
+            .then(() => {
+                const messageData = {
+                    receiver_email: applicant.email,
+                    message: message,
+                };
+                dispatch(sendMessage(messageData));
+            })
+            .then(() => {
+                const notificationData = {
+                    recipient_id: applicant.id,
+                    redirect: "viewapplications",
+                    message: `Accepted for Interview`,
+                };
+                dispatch(sendNotification(notificationData));
+            })
+            .then(() => {
+                const notificationData = {
+                    recipient_id: applicant.id,
+                    redirect: "message",
+                    message: message,
+                };
+                dispatch(sendNotification(notificationData));
+            })
+            .then(() => {
+                window.location.href = `/employer/viewapplicants/${userJob.jobsId}`;
+            });
     };
 
     return (

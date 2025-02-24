@@ -1,46 +1,27 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { Link } from "@inertiajs/react";
 import NavBar from "./Components/NavBar";
+import JobModal from "../Profile/Partials/ViewJobModal";
+import {
+    getJobs,
+    selectJobs,
+    selectJobsStatus,
+    selectJob,
+    getJobsforUser,
+    getUsersForJob,
+    searchJobsbySkill,
+    searchJobsBySkillAndLocation,
+    postJob,
+    putJob,
+    patchJob,
+    deleteJob,
+} from "@/Features/jobs/jobsSlice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+const appUrl = import.meta.env.VITE_APP_URL;
 import { useSelector, useDispatch } from "react-redux";
 import {
-<<<<<<< HEAD
-    searchJobsBySkillAndLocation,
-    selectJobsStatus,
-    selectJobs,
-} from "@/Features/jobs/jobsSlice";
-
-function Jobs() {
-<<<<<<< HEAD
-    const jobPostings = [
-        {
-            title: "Full-Stack Developer",
-            company: "Microsoft",
-            location: "Toronto, ON",
-            tags: ["Javascript", "HTML", "Development", "+3"],
-            description:
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-        },
-        {
-            title: "Web Developer",
-            company: "Atlassian",
-            location: "Houston, TX",
-            tags: ["Javascript", "HTML", "Development", "+3"],
-            description:
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-        },
-    ];
-
-    const featuredJob = {
-        title: "Full-Stack Developer",
-        company: "Microsoft",
-        location: "Toronto, ON",
-        description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
-        reasons: `It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).`,
-=======
-    const [featuredJob, setFeaturedJob] = useState(null);
-    const [searchTerms, setSearchTerms] = useState("");
-    const [searchLocation, setLocation] = useState("");
-=======
     MainContainer,
     SearchContainer,
     SearchInnerContainer,
@@ -71,63 +52,45 @@ function Jobs() {
     JobFullDescription,
     SkillsList,
     SkillBadge,
+    FeaturedJobandList,
+    SearchIcon,
+    LocationIcon,
+    JobColumnAndTitle,
+    ClearButton,
 } from "./Styling/Jobs.styles";
 
-function Jobs() {
-    const jobPostings = [
-        {
-            title: "Full-Stack Developer",
-            company: "Microsoft",
-            location: "Toronto, ON",
-            tags: ["Javascript", "HTML", "Development", "+3"],
-            description:
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-        },
-        {
-            title: "Web Developer",
-            company: "Atlassian",
-            location: "Houston, TX",
-            tags: ["Javascript", "HTML", "Development", "+3"],
-            description:
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-        },
-    ];
+const OverTitle = styled(SubHeading)`
+    position: relative;
 
-    const [userId, setUserId] = useState(null);
+    margin-top: 20px;
+    z-index: 10; /* Ensure the title is above the job cards */
+`;
+
+const Wrapper = styled.div`
+    position: relative; /* Create a stacking context */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: ${({ darkMode }) => (darkMode ? "#2C2C2C" : "#fff")};
+    transition: background-color 0.5s ease, color 0.5s ease;
+    border: 1px solid ${({ darkMode }) => (darkMode ? "#555" : "#ddd")};
+    border-radius: 8px;
+`;
+
+function Jobs() {
     const [featuredJob, setFeaturedJob] = useState(null);
     const [searchTerm, setSearchTerm] = useState("");
     const [searchLocation, setLocation] = useState("");
     const [showModal, setShowModal] = useState(false);
     const [selectedJob, setSelectedJob] = useState(null);
->>>>>>> 14a0769 (clean up code, remove unnecessary controllers, separate styling)
 
     const dispatch = useDispatch();
-
     const jobs = useSelector(selectJobs);
     const jobsStatus = useSelector(selectJobsStatus);
-
-<<<<<<< HEAD
-=======
-    useEffect(() => {
-        // Fetch the XSRF token from cookies and set it in Axios headers
-        const csrfToken = document.cookie
-            .split("; ")
-            .find((row) => row.startsWith("XSRF-TOKEN="))
-            ?.split("=")[1];
-        axios.defaults.headers.common["X-XSRF-TOKEN"] = csrfToken;
-
-        // Function to fetch the user ID
-        const fetchUserId = async () => {
-            try {
-                const response = await axios.get(`${appUrl}/api/user-id`);
-                setUserId(response.data.user.id);
-            } catch (error) {
-                console.error("Error fetching user ID:", error);
-            }
-        };
-
-        fetchUserId();
-    }, []);
+    const darkMode = false;
+    const fontSize = "1em";
 
     useEffect(() => {
         dispatch(getJobs());
@@ -139,13 +102,12 @@ function Jobs() {
         }
     }, [jobs]);
 
->>>>>>> 14a0769 (clean up code, remove unnecessary controllers, separate styling)
     const handleSearch = async (e) => {
         e.preventDefault();
         try {
             const response = await dispatch(
                 searchJobsBySkillAndLocation({
-                    searchTerm: searchTerms
+                    searchTerm: searchTerm
                         .split(",")
                         .map((searchTerm) => searchTerm.trim()),
                     location: searchLocation,
@@ -156,545 +118,309 @@ function Jobs() {
             console.error("Error searching jobs:", error);
             // Handle error state if necessary
         }
->>>>>>> feb0b09 (add redux integration to student pages: home, jobs, profile)
+    };
+
+    const openModal = (job) => {
+        setSelectedJob(job);
+        setShowModal(true);
+    };
+
+    const closeModal = () => {
+        setShowModal(false);
+        setSelectedJob(null);
     };
 
     return (
-        <NavBar header={"Job Postings"}>
-            <MainContainer>
-                <SearchContainer>
-                    <SearchInnerContainer>
-                        <SubHeading>Search for Job Postings</SubHeading>
-                        <TextDescription>
-                            Get amazing opportunities through jobs at CO-OP
-                            Connect!
-                        </TextDescription>
-<<<<<<< HEAD
-                        <SearchForm>
-=======
-                        <SearchForm onSubmit={handleSearch}>
->>>>>>> feb0b09 (add redux integration to student pages: home, jobs, profile)
-                            <SearchField>
-                                <img
-                                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/7ac6f5e8995015505b63112c3fe0ce83293960aae84ac26f166dcf6eb5607efc?apiKey=d66532d056b14640a799069157705b77&"
-                                    alt="search icon"
+        <NavBar header={"All Postings"}>
+            <MainContainer darkMode={darkMode} fontSize={fontSize}>
+                <SearchContainer darkMode={darkMode} fontSize={fontSize}>
+                    <SearchInnerContainer
+                        darkMode={darkMode}
+                        fontSize={fontSize}
+                    >
+                        <SubHeading darkMode={darkMode} fontSize={fontSize}>
+                            Search for Job Postings
+                        </SubHeading>
+
+                        <SearchForm
+                            darkMode={darkMode}
+                            fontSize={fontSize}
+                            onSubmit={handleSearch}
+                        >
+                            <SearchField
+                                darkMode={darkMode}
+                                fontSize={fontSize}
+                            >
+                                <SearchIcon
+                                    icon={faSearch}
+                                    darkMode={darkMode}
+                                    fontSize={fontSize}
                                 />
                                 <SearchInput
-<<<<<<< HEAD
-                                    placeholder="Job Titles, Keywords"
-=======
+                                    darkMode={darkMode}
+                                    fontSize={fontSize}
                                     type="text"
-                                    placeholder="Job Titles, Keywords"
-<<<<<<< HEAD
-                                    value={searchTerms}
-                                    onChange={(e) =>
-                                        setSearchTerms(e.target.value)
-=======
+                                    placeholder="Search by Job Titles, Keywords"
                                     value={searchTerm}
                                     onChange={(e) =>
                                         setSearchTerm(e.target.value)
->>>>>>> 14a0769 (clean up code, remove unnecessary controllers, separate styling)
                                     }
->>>>>>> feb0b09 (add redux integration to student pages: home, jobs, profile)
                                     aria-label="Job Titles, Keywords"
+                                    data-test-id="search-field-input"
                                 />
+                                {searchTerm && (
+                                    <ClearButton
+                                        onClick={() => setSearchTerm("")}
+                                        darkMode={darkMode}
+                                    >
+                                        ✕
+                                    </ClearButton>
+                                )}
                             </SearchField>
-                            <SearchField>
-                                <img
-                                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/e18a12a75f61520eab005b610b7b3ed410f4b0e7ebaa3f2d7c7708f36f9bb18d?apiKey=d66532d056b14640a799069157705b77&"
-                                    alt="location icon"
+
+                            <SearchField
+                                darkMode={darkMode}
+                                fontSize={fontSize}
+                            >
+                                <LocationIcon
+                                    icon={faMapMarkerAlt}
+                                    darkMode={darkMode}
+                                    fontSize={fontSize}
                                 />
                                 <SearchInput
-<<<<<<< HEAD
-                                    placeholder="Location"
-                                    aria-label="Location"
-                                />
-                            </SearchField>
-                            <SearchButton>View Jobs</SearchButton>
-                        </SearchForm>
-                        <JobList>
-                            <JobColumn>
-                                {jobPostings.map((job) => (
-                                    <JobCard key={job.title}>
-                                        <JobTitle>{job.title}</JobTitle>
-                                        <JobMeta>
-                                            <div>{job.company}</div>
-                                            <div>{job.location}</div>
-                                        </JobMeta>
-                                        <JobTags>
-                                            {job.tags.map((tag, index) => (
-                                                <Tag key={index}>{tag}</Tag>
-                                            ))}
-                                        </JobTags>
-                                        <JobDescription>
-                                            {job.description}
-                                        </JobDescription>
-                                        <Divider />
-                                        <ViewButton>VIEW POSTING</ViewButton>
-                                    </JobCard>
-                                ))}
-                            </JobColumn>
-                            <FeaturedJob>
-                                <JobCardFeatured>
-                                    <JobTitle>{featuredJob.title}</JobTitle>
-                                    <CompanyInfo>
-                                        <CompanyImage
-                                            src="https://cdn.builder.io/api/v1/image/assets/TEMP/b8ae9cd831463a8906ed092974d8aff01723eb0ccd0c5c446d59bc3e96d9c74c?apiKey=d66532d056b14640a799069157705b77&"
-                                            alt="company logo"
-                                        />
-                                        <CompanyDetails>
-                                            <CompanyName>
-                                                {featuredJob.company}
-                                            </CompanyName>
-                                            <CompanyLocation>
-                                                {featuredJob.location}
-                                            </CompanyLocation>
-                                        </CompanyDetails>
-                                    </CompanyInfo>
-                                    <ApplyButton>Apply Here!</ApplyButton>
-
-                                    <JobFullDescription>
-                                        <strong>What is Lorem Ipsum?</strong>
-                                        <br />
-                                        {featuredJob.description}
-                                        <br />
-                                        <br />
-                                        <strong>Why do we use it?</strong>
-                                        <br />
-                                        {featuredJob.reasons}
-                                    </JobFullDescription>
-                                </JobCardFeatured>
-                            </FeaturedJob>
-                        </JobList>
-=======
+                                    darkMode={darkMode}
+                                    fontSize={fontSize}
                                     type="text"
                                     value={searchLocation}
                                     onChange={(e) =>
                                         setLocation(e.target.value)
                                     }
                                     aria-label="Location"
+                                    placeholder="Search by Location"
                                 />
+                                {searchLocation && (
+                                    <ClearButton
+                                        onClick={() => setLocation("")}
+                                        darkMode={darkMode}
+                                    >
+                                        ✕
+                                    </ClearButton>
+                                )}
                             </SearchField>
-                            <SearchButton type="submit">View Jobs</SearchButton>
+                            <SearchButton
+                                darkMode={darkMode}
+                                fontSize={fontSize}
+                                type="submit"
+                            >
+                                View Jobs
+                            </SearchButton>
                         </SearchForm>
-                        {jobs && (
-                            <JobList>
-<<<<<<< HEAD
-                                {jobs && jobs.length > 0 ? (
-                                    <JobColumn>
-                                        {jobs.map((job) => (
-                                            <JobCard key={job.title}>
-                                                <JobTitle>{job.title}</JobTitle>
-                                                <JobMeta>
-                                                    <div>{job.company}</div>
-                                                    <div>{job.location}</div>
-                                                </JobMeta>
-                                                <SkillsList>
-                                                    {job.skills.map(
-                                                        (tag, index) => (
-                                                            <SkillBadge
-                                                                key={index}
-                                                            >
-                                                                {tag}
-                                                            </SkillBadge>
+                        <SubHeading
+                            darkMode={darkMode}
+                            fontSize={fontSize}
+                            style={{ marginTop: "20px" }}
+                        >
+                            Featured Job
+                        </SubHeading>
+                        <FeaturedJobandList
+                            darkMode={darkMode}
+                            fontSize={fontSize}
+                        >
+                            {jobs && jobs.length > 0 ? (
+                                <JobList
+                                    darkMode={darkMode}
+                                    fontSize={fontSize}
+                                >
+                                    {featuredJob && (
+                                        <FeaturedJob
+                                            darkMode={darkMode}
+                                            fontSize={fontSize}
+                                        >
+                                            <JobCardFeatured
+                                                darkMode={darkMode}
+                                                fontSize={fontSize}
+                                            >
+                                                <JobTitle
+                                                    darkMode={darkMode}
+                                                    fontSize={fontSize}
+                                                >
+                                                    {featuredJob.title}
+                                                </JobTitle>
+                                                <CompanyInfo
+                                                    darkMode={darkMode}
+                                                    fontSize={fontSize}
+                                                >
+                                                    {/* <CompanyImage darkMode={darkMode} fontSize={fontSize}
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/b8ae9cd831463a8906ed092974d8aff01723eb0ccd0c5c446d59bc3e96d9c74c?apiKey=d66532d056b14640a799069157705b77&"
+                    alt="company logo"
+                /> */}
+                                                    <CompanyDetails
+                                                        darkMode={darkMode}
+                                                        fontSize={fontSize}
+                                                    >
+                                                        <CompanyName
+                                                            darkMode={darkMode}
+                                                            fontSize={fontSize}
+                                                        >
+                                                            {
+                                                                featuredJob.company
+                                                            }
+                                                        </CompanyName>
+                                                        <CompanyLocation
+                                                            darkMode={darkMode}
+                                                            fontSize={fontSize}
+                                                        >
+                                                            {
+                                                                featuredJob.location
+                                                            }
+                                                        </CompanyLocation>
+                                                    </CompanyDetails>
+                                                </CompanyInfo>
+
+                                                {/* Skills Section */}
+                                                <SkillsList
+                                                    darkMode={darkMode}
+                                                    fontSize={fontSize}
+                                                >
+                                                    {featuredJob.skills &&
+                                                    featuredJob.skills.length >
+                                                        0 ? (
+                                                        featuredJob.skills.map(
+                                                            (skill, index) => (
+                                                                <SkillBadge
+                                                                    darkMode={
+                                                                        darkMode
+                                                                    }
+                                                                    fontSize={
+                                                                        fontSize
+                                                                    }
+                                                                    key={index}
+                                                                >
+                                                                    {skill}
+                                                                </SkillBadge>
+                                                            )
                                                         )
+                                                    ) : (
+                                                        <p>No skills listed.</p>
                                                     )}
                                                 </SkillsList>
-                                                <JobDescription>
-                                                    {job.description}
-                                                </JobDescription>
-                                                <Divider />
-                                                <ViewButton>
-                                                    VIEW POSTING
-                                                </ViewButton>
-                                            </JobCard>
-                                        ))}
-                                    </JobColumn>
-                                ) : (
-                                    <p>No jobs found.</p>
-                                )}{" "}
-=======
-                                <JobColumn>
-                                    {jobs.map((job) => (
-                                        <JobCard key={job.title}>
-                                            <JobTitle>{job.title}</JobTitle>
-                                            <JobMeta>
-                                                <div>{job.company}</div>
-                                                <div>{job.location}</div>
-                                            </JobMeta>
-                                            <SkillsList>
-                                                {job.skills.map(
-                                                    (tag, index) => (
-                                                        <SkillBadge key={index}>
-                                                            {tag}
-                                                        </SkillBadge>
-                                                    )
-                                                )}
-                                            </SkillsList>
-                                            <JobDescription>
-                                                {job.description}
-                                            </JobDescription>
-                                            <Divider />
-                                            <ViewButton
-                                                onClick={() => openModal(job)}
-                                            >
-                                                VIEW POSTING
-                                            </ViewButton>
-                                        </JobCard>
-                                    ))}
-                                </JobColumn>
->>>>>>> 14a0769 (clean up code, remove unnecessary controllers, separate styling)
-                                {featuredJob && (
-                                    <FeaturedJob>
-                                        <JobCardFeatured>
-                                            <JobTitle>
-                                                {featuredJob.title}
-                                            </JobTitle>
-                                            <CompanyInfo>
-                                                <CompanyImage
-                                                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/b8ae9cd831463a8906ed092974d8aff01723eb0ccd0c5c446d59bc3e96d9c74c?apiKey=d66532d056b14640a799069157705b77&"
-                                                    alt="company logo"
-                                                />
-                                                <CompanyDetails>
-                                                    <CompanyName>
-                                                        {featuredJob.title}
-                                                    </CompanyName>
-                                                    <CompanyLocation>
-                                                        {featuredJob.title}
-                                                    </CompanyLocation>
-                                                </CompanyDetails>
-                                            </CompanyInfo>
-<<<<<<< HEAD
-                                            <ApplyButton>
-                                                Apply Here!
-                                            </ApplyButton>
 
-=======
-                                            <ApplyButton
-                                                onClick={() =>
-                                                    openModal(featuredJob)
-                                                }
-                                            >
-                                                Apply Here!
-                                            </ApplyButton>
->>>>>>> 14a0769 (clean up code, remove unnecessary controllers, separate styling)
-                                            <JobFullDescription>
-                                                <strong>
-                                                    What is Lorem Ipsum?
-                                                </strong>
-                                                <br />
-                                                {featuredJob.description}
-                                                <br />
-                                                <br />
-                                                <strong>
-                                                    Why do we use it?
-                                                </strong>
-                                                <br />
-                                                {featuredJob.title}
-                                            </JobFullDescription>
-                                        </JobCardFeatured>
-                                    </FeaturedJob>
-                                )}
-                            </JobList>
-                        )}
->>>>>>> feb0b09 (add redux integration to student pages: home, jobs, profile)
+                                                <Link
+                                                    darkMode={darkMode}
+                                                    fontSize={fontSize}
+                                                    href={`/student/viewpost/${featuredJob.id}`}
+                                                >
+                                                    <ApplyButton
+                                                        darkMode={darkMode}
+                                                        fontSize={fontSize}
+                                                    >
+                                                        View Posting
+                                                    </ApplyButton>
+                                                </Link>
+
+                                                <JobFullDescription
+                                                    darkMode={darkMode}
+                                                    fontSize={fontSize}
+                                                >
+                                                    <strong>
+                                                        Job Description
+                                                    </strong>
+                                                    <br />
+                                                    {featuredJob.description}
+                                                    <br />
+                                                    <br />
+                                                    <strong>Job Title</strong>
+                                                    <br />
+                                                    {featuredJob.title}
+                                                </JobFullDescription>
+                                            </JobCardFeatured>
+                                        </FeaturedJob>
+                                    )}
+                                </JobList>
+                            ) : (
+                                <p>No jobs found.</p>
+                            )}
+                        </FeaturedJobandList>
                     </SearchInnerContainer>
                 </SearchContainer>
+                <Wrapper>
+                    {/* Title over the JobColumn */}
+                    <OverTitle darkMode={darkMode} fontSize={fontSize}>
+                        Postings
+                    </OverTitle>
+
+                    {/* Job Cards */}
+                    <JobColumn darkMode={darkMode} fontSize={fontSize}>
+                        {jobs.map((job) => (
+                            <JobCard
+                                darkMode={darkMode}
+                                fontSize={fontSize}
+                                key={job.title}
+                                onClick={() => setFeaturedJob(job)}
+                            >
+                                <JobTitle
+                                    darkMode={darkMode}
+                                    fontSize={fontSize}
+                                >
+                                    {job.title}
+                                </JobTitle>
+                                <JobMeta
+                                    darkMode={darkMode}
+                                    fontSize={fontSize}
+                                >
+                                    <div>{job.company}</div>
+                                    <div>{job.location}</div>
+                                </JobMeta>
+                                {job.skills && (
+                                    <SkillsList
+                                        darkMode={darkMode}
+                                        fontSize={fontSize}
+                                    >
+                                        {job.skills.map((tag, index) => (
+                                            <SkillBadge key={index}>
+                                                {tag}
+                                            </SkillBadge>
+                                        ))}
+                                    </SkillsList>
+                                )}
+                                <JobDescription
+                                    darkMode={darkMode}
+                                    fontSize={fontSize}
+                                    dangerouslySetInnerHTML={{
+                                        __html: job.description,
+                                    }}
+                                />
+                                <Divider
+                                    darkMode={darkMode}
+                                    fontSize={fontSize}
+                                />
+                                <Link
+                                    darkMode={darkMode}
+                                    fontSize={fontSize}
+                                    href={`/student/viewpost/${job.id}`}
+                                >
+                                    <ViewButton
+                                        darkMode={darkMode}
+                                        fontSize={fontSize}
+                                    >
+                                        VIEW POSTING
+                                    </ViewButton>
+                                </Link>
+                            </JobCard>
+                        ))}
+                    </JobColumn>
+                </Wrapper>
             </MainContainer>
+            {showModal && (
+                <JobModal
+                    darkMode={darkMode}
+                    fontSize={fontSize}
+                    job={selectedJob}
+                    onClose={closeModal}
+                />
+            )}
         </NavBar>
     );
 }
 
-<<<<<<< HEAD
-const MainContainer = styled.main`
-    align-self: stretch;
-    display: flex;
-    flex-direction: column;
-`;
-
-const SearchContainer = styled.section`
-    align-items: center;
-    border-radius: 10px;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    background-color: #fff;
-    display: flex;
-    margin-top: 40px;
-    flex-direction: column;
-    padding: 20px 10px 0;
-
-    @media (max-width: 991px) {
-        max-width: 100%;
-        padding: 0 20px;
-    }
-`;
-
-const SearchInnerContainer = styled.div`
-    display: flex;
-    width: 100%;
-    max-width: 1088px;
-    flex-direction: column;
-    align-items: center;
-
-    @media (max-width: 991px) {
-        max-width: 100%;
-    }
-`;
-
-const SubHeading = styled.h2`
-    color: #6b538c;
-    font: 700 32px Poppins, sans-serif;
-`;
-
-const TextDescription = styled.p`
-    color: #7b757f;
-    margin-top: 10px;
-    font: 700 24px/133% Poppins, sans-serif;
-
-    @media (max-width: 991px) {
-        max-width: 100%;
-    }
-`;
-
-const SearchForm = styled.form`
-    justify-content: center;
-    border-radius: 10px;
-    border: 1px solid rgba(123, 117, 127, 1);
-    display: flex;
-    margin-top: 30px;
-    gap: 20px;
-    font-size: 16px;
-    color: #7b757f;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    line-height: 150%;
-    padding: 10px;
-
-    @media (max-width: 991px) {
-        flex-wrap: wrap;
-    }
-`;
-
-const SearchField = styled.div`
-    justify-content: center;
-    display: flex;
-    gap: 10px;
-`;
-
-const SearchInput = styled.input`
-    font-family: Poppins, sans-serif;
-    justify-content: center;
-    border-radius: 4px;
-    border: 1px solid rgba(107, 83, 140, 1);
-    background-color: #fff;
-    padding: 8px 16px;
-`;
-
-const SearchButton = styled.button`
-    font-family: Roboto, sans-serif;
-    justify-content: center;
-    border-radius: 12px;
-    background-color: #6b538c;
-    color: #fff;
-    padding: 8px 16px;
-`;
-
-const JobList = styled.div`
-    display: flex;
-    margin-top: 30px;
-    padding: 10px 10px 0;
-    @media (max-width: 991px) {
-        max-width: 100%;
-    }
-`;
-
-const JobColumn = styled.div`
-    display: flex;
-    flex-direction: column;
-    line-height: normal;
-    width: 43%;
-    gap: 10px;
-    @media (max-width: 991px) {
-        width: 100%;
-    }
-`;
-
-const JobCard = styled.article`
-    max-width: 400px;
-    align-items: center;
-    border-radius: 10px;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    border: 2px solid rgba(107, 83, 140, 1);
-    background-color: #eddcff;
-    display: flex;
-
-    width: 100%;
-    flex-direction: column;
-    padding: 20px 40px;
-
-    @media (max-width: 991px) {
-        padding: 0 20px;
-    }
-`;
-
-const JobTitle = styled.h3`
-    display: flex;
-    font: 28px/129% Poppins, sans-serif;
-`;
-
-const JobMeta = styled.div`
-    margin-top: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-family: Poppins, sans-serif;
-    letter-spacing: 0.15px;
-`;
-
-const JobTags = styled.div`
-    justify-content: space-between;
-    align-content: space-between;
-    align-self: stretch;
-    flex-wrap: wrap;
-    display: flex;
-    margin-top: 17px;
-    gap: 10px;
-    font-size: 12px;
-    color: #773dc3;
-    font-weight: 400;
-    letter-spacing: 0.4px;
-    line-height: 133%;
-`;
-
-const Tag = styled.span`
-    font-family: Poppins, sans-serif;
-    justify-content: center;
-    border-radius: 40px;
-    border: 1px solid rgba(119, 61, 195, 1);
-    padding: 8px 10px;
-`;
-
-const JobDescription = styled.p`
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    align-self: stretch;
-    text-align: center;
-    text-overflow: ellipsis;
-    letter-spacing: 0.25px;
-    margin-top: 15px;
-    font: 400 14px/20px Poppins, sans-serif;
-`;
-
-const Divider = styled.hr`
-    border-color: rgba(38, 14, 68, 1);
-    border-top: 1px solid;
-    background-color: #260e44;
-    margin-top: 14px;
-    width: 86px;
-`;
-
-const ViewButton = styled.button`
-    font-family: Roboto, sans-serif;
-    justify-content: center;
-    border-radius: 12px;
-    background-color: #6b538c;
-    margin-top: 15px;
-    color: #fff;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    padding: 8px 16px;
-`;
-
-const FeaturedJob = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: self-end;
-    line-height: normal;
-    width: 57%;
-    margin-left: 20px;
-
-    @media (max-width: 991px) {
-        width: 100%;
-        margin-left: 0;
-    }
-`;
-
-const JobCardFeatured = styled.article`
-    border-radius: 10px;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    border: 2px solid rgba(107, 83, 140, 1);
-    background-color: #eddcff;
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    padding: 20px 40px;
-    margin-bottom: 10px;
-    @media (max-width: 991px) {
-        padding: 0 20px;
-    }
-`;
-
-const CompanyImage = styled.img`
-    width: 50px;
-    height: 50px;
-    border-radius: 10px;
-`;
-
-const CompanyInfo = styled.div`
-    display: flex;
-    margin-top: 10px;
-    gap: 20px;
-    letter-spacing: 0.15px;
-`;
-
-const CompanyDetails = styled.div`
-    display: flex;
-    align-self: start;
-    flex-direction: column;
-`;
-
-const CompanyName = styled.p`
-    font-family: Poppins, sans-serif;
-`;
-
-const CompanyLocation = styled.p`
-    font-family: Poppins, sans-serif;
-`;
-
-const ApplyButton = styled.button`
-    display: flex;
-    padding: 8px 16px;
-    justify-content: center;
-    align-items: center;
-    gap: 6px;
-    font-family: Roboto, sans-serif;
-    border-radius: 12px;
-    background-color: #6b538c;
-    margin-top: 10px;
-    color: #fff;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    line-height: 24px;
-    font-style: normal;
-    font-size: 16px;
-    width: 26%;
-`;
-
-const JobFullDescription = styled.p`
-    max-width: 550px;
-    padding-top: 11px;
-    border-top: 1px solid rgba(0, 0, 0, 1);
-    align-self: stretch;
-    margin-top: 15px;
-    color: #000;
-    letter-spacing: 0.25px;
-    font: 400 14px/20px Poppins, sans-serif;
-
-    @media (max-width: 991px) {
-        max-width: 100%;
-    }
-`;
-
-=======
->>>>>>> c9b0256 (clean up code, remove unnecessary controllers, separate styling)
 export default Jobs;

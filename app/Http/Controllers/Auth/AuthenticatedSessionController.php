@@ -38,12 +38,12 @@ class AuthenticatedSessionController extends Controller
 
         $user = Auth::user();
 
-        Log::info("Test" . print_r($user, true));
-
         // Redirect based on user role
         switch ($user->role) {
             case 'teacher':
                 return redirect()->intended(RouteServiceProvider::HOME_TEACHER);
+            case 'admin':
+                return redirect()->intended(RouteServiceProvider::HOME_STUDENT);
             case 'employee':
                 return redirect()->intended(RouteServiceProvider::HOME_EMPLOYER);
             case 'student':

@@ -23,7 +23,8 @@ class JobsResource extends JsonResource
             'postingStatus' => $this->posting_status,
             'jobType' => $this->job_type,
             'company' => $this->company,
-            'users' => $this->whenLoaded('users')
+            'userId' => $this->user_id,
+            'users' => $this->whenLoaded('users'),
         ];
     }
 }

@@ -1,13 +1,28 @@
 import * as React from "react";
-import { useState } from "react";
+const appUrl = import.meta.env.VITE_APP_URL;
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 import NavBar from "./Components/NavBar";
+import Modal from "../Profile/Partials/AddEventModal";
+import EditModal from "../Profile/Partials/EditEventModal";
+import "react-big-calendar/lib/css/react-big-calendar.css";
+import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
+import { Calendar, momentLocalizer } from "react-big-calendar";
+import moment from "moment";
+import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import { DndProvider } from "react-dnd";
+import {
+    getScheduledUserJobsForOwner,
+    selectInterviews,
+} from "@/Features/userJobs/userJobsSlice";
 import {
     MainContainer,
     Container,
     Wrapper,
     Header,
-    CalendarWrapper,
+    CalendarDiv,
     CalendarHeader,
     Month,
     NavIcons,
@@ -16,153 +31,197 @@ import {
     Day,
     DatesGrid,
     DateCell,
-    TodayDateCell,
-    InactiveDateCell,
+    EventsContainer,
+    EventsHeader,
+    Event,
+    NoEventsMessage,
+    DeleteButton,
+    GlobalStyles,
+    PurpleButton,
 } from "./Styling/Interviews.styles";
 
+const localizer = momentLocalizer(moment);
+const DnDCalendar = withDragAndDrop(Calendar);
+
 const Interviews = () => {
-    const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
-    const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
+    const dispatch = useDispatch();
+    const [events, setEvents] = useState([]);
+    const darkMode = false;
+    const fontSize = "1em";
+    const interviews = useSelector(selectInterviews);
+    const [selectedEvent, setSelectedEvent] = useState(null);
 
-    const renderCalendar = (month, year) => {
-        const daysInMonth = new Date(year, month + 1, 0).getDate();
-        const firstDayIndex = new Date(year, month, 1).getDay();
-        const prevDays = firstDayIndex === 0 ? 6 : firstDayIndex - 1;
-        const prevMonthDays = new Date(year, month, 0).getDate();
-        const nextMonthDays = 42 - (daysInMonth + prevDays);
+    useEffect(() => {
+        dispatch(getScheduledUserJobsForOwner());
+    }, [dispatch]);
 
-        const daysArray = [
-            ...Array(prevDays)
-                .fill(null)
-                .map((_, i) => ({
-                    day: prevMonthDays - prevDays + i + 1,
-                    isInCurrentMonth: false,
-                })),
-            ...Array(daysInMonth)
-                .fill(null)
-                .map((_, i) => ({ day: i + 1, isInCurrentMonth: true })),
-            ...Array(nextMonthDays)
-                .fill(null)
-                .map((_, i) => ({ day: i + 1, isInCurrentMonth: false })),
-        ];
+    function transformedInterviews(interviews) {
+        const result = interviews.map((interview) => ({
+            ...interview,
+            start: new Date(interview.timeSlots),
+            end: new Date(interview.timeSlots),
+        }));
+        return result;
+    }
 
-        return daysArray;
-    };
+    useEffect(() => {
+        setEvents(transformedInterviews(interviews));
+    }, [interviews]);
 
-    const handlePrevMonth = () => {
+    function getTodayDate() {
         const today = new Date();
-        if (
-            !(
-                currentMonth === today.getMonth() &&
-                currentYear === today.getFullYear()
-            )
-        ) {
-            if (currentMonth === 0) {
-                setCurrentMonth(11);
-                setCurrentYear(currentYear - 1);
-            } else {
-                setCurrentMonth(currentMonth - 1);
-            }
-        }
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, "0"); // Months are zero-indexed
+        const day = String(today.getDate()).padStart(2, "0");
+
+        return `${year}-${month}-${day}`;
+    }
+
+    const eventStyleGetter = (event, start, end, isSelected) => {
+        let backgroundColor = "#6B538C"; // Desired color for the event markers
+        let style = {
+            backgroundColor: backgroundColor,
+            borderRadius: "5px",
+            opacity: 0.8,
+            color: "white", // Text color for better contrast
+            border: "0px",
+            display: "block",
+            fontSize: "14px",
+        };
+        return {
+            style: style,
+        };
     };
 
-    const handleNextMonth = () => {
-        if (currentMonth === 11) {
-            setCurrentMonth(0);
-            setCurrentYear(currentYear + 1);
-        } else {
-            setCurrentMonth(currentMonth + 1);
-        }
+    const handleSelectEvent = (event) => {
+        setSelectedEvent(event);
     };
 
-    const daysArray = renderCalendar(currentMonth, currentYear);
-
-    const today = new Date();
-    const isPrevDisabled =
-        currentMonth === today.getMonth() &&
-        currentYear === today.getFullYear();
+    const formats = {
+        agendaHeaderFormat: ({ start, end }, culture, localizer) =>
+            `${localizer.format(
+                start,
+                "MMMM DD, YYYY",
+                culture
+            )} – ${localizer.format(end, "MMMM DD, YYYY", culture)}`,
+    };
 
     return (
         <NavBar header={"Interviews"}>
-            <MainContainer>
-                <Container>
-                    <Wrapper>
-                        <Header>Schedule your Interviews</Header>
-                        <CalendarWrapper>
-                            <CalendarHeader>
-                                <Month>
-                                    {new Date(
-                                        currentYear,
-                                        currentMonth
-                                    ).toLocaleDateString("en-us", {
-                                        month: "long",
-                                        year: "numeric",
-                                    })}
-                                </Month>
-                                <NavIcons>
-                                    <Icon
-                                        loading="lazy"
-                                        src="https://img.icons8.com/ios-glyphs/30/000000/chevron-left.png"
-                                        onClick={handlePrevMonth}
-                                        isDisabled={isPrevDisabled}
-                                    />
-                                    <Icon
-                                        loading="lazy"
-                                        src="https://img.icons8.com/ios-glyphs/30/000000/chevron-right.png"
-                                        onClick={handleNextMonth}
-                                        isDisabled={false}
-                                    />
-                                </NavIcons>
-                            </CalendarHeader>
-                            <DaysOfWeek>
-                                <Day>Mo</Day>
-                                <Day>Tu</Day>
-                                <Day>We</Day>
-                                <Day>Th</Day>
-                                <Day>Fr</Day>
-                                <Day>Sa</Day>
-                                <Day>Su</Day>
-                            </DaysOfWeek>
-                            <DatesGrid>
-                                {daysArray.map((date, idx) => {
-                                    const isToday =
-                                        date.day === today.getDate() &&
-                                        currentMonth === today.getMonth() &&
-                                        currentYear === today.getFullYear();
-
-                                    if (date.isInCurrentMonth) {
-                                        return isToday ? (
-                                            <TodayDateCell key={idx}>
-                                                {date.day}
-                                            </TodayDateCell>
-                                        ) : (
-                                            <DateCell key={idx}>
-                                                {date.day}
-                                            </DateCell>
-                                        );
-                                    } else {
-                                        return (
-                                            <InactiveDateCell key={idx}>
-                                                {date.day}
-                                            </InactiveDateCell>
-                                        );
-                                    }
-                                })}
-                            </DatesGrid>
-                        </CalendarWrapper>
+            <GlobalStyles darkMode={darkMode} fontSize={fontSize} />
+            <MainContainer darkMode={darkMode} fontSize={fontSize}>
+                <Container darkMode={darkMode} fontSize={fontSize}>
+                    <Wrapper darkMode={darkMode} fontSize={fontSize}>
+                        <Header darkMode={darkMode} fontSize={fontSize}>
+                            Interviews
+                        </Header>
+                        <CalendarDiv darkMode={darkMode} fontSize={fontSize}>
+                            <DndProvider
+                                darkMode={darkMode}
+                                fontSize={fontSize}
+                                backend={HTML5Backend}
+                            >
+                                <DnDCalendar
+                                    darkMode={darkMode}
+                                    fontSize={fontSize}
+                                    defaultDate={new Date(getTodayDate())}
+                                    defaultView="month"
+                                    events={events}
+                                    localizer={localizer}
+                                    style={{ height: "100%" }}
+                                    selectable
+                                    startAccessor={"start"}
+                                    endAccessor="end"
+                                    eventPropGetter={eventStyleGetter}
+                                    formats={formats}
+                                    resizable={false}
+                                    onSelectEvent={handleSelectEvent}
+                                />
+                            </DndProvider>
+                        </CalendarDiv>
                     </Wrapper>
+                    <EventsContainer darkMode={darkMode} fontSize={fontSize}>
+                        <EventsHeader darkMode={darkMode} fontSize={fontSize}>
+                            All Events
+                        </EventsHeader>
+                        {events && events.length > 0 ? (
+                            events.map((event) => {
+                                return (
+                                    <Event
+                                        darkMode={darkMode}
+                                        fontSize={fontSize}
+                                        key={event.id}
+                                    >
+                                        <div>Position: {event.title}</div>
+                                        <div>Applicant Name: {event.name}</div>
+                                        <div>Applicant Email: {event.email}</div>
+                                        <div>Location: {event.location}</div>
+                                        <div>
+                                            Description: {event.description}
+                                        </div>
+                                        <div>
+                                            Date:{" "}
+                                            {moment(event.start).format(
+                                                "MMMM D, YYYY HH:mm"
+                                            )}
+                                        </div>
+                                    </Event>
+                                );
+                            })
+                        ) : (
+                            <NoEventsMessage
+                                darkMode={darkMode}
+                                fontSize={fontSize}
+                            >
+                                No events found
+                            </NoEventsMessage>
+                        )}
+                    </EventsContainer>
                 </Container>
             </MainContainer>
+            {selectedEvent && (
+                <EventModal
+                    event={selectedEvent}
+                    onClose={() => setSelectedEvent(null)}
+                />
+            )}
         </NavBar>
     );
 };
 
-const CalendarDiv = styled.div`
-    background-color: #ffffff;
-    height: 80vh;
-    margin-bottom: 3vh;
-    margin-top: 3vh;
+const EventModal = ({ event, onClose }) => {
+    if (!event) return null;
 
-`;
+    return (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+            <div className="bg-white p-6 rounded-lg shadow-lg w-96">
+                <h2 className="text-xl font-bold">{event.title}</h2>
+                <p>
+                    <strong>Applicant Name:</strong> {event.name}
+                </p>
+                <p>
+                    <strong>Applicant Email:</strong> {event.email}
+                </p>
+                <p>
+                    <strong>Location:</strong> {event.location}
+                </p>
+                <p>
+                    <strong>Date:</strong>{" "}
+                    {new Date(event.start).toLocaleString()}
+                </p>
+                <p>
+                    <strong>Description:</strong>{" "}
+                    {event.description || "No additional details."}
+                </p>
+                <button
+                    onClick={onClose}
+                    className="mt-4 px-4 py-2 bg-purple-500 text-white rounded"
+                >
+                    Close
+                </button>
+            </div>
+        </div>
+    );
+};
 
 export default Interviews;

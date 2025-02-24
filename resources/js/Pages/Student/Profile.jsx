@@ -1,26 +1,27 @@
 import * as React from "react";
 import styled from "styled-components";
 import ProfileForm from "./Components/ProfileForm";
-import Matches from "./Components/Matches";
-import ReflectionDocuments from "./Components/ReflectionDocuments";
 import NavBar from "./Components/NavBar";
 import {
     MainContainer,
     ProfileContainer,
     RightContainer,
 } from "./Styling/Profile.styles";
+import { usePage, Link } from "@inertiajs/react";
 
 export default function Profile() {
+    const { props } = usePage();
+    const { user } = props;
     return (
         <NavBar header="My Profile">
             <MainContainer>
                 <ProfileContainer>
-                    <ProfileForm />
+                    <ProfileForm user={user} />
                 </ProfileContainer>
-                <RightContainer>
+                {/* <RightContainer>
                     <Matches />
                     <ReflectionDocuments />
-                </RightContainer>
+                </RightContainer> */}
             </MainContainer>
         </NavBar>
     );

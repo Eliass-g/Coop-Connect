@@ -7,6 +7,7 @@ import {
     patchUserJob,
 } from "@/Features/userJobs/userJobsSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { sendNotification } from "@/Features/notifications/notificationsSlice";
 
 const ViewApplications = () => {
     const [activeTab, setActiveTab] = useState("Pending");
@@ -22,20 +23,26 @@ const ViewApplications = () => {
 
     const handleAccept = (id) => {
         // Handle the accept action
-        console.log(`Accepted application with id: ${id}`);
         window.location.href = `/student/accept-interview/${id}`;
     };
 
-    const handleDecline = (id) => {
+    const handleDecline = (app) => {
         if (
             window.confirm("Are you sure you want to decline this application?")
         ) {
             dispatch(
                 patchUserJob({
-                    userJobsId: id,
+                    userJobsId: app.id,
                     status: "Declined",
                 })
-            );
+            ).then(() => {
+                const notificationData = {
+                    recipient_id: app.user_id,
+                    redirect: `${app.jobs_id}`,
+                    message: `Declined Interview`,
+                };
+                dispatch(sendNotification(notificationData));
+            });
         }
     };
 
@@ -75,7 +82,7 @@ const ViewApplications = () => {
                             <ActionButton onClick={() => handleAccept(app.id)}>
                                 Accept
                             </ActionButton>
-                            <ActionButton onClick={() => handleDecline(app.id)}>
+                            <ActionButton onClick={() => handleDecline(app)}>
                                 Decline
                             </ActionButton>
                         </ButtonGroup>
@@ -105,7 +112,6 @@ const ViewApplications = () => {
                 </Tabs>
                 {jobs.length > 0 ? (
                     <ApplicationsContainer>
-                        {console.log(jobs)}
                         {renderApplications()}
                     </ApplicationsContainer>
                 ) : (
@@ -135,13 +141,13 @@ const Tab = styled.div`
     padding: 10px 20px;
     margin: 0 10px;
     cursor: pointer;
-    background: ${({ $active }) => ($active ? "#007BFF" : "#E0E0E0")};
+    background: ${({ $active }) => ($active ? "#6b538c" : "#E0E0E0")};
     color: ${({ $active }) => ($active ? "#FFF" : "#000")};
     border-radius: 5px;
     user-select: none;
 
     &:hover {
-        background: ${({ $active }) => ($active ? "#0056b3" : "#c7c7c7")};
+        background: ${({ $active }) => ($active ? "#5A4476" : "#c7c7c7")};
     }
 `;
 
@@ -172,14 +178,14 @@ const ActionButton = styled.button`
     padding: 10px 20px;
     margin: 0 10px;
     cursor: pointer;
-    background: #007bff;
+    background: #6b538c;
     color: #fff;
     border: none;
     border-radius: 5px;
     user-select: none;
 
     &:hover {
-        background: #0056b3;
+        background: #5a4476;
     }
 `;
 

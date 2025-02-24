@@ -11,7 +11,7 @@ export default function Settings() {
         <NavBar header={"Settings"}>
             <MainContainer>
                 <SettingsPanel />
-                <QuickLinks />
+                {/* <QuickLinks /> */}
             </MainContainer>
         </NavBar>
     );

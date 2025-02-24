@@ -42,8 +42,6 @@ function EditPost1() {
     const job = useSelector(selectJobs);
     const jobStatus = useSelector(selectJobsStatus);
 
-    console.log(jobFormData);
-
     useEffect(() => {
         dispatch(selectJob({ jobId })).then((response) => {
             const job = response.payload; // Assuming the response payload contains the job data

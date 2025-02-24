@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Jobs;
+use App\Models\User;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Jobs>
@@ -26,6 +27,7 @@ class JobsFactory extends Factory
             'posting_status' => $this->faker->randomElement(['Open', 'Closed']),
             'job_type' => $this->faker->randomElement(['Full-time', 'Part-time', 'Contract']),
             'company' => $this->faker->company,
+            'user_id' => User::factory()
         ];
     }
 }

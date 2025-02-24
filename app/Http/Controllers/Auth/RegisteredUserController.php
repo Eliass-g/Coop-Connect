@@ -53,8 +53,6 @@ class RegisteredUserController extends Controller
 
         $user = Auth::user();
 
-        Log::info("Test" . print_r($user, true));
-
         // Redirect based on user role
         switch ($user->role) {
             case 'teacher':

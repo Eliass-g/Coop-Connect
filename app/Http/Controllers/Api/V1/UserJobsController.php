@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Models\UserJobs;
+use App\Models\Jobs;
 use App\Http\Requests\V1\StoreUserJobsRequest;
 use App\Http\Requests\V1\UpdateUserJobsRequest;
 use App\Http\Controllers\Controller;
@@ -66,6 +67,8 @@ class UserJobsController extends Controller
         $users = $userJobs->map(function ($userJob) {
             return [
                 'id' => $userJob->id,
+                'user_id' => $userJob->user->id,
+                'jobs_id' => $userJob->jobs_id,
                 'name' => $userJob->user->name,
                 'email' => $userJob->user->email,
                 'resume' => $userJob->resume,
@@ -103,25 +106,21 @@ class UserJobsController extends Controller
     {
         $userId = auth()->user()->id;
 
-        Log::info('User ID retrieved', ['userId' => $userId]);
-
         $userJobs = UserJobs::where('user_id', $userId)->get();
-
-        Log::info('User jobs retrieved', ['userJobs' => $userJobs]);
 
         $jobs = $userJobs->map(function ($userJob) {
             return [
                 'id' => $userJob->id,
+                'jobs_id' => $userJob->jobs_id,
                 'title' => $userJob->job->title,
                 'description' => $userJob->job->description,
                 'location' => $userJob->job->location,
                 'company' => $userJob->job->company,
                 'status' => $userJob->status,
                 'timeSlots' => $userJob->time_slots,
+                'user_id' => $userJob->job->user_id,
             ];
         });
-
-        Log::info('Final jobs array', ['jobs' => $jobs]);
 
         return response()->json($jobs);
     }
@@ -137,6 +136,8 @@ class UserJobsController extends Controller
 
         // Prepare the user details
         $jobDetails = [
+            'id' => $userJob->job->id,
+            'user_id' => $userJob->job->user_id,
             'title' => $userJob->job->title,
             'description' => $userJob->job->description,
             'location' => $userJob->job->location,
@@ -144,8 +145,6 @@ class UserJobsController extends Controller
             'timeSlots' => $userJob->time_slots,
             'message' => $userJob->message,
         ];
-
-        Log::info('Final jobs array', ['jobs' => $jobDetails]);
 
         // Return the user details as JSON
         return response()->json($jobDetails);
@@ -155,11 +154,7 @@ class UserJobsController extends Controller
     {
         $userId = auth()->user()->id;
 
-        Log::info('User ID retrieved', ['userId' => $userId]);
-
         $userJobs = UserJobs::where('user_id', $userId)->where('status', 'Scheduled')->get();
-
-        Log::info('User jobs retrieved', ['userJobs' => $userJobs]);
 
         $jobs = $userJobs->map(function ($userJob) {
             return [
@@ -173,7 +168,35 @@ class UserJobsController extends Controller
             ];
         });
 
-        Log::info('Final jobs array', ['jobs' => $jobs]);
+        return response()->json($jobs);
+    }
+
+    public function getScheduledUserJobsForOwner()
+    {
+
+        $ownerId = auth()->user()->id;
+        // Fetch jobs created by the given owner
+        $jobsCreatedByUser = Jobs::where('user_id', $ownerId)->pluck('id');
+
+        // Retrieve UserJobs where the job is in the above list and status is "Scheduled"
+        $scheduledUserJobs = UserJobs::whereIn('jobs_id', $jobsCreatedByUser)
+            ->where('status', 'Scheduled')
+            ->with('user', 'job') // Eager load related user and job
+            ->get();
+
+        $jobs = $scheduledUserJobs->map(function ($userJob) {
+            return [
+                'id' => $userJob->id,
+                'name' => $userJob->user->name,
+                'email' => $userJob->user->email,
+                'title' => $userJob->job->title,
+                'description' => $userJob->job->description,
+                'location' => $userJob->job->location,
+                'company' => $userJob->job->company,
+                'status' => $userJob->status,
+                'timeSlots' => $userJob->time_slots,
+            ];
+        });
 
         return response()->json($jobs);
     }

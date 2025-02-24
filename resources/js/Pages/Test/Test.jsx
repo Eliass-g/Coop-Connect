@@ -16,23 +16,11 @@ import StudentProfile from "./StudentProfile";
 import ReflectionsForum from "./ReflectionsForum";
 import Settings from "./Settings";
 import Message from "./Message";
+import Messaging from "@/Components/Messaging";
 import TestData from "./TestData";
 import { useState, useEffect } from "react";
+import ChatPage from "./ChatPage";
 
 export default function Test() {
-    useEffect(() => {
-        const fetchUserId = async () => {
-            try {
-                const response = await axios.get(
-                    `http://127.0.0.1:8000/api/usersindex`
-                );
-                console.log(response.data);
-            } catch (error) {
-                console.error("Error fetching user ID:", error);
-            }
-        };
-        fetchUserId();
-    }, []);
-
-    return <TestData />;
+    return <ChatPage />;
 }
