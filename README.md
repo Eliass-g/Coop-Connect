@@ -106,5 +106,6 @@ PUSHER_APP_SECRET=your_pusher_app_secret
 ## 📬 Contact
 
 If you have any questions, feel free to reach out:
+
 📧 **Email:** eliass.ghauss@gmail.com  
 🔗 **LinkedIn:** [Eliass Ghauss](https://www.linkedin.com/in/eliass-ghauss/)
