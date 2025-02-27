@@ -97,6 +97,7 @@ function Profile() {
     const handleChange = (e) => {
         const { name, value } = e.target;
         dispatch(updateUserFormData({ [name]: value }));
+        console.log(user);
     };
 
     if (!user) {

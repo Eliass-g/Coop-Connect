@@ -64,7 +64,7 @@ export default function Guide({ auth }) {
                             <iframe
                                 width="560"
                                 height="315"
-                                src="https://www.youtube.com/embed/IKI8_Rs_hNQ?si=t0gYIu6XxmlOrDWK"
+                                src="https://www.youtube.com/embed/IKI8_Rs_hNQ"
                                 title="YouTube video player"
                                 frameBorder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
