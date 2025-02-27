@@ -54,10 +54,18 @@ npm install
 composer install
 ```
 
-### Set Up Environment:
+### Generate the application key:
+
+After copying the .env file, run:
 
 ```bash
 cp .env.example .env
+```
+
+### Install Dependencies:
+
+```bash
+php artisan key:generate
 ```
 
 Update `.env` with your database and Pusher credentials.
@@ -82,6 +90,7 @@ php artisan serve
 Ensure the following environment variables are set up in your `.env` file:
 
 ```env
+APP_KEY=your_app_key
 DB_DATABASE=your_database_name
 DB_USERNAME=your_database_user
 DB_PASSWORD=your_database_password
