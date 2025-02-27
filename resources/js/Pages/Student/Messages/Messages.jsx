@@ -25,6 +25,7 @@ const ChatPage = () => {
 
     useEffect(() => {
         dispatch(getRecentMessages()).then(() => {
+            console.log(recentMessages)
         });
     }, [dispatch]);
 
