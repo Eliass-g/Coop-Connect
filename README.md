@@ -2,7 +2,7 @@
 
 Co-op Connect is a web application that connects students with employers for co-op job opportunities. Students can apply for jobs, while employers can manage job postings and student applications.
 
-![App Demo](./storage/Coop Connect Runthrough.gif)
+![App Demo](https://github.com/Eliass-g/CoOpConnect/blob/database-readme-tweaks/storage/Coop%20Connect%20Runthrough.gif)
 
 ## 📽️ Video Overview
 
