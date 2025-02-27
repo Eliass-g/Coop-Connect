@@ -1,3 +1,5 @@
+<div align="center">
+
 # Co-op Connect
 
 Co-op Connect is a web application that connects students with employers for co-op job opportunities. Students can apply for jobs, while employers can manage job postings and student applications.
@@ -9,6 +11,8 @@ Co-op Connect is a web application that connects students with employers for co-
 [![Co-op Connect Demo](https://img.youtube.com/vi/IKI8_Rs_hNQ/0.jpg)](https://youtu.be/IKI8_Rs_hNQ?si=mqY5XBwORA6ubxnO)
 
 ---
+
+</div>
 
 ## 🚀 Features
 
