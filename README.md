@@ -47,28 +47,26 @@ git clone git@github.com:CoOpConnect2023/CoOpConnect.git
 cd CoOpConnect
 ```
 
-### Install Dependencies:
-
-```bash
-npm install
-composer install
-```
-
 ### Generate the application key:
-
-After copying the .env file, run:
 
 ```bash
 cp .env.example .env
 ```
 
-### Install Dependencies:
+After copying the .env file, run:
 
 ```bash
 php artisan key:generate
 ```
 
 Update `.env` with your database and Pusher credentials.
+
+### Install Dependencies:
+
+```bash
+npm install
+composer install
+```
 
 ### Run Database Migrations & Seed Data:
 
