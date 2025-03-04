@@ -10,8 +10,6 @@ use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginProviderController;
 use App\Http\Controllers\StudentController;
-use App\Http\Controllers\TeacherController;
-use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,13 +72,3 @@ Route::post('/contact', [ContactController::class, 'store'])->name('contact.stor
 Route::get('/test', [TestController::class, 'show'])->name('test.show');
 
 Route::middleware(['auth:sanctum'])->get('/users', [UserController::class, 'index']);
-
-Route::group(['middleware' => ['role:admin']], function () {
-    // Place your admin-only routes here
-    Route::get('/admin/dashboard', 'AdminController@index')->name('admin.dashboard');
-    // You can add more routes that you want to be accessible only by admins
-});
-
-Route::group(['middleware' => ['auth', 'role:admin']], function () {
-    Route::get('/admin/dashboard', 'AdminController@dashboard')->name('admin.dashboard');
-});
