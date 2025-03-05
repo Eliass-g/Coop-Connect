@@ -1,0 +1,1782 @@
+{
+  "_COOPCONNECTLOGO-BU2kPxAZ.js": {
+    "file": "assets/COOPCONNECTLOGO-BU2kPxAZ.js",
+    "assets": [
+      "assets/COOPCONNECTLOGO-BEzYpmZ8.png"
+    ]
+  },
+  "_COOPCONNECTLOGO-iQa-L-G9.js": {
+    "file": "assets/COOPCONNECTLOGO-iQa-L-G9.js",
+    "assets": [
+      "assets/COOPCONNECTLOGO-BEzYpmZ8.png"
+    ]
+  },
+  "_DndProvider-!~{028}~.js": {
+    "file": "assets/DndProvider-DWsYRAY9.css",
+    "src": "_DndProvider-!~{028}~.js"
+  },
+  "_DndProvider-C6y9z6GI.js": {
+    "file": "assets/DndProvider-C6y9z6GI.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_index-BX7LP9oL.js"
+    ],
+    "css": [
+      "assets/DndProvider-DWsYRAY9.css"
+    ]
+  },
+  "_Dropdown-B6Q8ltoj.js": {
+    "file": "assets/Dropdown-B6Q8ltoj.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_transition-Bto7_FgB.js"
+    ]
+  },
+  "_GuestLayout-!~{01X}~.js": {
+    "file": "assets/GuestLayout-D61etCpo.css",
+    "src": "_GuestLayout-!~{01X}~.js"
+  },
+  "_GuestLayout-CYQXywsY.js": {
+    "file": "assets/GuestLayout-CYQXywsY.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "css": [
+      "assets/GuestLayout-D61etCpo.css"
+    ]
+  },
+  "_Icon-BRhRccAA.js": {
+    "file": "assets/Icon-BRhRccAA.js",
+    "assets": [
+      "assets/Icon-CwrpR2y-.svg"
+    ]
+  },
+  "_InputLabel-BaydTveu.js": {
+    "file": "assets/InputLabel-BaydTveu.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "_Landing-B2r5T6Fj.js": {
+    "file": "assets/Landing-B2r5T6Fj.js",
+    "assets": [
+      "assets/Landing-FblLsfZP.png"
+    ]
+  },
+  "_LandingLayout-B-UUjD53.js": {
+    "file": "assets/LandingLayout-B-UUjD53.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_COOPCONNECTLOGO-BU2kPxAZ.js",
+      "resources/js/Pages/Home/ContactUs.jsx"
+    ]
+  },
+  "_PrimaryButton-!~{01_}~.js": {
+    "file": "assets/PrimaryButton-DgKUD8Hy.css",
+    "src": "_PrimaryButton-!~{01_}~.js"
+  },
+  "_PrimaryButton-C6xSS4pn.js": {
+    "file": "assets/PrimaryButton-C6xSS4pn.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "css": [
+      "assets/PrimaryButton-DgKUD8Hy.css"
+    ]
+  },
+  "_TextInput-!~{01Y}~.js": {
+    "file": "assets/TextInput-B_IOsRSY.css",
+    "src": "_TextInput-!~{01Y}~.js"
+  },
+  "_TextInput-B5UTMOjF.js": {
+    "file": "assets/TextInput-B5UTMOjF.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "css": [
+      "assets/TextInput-B_IOsRSY.css"
+    ]
+  },
+  "_index-BFFPeCbz.js": {
+    "file": "assets/index-BFFPeCbz.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "_index-BMRxO3cL.js": {
+    "file": "assets/index-BMRxO3cL.js"
+  },
+  "_index-BX7LP9oL.js": {
+    "file": "assets/index-BX7LP9oL.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "_index-DnOB0pOP.js": {
+    "file": "assets/index-DnOB0pOP.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_index-BX7LP9oL.js",
+      "_styled-components.browser.esm-C7o4QOmv.js"
+    ]
+  },
+  "_index.es-CWqCd6w8.js": {
+    "file": "assets/index.es-CWqCd6w8.js",
+    "imports": [
+      "_index-BX7LP9oL.js",
+      "resources/js/app.jsx"
+    ]
+  },
+  "_moment-BH_gi4k_.js": {
+    "file": "assets/moment-BH_gi4k_.js"
+  },
+  "_settings-UVqU3YHX.js": {
+    "file": "assets/settings-UVqU3YHX.js",
+    "assets": [
+      "assets/puzzle-CQ33zv1P.svg",
+      "assets/briefcase-B3gH70vD.svg",
+      "assets/message-square-Bghpf0tH.svg",
+      "assets/calendar-days-Rfa5sNYA.svg",
+      "assets/user-Bf73ECnE.svg",
+      "assets/settings-BtulwEYo.svg"
+    ]
+  },
+  "_styled-components.browser.esm-C7o4QOmv.js": {
+    "file": "assets/styled-components.browser.esm-C7o4QOmv.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "_transition-Bto7_FgB.js": {
+    "file": "assets/transition-Bto7_FgB.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "_x-CUwrSU1Y.js": {
+    "file": "assets/x-CUwrSU1Y.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Auth/ConfirmPassword.jsx": {
+    "file": "assets/ConfirmPassword-BJe0j1MX.js",
+    "src": "resources/js/Pages/Auth/ConfirmPassword.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_GuestLayout-CYQXywsY.js",
+      "_TextInput-B5UTMOjF.js",
+      "_InputLabel-BaydTveu.js",
+      "_PrimaryButton-C6xSS4pn.js"
+    ]
+  },
+  "resources/js/Pages/Auth/ForgotPassword.jsx": {
+    "file": "assets/ForgotPassword-BxYUH1X9.js",
+    "src": "resources/js/Pages/Auth/ForgotPassword.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_GuestLayout-CYQXywsY.js",
+      "_TextInput-B5UTMOjF.js",
+      "_PrimaryButton-C6xSS4pn.js"
+    ]
+  },
+  "resources/js/Pages/Auth/Images/COOPCONNECTLOGO.png": {
+    "file": "assets/COOPCONNECTLOGO-BEzYpmZ8.png",
+    "src": "resources/js/Pages/Images/COOPCONNECTLOGO.png"
+  },
+  "resources/js/Pages/Auth/Login.jsx": {
+    "file": "assets/Login-QQu-SEC1.js",
+    "src": "resources/js/Pages/Auth/Login.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_GuestLayout-CYQXywsY.js",
+      "_TextInput-B5UTMOjF.js",
+      "_InputLabel-BaydTveu.js",
+      "_PrimaryButton-C6xSS4pn.js",
+      "_COOPCONNECTLOGO-iQa-L-G9.js"
+    ],
+    "css": [
+      "assets/Login-CU4iXD_Q.css"
+    ]
+  },
+  "resources/js/Pages/Auth/Register.jsx": {
+    "file": "assets/Register-CfU1Y8sh.js",
+    "src": "resources/js/Pages/Auth/Register.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_GuestLayout-CYQXywsY.js",
+      "_TextInput-B5UTMOjF.js",
+      "_InputLabel-BaydTveu.js",
+      "_PrimaryButton-C6xSS4pn.js",
+      "_COOPCONNECTLOGO-iQa-L-G9.js"
+    ],
+    "css": [
+      "assets/Register-C2VJtSF8.css"
+    ]
+  },
+  "resources/js/Pages/Auth/ResetPassword.jsx": {
+    "file": "assets/ResetPassword-BXD9P8G0.js",
+    "src": "resources/js/Pages/Auth/ResetPassword.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_GuestLayout-CYQXywsY.js",
+      "_TextInput-B5UTMOjF.js",
+      "_InputLabel-BaydTveu.js",
+      "_PrimaryButton-C6xSS4pn.js"
+    ]
+  },
+  "resources/js/Pages/Auth/VerifyEmail.jsx": {
+    "file": "assets/VerifyEmail-BvhLFlK_.js",
+    "src": "resources/js/Pages/Auth/VerifyEmail.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_GuestLayout-CYQXywsY.js",
+      "_PrimaryButton-C6xSS4pn.js"
+    ]
+  },
+  "resources/js/Pages/Employer/AcceptApplicant.jsx": {
+    "file": "assets/AcceptApplicant-CJew--zT.js",
+    "src": "resources/js/Pages/Employer/AcceptApplicant.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/Pages/Employer/Components/NavBar.jsx",
+      "_moment-BH_gi4k_.js",
+      "_index-BFFPeCbz.js",
+      "resources/js/Pages/Employer/Styling/NavBar.styles.jsx",
+      "_settings-UVqU3YHX.js",
+      "_index.es-CWqCd6w8.js",
+      "_index-BX7LP9oL.js",
+      "_index-BMRxO3cL.js"
+    ],
+    "css": [
+      "assets/AcceptApplicant-bWUcpq6f.css"
+    ]
+  },
+  "resources/js/Pages/Employer/Components/ConfirmationModal.jsx": {
+    "file": "assets/ConfirmationModal-DP2c8hPr.js",
+    "src": "resources/js/Pages/Employer/Components/ConfirmationModal.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js"
+    ]
+  },
+  "resources/js/Pages/Employer/Components/NavBar.jsx": {
+    "file": "assets/NavBar-DYe6iqYW.js",
+    "src": "resources/js/Pages/Employer/Components/NavBar.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/Employer/Styling/NavBar.styles.jsx",
+      "_settings-UVqU3YHX.js",
+      "_index.es-CWqCd6w8.js",
+      "_index-BMRxO3cL.js",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "_index-BX7LP9oL.js"
+    ]
+  },
+  "resources/js/Pages/Employer/Components/QuickLinks.jsx": {
+    "file": "assets/QuickLinks-C0SC-9eA.js",
+    "src": "resources/js/Pages/Employer/Components/QuickLinks.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js"
+    ]
+  },
+  "resources/js/Pages/Employer/Components/SettingsPage.jsx": {
+    "file": "assets/SettingsPage-dQ9T2NZK.js",
+    "src": "resources/js/Pages/Employer/Components/SettingsPage.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_index-BMRxO3cL.js",
+      "_index.es-CWqCd6w8.js",
+      "resources/js/Pages/Employer/Components/ConfirmationModal.jsx",
+      "resources/js/Pages/Employer/Styling/SettingsPage.styles.jsx",
+      "_index-BX7LP9oL.js",
+      "_styled-components.browser.esm-C7o4QOmv.js"
+    ]
+  },
+  "resources/js/Pages/Employer/EditPost1.jsx": {
+    "file": "assets/EditPost1-BOLQD96q.js",
+    "src": "resources/js/Pages/Employer/EditPost1.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/Employer/Components/NavBar.jsx",
+      "resources/js/Pages/Employer/Styling/EditPost1.styles.jsx",
+      "resources/js/Pages/Employer/Styling/NavBar.styles.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "_settings-UVqU3YHX.js",
+      "_index.es-CWqCd6w8.js",
+      "_index-BX7LP9oL.js",
+      "_index-BMRxO3cL.js",
+      "_Icon-BRhRccAA.js"
+    ]
+  },
+  "resources/js/Pages/Employer/EditPost2.jsx": {
+    "file": "assets/EditPost2-BUyYYQP5.js",
+    "src": "resources/js/Pages/Employer/EditPost2.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/Employer/Components/NavBar.jsx",
+      "resources/js/Pages/Employer/Styling/EditPost2.styles.jsx",
+      "resources/js/Pages/Employer/Styling/NavBar.styles.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "_settings-UVqU3YHX.js",
+      "_index.es-CWqCd6w8.js",
+      "_index-BX7LP9oL.js",
+      "_index-BMRxO3cL.js"
+    ]
+  },
+  "resources/js/Pages/Employer/Home.jsx": {
+    "file": "assets/Home-B7Ms5qje.js",
+    "src": "resources/js/Pages/Employer/Home.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/Employer/Components/NavBar.jsx",
+      "resources/js/Pages/Profile/Partials/EditJobModal.jsx",
+      "resources/js/Pages/Employer/Styling/Home.styles.jsx",
+      "resources/js/Pages/Employer/Styling/NavBar.styles.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "_settings-UVqU3YHX.js",
+      "_index.es-CWqCd6w8.js",
+      "_index-BX7LP9oL.js",
+      "_index-BMRxO3cL.js"
+    ]
+  },
+  "resources/js/Pages/Employer/Interviews.jsx": {
+    "file": "assets/Interviews-D5ln0tql.js",
+    "src": "resources/js/Pages/Employer/Interviews.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/Employer/Components/NavBar.jsx",
+      "resources/js/Pages/Profile/Partials/AddEventModal.jsx",
+      "resources/js/Pages/Profile/Partials/EditEventModal.jsx",
+      "_DndProvider-C6y9z6GI.js",
+      "_moment-BH_gi4k_.js",
+      "resources/js/Pages/Employer/Styling/Interviews.styles.jsx",
+      "resources/js/Pages/Employer/Styling/NavBar.styles.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "_settings-UVqU3YHX.js",
+      "_index.es-CWqCd6w8.js",
+      "_index-BX7LP9oL.js",
+      "_index-BMRxO3cL.js"
+    ]
+  },
+  "resources/js/Pages/Employer/Messages/Chat.jsx": {
+    "file": "assets/Chat-BTfPlPcu.js",
+    "src": "resources/js/Pages/Employer/Messages/Chat.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_moment-BH_gi4k_.js"
+    ]
+  },
+  "resources/js/Pages/Employer/Messages/Messages.jsx": {
+    "file": "assets/Messages-B0U-VboM.js",
+    "src": "resources/js/Pages/Employer/Messages/Messages.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/Employer/Messages/Chat.jsx",
+      "_moment-BH_gi4k_.js",
+      "resources/js/Pages/Employer/Components/NavBar.jsx",
+      "resources/js/Pages/Employer/Messages/Messages.styles.jsx",
+      "_x-CUwrSU1Y.js",
+      "resources/js/Pages/Employer/Styling/NavBar.styles.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "_settings-UVqU3YHX.js",
+      "_index.es-CWqCd6w8.js",
+      "_index-BX7LP9oL.js",
+      "_index-BMRxO3cL.js"
+    ]
+  },
+  "resources/js/Pages/Employer/Messages/Messages.styles.jsx": {
+    "file": "assets/Messages.styles-BCPvUL6p.js",
+    "src": "resources/js/Pages/Employer/Messages/Messages.styles.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Employer/Post1.jsx": {
+    "file": "assets/Post1-Uufi2QFy.js",
+    "src": "resources/js/Pages/Employer/Post1.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/Employer/Components/NavBar.jsx",
+      "_index-BFFPeCbz.js",
+      "resources/js/Pages/Employer/Styling/Post1.styles.jsx",
+      "resources/js/Pages/Employer/Styling/NavBar.styles.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "_settings-UVqU3YHX.js",
+      "_index.es-CWqCd6w8.js",
+      "_index-BX7LP9oL.js",
+      "_index-BMRxO3cL.js",
+      "_Icon-BRhRccAA.js"
+    ]
+  },
+  "resources/js/Pages/Employer/Post2.jsx": {
+    "file": "assets/Post2-NyDmjdh6.js",
+    "src": "resources/js/Pages/Employer/Post2.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/Employer/Components/NavBar.jsx",
+      "resources/js/Pages/Employer/Styling/Post2.styles.jsx",
+      "resources/js/Pages/Employer/Styling/NavBar.styles.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "_settings-UVqU3YHX.js",
+      "_index.es-CWqCd6w8.js",
+      "_index-BX7LP9oL.js",
+      "_index-BMRxO3cL.js"
+    ]
+  },
+  "resources/js/Pages/Employer/Profile.jsx": {
+    "file": "assets/Profile-BsafHYLH.js",
+    "src": "resources/js/Pages/Employer/Profile.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/Employer/Components/NavBar.jsx",
+      "_index-DnOB0pOP.js",
+      "resources/js/Pages/Employer/Styling/Profile.styles.jsx",
+      "resources/js/Pages/Employer/Styling/NavBar.styles.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "_settings-UVqU3YHX.js",
+      "_index.es-CWqCd6w8.js",
+      "_index-BX7LP9oL.js",
+      "_index-BMRxO3cL.js"
+    ]
+  },
+  "resources/js/Pages/Employer/Settings.jsx": {
+    "file": "assets/Settings-Ctl5VHuu.js",
+    "src": "resources/js/Pages/Employer/Settings.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/Employer/Components/NavBar.jsx",
+      "resources/js/Pages/Employer/Components/SettingsPage.jsx",
+      "resources/js/Pages/Employer/Components/QuickLinks.jsx",
+      "resources/js/Pages/Employer/Styling/Settings.styles.jsx",
+      "resources/js/Pages/Employer/Styling/NavBar.styles.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "_settings-UVqU3YHX.js",
+      "_index.es-CWqCd6w8.js",
+      "_index-BX7LP9oL.js",
+      "_index-BMRxO3cL.js",
+      "resources/js/Pages/Employer/Components/ConfirmationModal.jsx",
+      "resources/js/Pages/Employer/Styling/SettingsPage.styles.jsx"
+    ]
+  },
+  "resources/js/Pages/Employer/Styling/EditPost1.styles.jsx": {
+    "file": "assets/EditPost1.styles-DHs5uCrb.js",
+    "src": "resources/js/Pages/Employer/Styling/EditPost1.styles.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "_Icon-BRhRccAA.js",
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Employer/Styling/EditPost2.styles.jsx": {
+    "file": "assets/EditPost2.styles-Bq3w4iOI.js",
+    "src": "resources/js/Pages/Employer/Styling/EditPost2.styles.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Employer/Styling/Home.styles.jsx": {
+    "file": "assets/Home.styles-WI1VbSyR.js",
+    "src": "resources/js/Pages/Employer/Styling/Home.styles.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Employer/Styling/Interviews.styles.jsx": {
+    "file": "assets/Interviews.styles-CZngZyUL.js",
+    "src": "resources/js/Pages/Employer/Styling/Interviews.styles.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Employer/Styling/NavBar.styles.jsx": {
+    "file": "assets/NavBar.styles-DLTZyoMD.js",
+    "src": "resources/js/Pages/Employer/Styling/NavBar.styles.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js"
+    ]
+  },
+  "resources/js/Pages/Employer/Styling/Post1.styles.jsx": {
+    "file": "assets/Post1.styles-uNrD8ZAp.js",
+    "src": "resources/js/Pages/Employer/Styling/Post1.styles.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "_Icon-BRhRccAA.js",
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Employer/Styling/Post2.styles.jsx": {
+    "file": "assets/Post2.styles-DA9Nt0h6.js",
+    "src": "resources/js/Pages/Employer/Styling/Post2.styles.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Employer/Styling/Profile.styles.jsx": {
+    "file": "assets/Profile.styles-CetU1CVC.js",
+    "src": "resources/js/Pages/Employer/Styling/Profile.styles.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Employer/Styling/Settings.styles.jsx": {
+    "file": "assets/Settings.styles-DqZHywCN.js",
+    "src": "resources/js/Pages/Employer/Styling/Settings.styles.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Employer/Styling/SettingsPage.styles.jsx": {
+    "file": "assets/SettingsPage.styles-Dw_atcc7.js",
+    "src": "resources/js/Pages/Employer/Styling/SettingsPage.styles.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Employer/Styling/SidePanel.styles.jsx": {
+    "file": "assets/SidePanel.styles-DQrYO2Qf.js",
+    "src": "resources/js/Pages/Employer/Styling/SidePanel.styles.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Employer/Styling/TypeMessage.styles.jsx": {
+    "file": "assets/TypeMessage.styles-VYw43gVB.js",
+    "src": "resources/js/Pages/Employer/Styling/TypeMessage.styles.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Employer/Styling/UserPanel.styles.jsx": {
+    "file": "assets/UserPanel.styles-BpaWb8zJ.js",
+    "src": "resources/js/Pages/Employer/Styling/UserPanel.styles.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Employer/Styling/ViewPost.styles.jsx": {
+    "file": "assets/ViewPost.styles-CX5TFuog.js",
+    "src": "resources/js/Pages/Employer/Styling/ViewPost.styles.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Employer/ViewApplicants.jsx": {
+    "file": "assets/ViewApplicants-DWrY1Mz0.js",
+    "src": "resources/js/Pages/Employer/ViewApplicants.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/Pages/Employer/Components/NavBar.jsx",
+      "resources/js/Pages/Employer/Styling/NavBar.styles.jsx",
+      "_settings-UVqU3YHX.js",
+      "_index.es-CWqCd6w8.js",
+      "_index-BX7LP9oL.js",
+      "_index-BMRxO3cL.js"
+    ]
+  },
+  "resources/js/Pages/Employer/ViewPost.jsx": {
+    "file": "assets/ViewPost-CLniXxBB.js",
+    "src": "resources/js/Pages/Employer/ViewPost.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/Pages/Employer/Components/NavBar.jsx",
+      "resources/js/Pages/Employer/Styling/NavBar.styles.jsx",
+      "_settings-UVqU3YHX.js",
+      "_index.es-CWqCd6w8.js",
+      "_index-BX7LP9oL.js",
+      "_index-BMRxO3cL.js"
+    ]
+  },
+  "resources/js/Pages/Home/About.jsx": {
+    "file": "assets/About-BNckbmGH.js",
+    "src": "resources/js/Pages/Home/About.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_LandingLayout-B-UUjD53.js",
+      "_Landing-B2r5T6Fj.js",
+      "_COOPCONNECTLOGO-BU2kPxAZ.js",
+      "resources/js/Pages/Home/ContactUs.jsx"
+    ]
+  },
+  "resources/js/Pages/Home/ContactUs.jsx": {
+    "file": "assets/ContactUs-SlVBcc-N.js",
+    "src": "resources/js/Pages/Home/ContactUs.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Home/Guide.jsx": {
+    "file": "assets/Guide-C8A2UbW3.js",
+    "src": "resources/js/Pages/Home/Guide.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_LandingLayout-B-UUjD53.js",
+      "_COOPCONNECTLOGO-BU2kPxAZ.js",
+      "resources/js/Pages/Home/ContactUs.jsx"
+    ]
+  },
+  "resources/js/Pages/Home/Landing.jsx": {
+    "file": "assets/Landing-B8zybyMR.js",
+    "src": "resources/js/Pages/Home/Landing.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_Landing-B2r5T6Fj.js",
+      "_LandingLayout-B-UUjD53.js",
+      "_COOPCONNECTLOGO-BU2kPxAZ.js",
+      "resources/js/Pages/Home/ContactUs.jsx"
+    ]
+  },
+  "resources/js/Pages/Images/COOPCONNECTLOGO.png": {
+    "file": "assets/COOPCONNECTLOGO-BEzYpmZ8.png",
+    "src": "resources/js/Pages/Images/COOPCONNECTLOGO.png"
+  },
+  "resources/js/Pages/Images/Icon.svg": {
+    "file": "assets/Icon-CwrpR2y-.svg",
+    "src": "resources/js/Pages/Images/Icon.svg"
+  },
+  "resources/js/Pages/Images/Landing.png": {
+    "file": "assets/Landing-FblLsfZP.png",
+    "src": "resources/js/Pages/Images/Landing.png"
+  },
+  "resources/js/Pages/Images/applications.svg": {
+    "file": "assets/applications-QPhI4ZMb.svg",
+    "src": "resources/js/Pages/Images/applications.svg"
+  },
+  "resources/js/Pages/Images/briefcase.svg": {
+    "file": "assets/briefcase-B3gH70vD.svg",
+    "src": "resources/js/Pages/Images/briefcase.svg"
+  },
+  "resources/js/Pages/Images/calendar-days.svg": {
+    "file": "assets/calendar-days-Rfa5sNYA.svg",
+    "src": "resources/js/Pages/Images/calendar-days.svg"
+  },
+  "resources/js/Pages/Images/message-square.svg": {
+    "file": "assets/message-square-Bghpf0tH.svg",
+    "src": "resources/js/Pages/Images/message-square.svg"
+  },
+  "resources/js/Pages/Images/puzzle.svg": {
+    "file": "assets/puzzle-CQ33zv1P.svg",
+    "src": "resources/js/Pages/Images/puzzle.svg"
+  },
+  "resources/js/Pages/Images/settings.svg": {
+    "file": "assets/settings-BtulwEYo.svg",
+    "src": "resources/js/Pages/Images/settings.svg"
+  },
+  "resources/js/Pages/Images/user.svg": {
+    "file": "assets/user-Bf73ECnE.svg",
+    "src": "resources/js/Pages/Images/user.svg"
+  },
+  "resources/js/Pages/Profile/Edit.jsx": {
+    "file": "assets/Edit-1g9fsgyk.js",
+    "src": "resources/js/Pages/Profile/Edit.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_Dropdown-B6Q8ltoj.js",
+      "_COOPCONNECTLOGO-BU2kPxAZ.js",
+      "resources/js/Pages/Profile/Partials/DeleteUserForm.jsx",
+      "resources/js/Pages/Profile/Partials/UpdatePasswordForm.jsx",
+      "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.jsx",
+      "_transition-Bto7_FgB.js",
+      "_TextInput-B5UTMOjF.js",
+      "_InputLabel-BaydTveu.js",
+      "_PrimaryButton-C6xSS4pn.js"
+    ]
+  },
+  "resources/js/Pages/Profile/Partials/AddEventModal.jsx": {
+    "file": "assets/AddEventModal-vcHOZCUb.js",
+    "src": "resources/js/Pages/Profile/Partials/AddEventModal.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js"
+    ]
+  },
+  "resources/js/Pages/Profile/Partials/ApplicantModal.jsx": {
+    "file": "assets/ApplicantModal-DuaJFKAw.js",
+    "src": "resources/js/Pages/Profile/Partials/ApplicantModal.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js"
+    ]
+  },
+  "resources/js/Pages/Profile/Partials/DeleteUserForm.jsx": {
+    "file": "assets/DeleteUserForm-BxYat39A.js",
+    "src": "resources/js/Pages/Profile/Partials/DeleteUserForm.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_TextInput-B5UTMOjF.js",
+      "_InputLabel-BaydTveu.js",
+      "_transition-Bto7_FgB.js"
+    ]
+  },
+  "resources/js/Pages/Profile/Partials/EditEventModal.jsx": {
+    "file": "assets/EditEventModal-DCHIO7BR.js",
+    "src": "resources/js/Pages/Profile/Partials/EditEventModal.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js"
+    ]
+  },
+  "resources/js/Pages/Profile/Partials/EditJobModal.jsx": {
+    "file": "assets/EditJobModal-B-_GaaQ_.js",
+    "src": "resources/js/Pages/Profile/Partials/EditJobModal.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js"
+    ]
+  },
+  "resources/js/Pages/Profile/Partials/UpdatePasswordForm.jsx": {
+    "file": "assets/UpdatePasswordForm-w1FRPpm2.js",
+    "src": "resources/js/Pages/Profile/Partials/UpdatePasswordForm.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_TextInput-B5UTMOjF.js",
+      "_InputLabel-BaydTveu.js",
+      "_PrimaryButton-C6xSS4pn.js",
+      "_transition-Bto7_FgB.js"
+    ]
+  },
+  "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.jsx": {
+    "file": "assets/UpdateProfileInformationForm-BNgacinA.js",
+    "src": "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_TextInput-B5UTMOjF.js",
+      "_InputLabel-BaydTveu.js",
+      "_PrimaryButton-C6xSS4pn.js",
+      "_transition-Bto7_FgB.js"
+    ]
+  },
+  "resources/js/Pages/Profile/Partials/ViewJobModal.jsx": {
+    "file": "assets/ViewJobModal-BZU6To_E.js",
+    "src": "resources/js/Pages/Profile/Partials/ViewJobModal.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js"
+    ]
+  },
+  "resources/js/Pages/Student/AcceptInterview.jsx": {
+    "file": "assets/AcceptInterview-BW2JWh6P.js",
+    "src": "resources/js/Pages/Student/AcceptInterview.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/Pages/Student/Components/NavBar.jsx",
+      "_index-BFFPeCbz.js",
+      "resources/js/Pages/Student/Styling/NavBar.styles.jsx",
+      "_settings-UVqU3YHX.js",
+      "_index.es-CWqCd6w8.js",
+      "_index-BX7LP9oL.js",
+      "_index-BMRxO3cL.js"
+    ]
+  },
+  "resources/js/Pages/Student/Components/ConfirmationModal.jsx": {
+    "file": "assets/ConfirmationModal-QnUE74kR.js",
+    "src": "resources/js/Pages/Student/Components/ConfirmationModal.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js"
+    ]
+  },
+  "resources/js/Pages/Student/Components/Matches.jsx": {
+    "file": "assets/Matches-Bx2aqCj8.js",
+    "src": "resources/js/Pages/Student/Components/Matches.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/Pages/Profile/Partials/ViewJobModal.jsx"
+    ]
+  },
+  "resources/js/Pages/Student/Components/NavBar.jsx": {
+    "file": "assets/NavBar-TckziyUh.js",
+    "src": "resources/js/Pages/Student/Components/NavBar.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/Student/Styling/NavBar.styles.jsx",
+      "_settings-UVqU3YHX.js",
+      "_index.es-CWqCd6w8.js",
+      "_index-BMRxO3cL.js",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "_index-BX7LP9oL.js"
+    ],
+    "assets": [
+      "assets/applications-QPhI4ZMb.svg"
+    ]
+  },
+  "resources/js/Pages/Student/Components/ProfileForm.jsx": {
+    "file": "assets/ProfileForm-CxEtX_EM.js",
+    "src": "resources/js/Pages/Student/Components/ProfileForm.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_index-DnOB0pOP.js",
+      "resources/js/Pages/Student/Styling/ProfileForm.styles.jsx",
+      "_index-BX7LP9oL.js",
+      "_styled-components.browser.esm-C7o4QOmv.js"
+    ]
+  },
+  "resources/js/Pages/Student/Components/QuickLinks.jsx": {
+    "file": "assets/QuickLinks-16tr1Wp4.js",
+    "src": "resources/js/Pages/Student/Components/QuickLinks.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js"
+    ]
+  },
+  "resources/js/Pages/Student/Components/SettingsPage.jsx": {
+    "file": "assets/SettingsPage-BFC_rfyT.js",
+    "src": "resources/js/Pages/Student/Components/SettingsPage.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_index-BMRxO3cL.js",
+      "_index.es-CWqCd6w8.js",
+      "resources/js/Pages/Student/Components/ConfirmationModal.jsx",
+      "resources/js/Pages/Student/Styling/SettingsPage.styles.jsx",
+      "_index-BX7LP9oL.js",
+      "_styled-components.browser.esm-C7o4QOmv.js"
+    ]
+  },
+  "resources/js/Pages/Student/Home.jsx": {
+    "file": "assets/Home-1yNxKPgo.js",
+    "src": "resources/js/Pages/Student/Home.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/Student/Components/NavBar.jsx",
+      "resources/js/Pages/Profile/Partials/ViewJobModal.jsx",
+      "resources/js/Pages/Student/Styling/Home.styles.jsx",
+      "resources/js/Pages/Student/Styling/NavBar.styles.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "_settings-UVqU3YHX.js",
+      "_index.es-CWqCd6w8.js",
+      "_index-BX7LP9oL.js",
+      "_index-BMRxO3cL.js"
+    ]
+  },
+  "resources/js/Pages/Student/Interviews.jsx": {
+    "file": "assets/Interviews-D9N-oYJw.js",
+    "src": "resources/js/Pages/Student/Interviews.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/Student/Components/NavBar.jsx",
+      "resources/js/Pages/Profile/Partials/AddEventModal.jsx",
+      "resources/js/Pages/Profile/Partials/EditEventModal.jsx",
+      "_DndProvider-C6y9z6GI.js",
+      "_moment-BH_gi4k_.js",
+      "resources/js/Pages/Student/Styling/Interviews.styles.jsx",
+      "resources/js/Pages/Student/Styling/NavBar.styles.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "_settings-UVqU3YHX.js",
+      "_index.es-CWqCd6w8.js",
+      "_index-BX7LP9oL.js",
+      "_index-BMRxO3cL.js"
+    ]
+  },
+  "resources/js/Pages/Student/Jobs.jsx": {
+    "file": "assets/Jobs-CWERVR43.js",
+    "src": "resources/js/Pages/Student/Jobs.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/Pages/Student/Components/NavBar.jsx",
+      "resources/js/Pages/Profile/Partials/ViewJobModal.jsx",
+      "_index.es-CWqCd6w8.js",
+      "_index-BMRxO3cL.js",
+      "resources/js/Pages/Student/Styling/Jobs.styles.jsx",
+      "resources/js/Pages/Student/Styling/NavBar.styles.jsx",
+      "_settings-UVqU3YHX.js",
+      "_index-BX7LP9oL.js"
+    ]
+  },
+  "resources/js/Pages/Student/Messages/Chat.jsx": {
+    "file": "assets/Chat-BM9W3zNw.js",
+    "src": "resources/js/Pages/Student/Messages/Chat.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_moment-BH_gi4k_.js"
+    ]
+  },
+  "resources/js/Pages/Student/Messages/Messages.jsx": {
+    "file": "assets/Messages-BnaLSKQ5.js",
+    "src": "resources/js/Pages/Student/Messages/Messages.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/Student/Messages/Chat.jsx",
+      "_moment-BH_gi4k_.js",
+      "resources/js/Pages/Student/Components/NavBar.jsx",
+      "resources/js/Pages/Student/Messages/Messages.styles.jsx",
+      "_x-CUwrSU1Y.js",
+      "resources/js/Pages/Student/Styling/NavBar.styles.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "_settings-UVqU3YHX.js",
+      "_index.es-CWqCd6w8.js",
+      "_index-BX7LP9oL.js",
+      "_index-BMRxO3cL.js"
+    ]
+  },
+  "resources/js/Pages/Student/Messages/Messages.styles.jsx": {
+    "file": "assets/Messages.styles-Cq8OBddx.js",
+    "src": "resources/js/Pages/Student/Messages/Messages.styles.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Student/Profile.jsx": {
+    "file": "assets/Profile-ZrItW7lF.js",
+    "src": "resources/js/Pages/Student/Profile.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/Student/Components/ProfileForm.jsx",
+      "resources/js/Pages/Student/Components/NavBar.jsx",
+      "resources/js/Pages/Student/Styling/Profile.styles.jsx",
+      "_index-DnOB0pOP.js",
+      "_index-BX7LP9oL.js",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/Pages/Student/Styling/ProfileForm.styles.jsx",
+      "resources/js/Pages/Student/Styling/NavBar.styles.jsx",
+      "_settings-UVqU3YHX.js",
+      "_index.es-CWqCd6w8.js",
+      "_index-BMRxO3cL.js"
+    ]
+  },
+  "resources/js/Pages/Student/Settings.jsx": {
+    "file": "assets/Settings-CuTHsBcX.js",
+    "src": "resources/js/Pages/Student/Settings.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/Student/Components/NavBar.jsx",
+      "resources/js/Pages/Student/Components/SettingsPage.jsx",
+      "resources/js/Pages/Student/Components/QuickLinks.jsx",
+      "resources/js/Pages/Student/Styling/Settings.styles.jsx",
+      "resources/js/Pages/Student/Styling/NavBar.styles.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "_settings-UVqU3YHX.js",
+      "_index.es-CWqCd6w8.js",
+      "_index-BX7LP9oL.js",
+      "_index-BMRxO3cL.js",
+      "resources/js/Pages/Student/Components/ConfirmationModal.jsx",
+      "resources/js/Pages/Student/Styling/SettingsPage.styles.jsx"
+    ]
+  },
+  "resources/js/Pages/Student/Styling/Chat.styles.jsx": {
+    "file": "assets/Chat.styles-CHVdduch.js",
+    "src": "resources/js/Pages/Student/Styling/Chat.styles.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Student/Styling/Document.styles.jsx": {
+    "file": "assets/Document.styles-riecqidm.js",
+    "src": "resources/js/Pages/Student/Styling/Document.styles.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Student/Styling/Home.styles.jsx": {
+    "file": "assets/Home.styles-DD9kk0D4.js",
+    "src": "resources/js/Pages/Student/Styling/Home.styles.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Student/Styling/Interviews.styles.jsx": {
+    "file": "assets/Interviews.styles-B5Am1Cdj.js",
+    "src": "resources/js/Pages/Student/Styling/Interviews.styles.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Student/Styling/Jobs.styles.jsx": {
+    "file": "assets/Jobs.styles-BhT-o2oI.js",
+    "src": "resources/js/Pages/Student/Styling/Jobs.styles.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "_index.es-CWqCd6w8.js",
+      "resources/js/app.jsx",
+      "_index-BX7LP9oL.js"
+    ]
+  },
+  "resources/js/Pages/Student/Styling/MessageContent.styles.jsx": {
+    "file": "assets/MessageContent.styles-D5sVOAMH.js",
+    "src": "resources/js/Pages/Student/Styling/MessageContent.styles.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Student/Styling/MyReflections.styles.jsx": {
+    "file": "assets/MyReflections.styles-xj3wICwp.js",
+    "src": "resources/js/Pages/Student/Styling/MyReflections.styles.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Student/Styling/NavBar.styles.jsx": {
+    "file": "assets/NavBar.styles-D9UnEWGY.js",
+    "src": "resources/js/Pages/Student/Styling/NavBar.styles.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js"
+    ]
+  },
+  "resources/js/Pages/Student/Styling/NewMessage.styles.jsx": {
+    "file": "assets/NewMessage.styles-Bz7glxVK.js",
+    "src": "resources/js/Pages/Student/Styling/NewMessage.styles.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Student/Styling/Profile.styles.jsx": {
+    "file": "assets/Profile.styles-Cd5Mi_Dx.js",
+    "src": "resources/js/Pages/Student/Styling/Profile.styles.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Student/Styling/ProfileForm.styles.jsx": {
+    "file": "assets/ProfileForm.styles-CDGdUQ4Q.js",
+    "src": "resources/js/Pages/Student/Styling/ProfileForm.styles.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Student/Styling/Reflections.styles.jsx": {
+    "file": "assets/Reflections.styles-CyPxCjZy.js",
+    "src": "resources/js/Pages/Student/Styling/Reflections.styles.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Student/Styling/Settings.styles.jsx": {
+    "file": "assets/Settings.styles-B2xFFCOi.js",
+    "src": "resources/js/Pages/Student/Styling/Settings.styles.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Student/Styling/SettingsPage.styles.jsx": {
+    "file": "assets/SettingsPage.styles-8VOpWH0o.js",
+    "src": "resources/js/Pages/Student/Styling/SettingsPage.styles.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Student/Styling/SidePanel.styles.jsx": {
+    "file": "assets/SidePanel.styles-DQIdnbgP.js",
+    "src": "resources/js/Pages/Student/Styling/SidePanel.styles.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Student/Styling/TypeMessage.styles.jsx": {
+    "file": "assets/TypeMessage.styles-DIo3hNfg.js",
+    "src": "resources/js/Pages/Student/Styling/TypeMessage.styles.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Student/Styling/UserPanel.styles.jsx": {
+    "file": "assets/UserPanel.styles-Bl7pvVWK.js",
+    "src": "resources/js/Pages/Student/Styling/UserPanel.styles.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Student/ViewApplications.jsx": {
+    "file": "assets/ViewApplications-3zfCBQIe.js",
+    "src": "resources/js/Pages/Student/ViewApplications.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/Pages/Student/Components/NavBar.jsx",
+      "resources/js/Pages/Student/Styling/NavBar.styles.jsx",
+      "_settings-UVqU3YHX.js",
+      "_index.es-CWqCd6w8.js",
+      "_index-BX7LP9oL.js",
+      "_index-BMRxO3cL.js"
+    ]
+  },
+  "resources/js/Pages/Student/ViewPost.jsx": {
+    "file": "assets/ViewPost-oBTVYilE.js",
+    "src": "resources/js/Pages/Student/ViewPost.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/Pages/Student/Components/NavBar.jsx",
+      "resources/js/Pages/Student/Styling/NavBar.styles.jsx",
+      "_settings-UVqU3YHX.js",
+      "_index.es-CWqCd6w8.js",
+      "_index-BX7LP9oL.js",
+      "_index-BMRxO3cL.js"
+    ]
+  },
+  "resources/js/Pages/Test/Chat.jsx": {
+    "file": "assets/Chat-HsyBBdUp.js",
+    "src": "resources/js/Pages/Test/Chat.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_moment-BH_gi4k_.js"
+    ]
+  },
+  "resources/js/Pages/Test/ChatPage.jsx": {
+    "file": "assets/ChatPage-Cm_thSKV.js",
+    "src": "resources/js/Pages/Test/ChatPage.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/Test/Chat.jsx",
+      "_moment-BH_gi4k_.js",
+      "_x-CUwrSU1Y.js"
+    ]
+  },
+  "resources/js/Pages/Test/Components/AddDocuments.jsx": {
+    "file": "assets/AddDocuments-CN7j7UTO.js",
+    "src": "resources/js/Pages/Test/Components/AddDocuments.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js"
+    ]
+  },
+  "resources/js/Pages/Test/Components/AdminPanel.jsx": {
+    "file": "assets/AdminPanel-Cdd5BtY7.js",
+    "src": "resources/js/Pages/Test/Components/AdminPanel.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js"
+    ]
+  },
+  "resources/js/Pages/Test/Components/Chat.jsx": {
+    "file": "assets/Chat-Cyxl-6fc.js",
+    "src": "resources/js/Pages/Test/Components/Chat.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/Pages/Test/Components/SidePanel.jsx",
+      "resources/js/Pages/Test/Components/NewMessage.jsx",
+      "resources/js/Pages/Test/Components/TypeMessage.jsx",
+      "resources/js/Pages/Test/Components/UserPanel.jsx",
+      "resources/js/Pages/Test/Components/MessageContent.jsx"
+    ]
+  },
+  "resources/js/Pages/Test/Components/Matches.jsx": {
+    "file": "assets/Matches-CcTh67m0.js",
+    "src": "resources/js/Pages/Test/Components/Matches.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js"
+    ]
+  },
+  "resources/js/Pages/Test/Components/MessageContent.jsx": {
+    "file": "assets/MessageContent-DXRzKk47.js",
+    "src": "resources/js/Pages/Test/Components/MessageContent.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/Pages/Test/Components/SidePanel.jsx",
+      "resources/js/Pages/Test/Components/NewMessage.jsx",
+      "resources/js/Pages/Test/Components/TypeMessage.jsx",
+      "resources/js/Pages/Test/Components/UserPanel.jsx"
+    ]
+  },
+  "resources/js/Pages/Test/Components/NewMessage.jsx": {
+    "file": "assets/NewMessage-Ds8kdtv8.js",
+    "src": "resources/js/Pages/Test/Components/NewMessage.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js"
+    ]
+  },
+  "resources/js/Pages/Test/Components/Profile.jsx": {
+    "file": "assets/Profile-B7FHSBQ-.js",
+    "src": "resources/js/Pages/Test/Components/Profile.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js"
+    ]
+  },
+  "resources/js/Pages/Test/Components/QuickLinks.jsx": {
+    "file": "assets/QuickLinks-vj5ktWW9.js",
+    "src": "resources/js/Pages/Test/Components/QuickLinks.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js"
+    ]
+  },
+  "resources/js/Pages/Test/Components/ReflectionDocuments.jsx": {
+    "file": "assets/ReflectionDocuments-CFqZedaG.js",
+    "src": "resources/js/Pages/Test/Components/ReflectionDocuments.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js"
+    ]
+  },
+  "resources/js/Pages/Test/Components/SettingsPage.jsx": {
+    "file": "assets/SettingsPage-BCw5EjAB.js",
+    "src": "resources/js/Pages/Test/Components/SettingsPage.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js"
+    ]
+  },
+  "resources/js/Pages/Test/Components/SidePanel.jsx": {
+    "file": "assets/SidePanel-CX69K5D8.js",
+    "src": "resources/js/Pages/Test/Components/SidePanel.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js"
+    ]
+  },
+  "resources/js/Pages/Test/Components/StudentStatus.jsx": {
+    "file": "assets/StudentStatus-CTmdPKEm.js",
+    "src": "resources/js/Pages/Test/Components/StudentStatus.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js"
+    ]
+  },
+  "resources/js/Pages/Test/Components/StudentsSection.jsx": {
+    "file": "assets/StudentsSection-goyS75uV.js",
+    "src": "resources/js/Pages/Test/Components/StudentsSection.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js"
+    ]
+  },
+  "resources/js/Pages/Test/Components/TypeMessage.jsx": {
+    "file": "assets/TypeMessage-RGrLuZFH.js",
+    "src": "resources/js/Pages/Test/Components/TypeMessage.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js"
+    ]
+  },
+  "resources/js/Pages/Test/Components/UserPanel.jsx": {
+    "file": "assets/UserPanel-DEh_wvyu.js",
+    "src": "resources/js/Pages/Test/Components/UserPanel.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js"
+    ]
+  },
+  "resources/js/Pages/Test/DocumentList.jsx": {
+    "file": "assets/DocumentList-FHGiZe9Q.js",
+    "src": "resources/js/Pages/Test/DocumentList.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/Pages/Test/NavBar.jsx",
+      "_settings-UVqU3YHX.js"
+    ]
+  },
+  "resources/js/Pages/Test/DocumentUpload.jsx": {
+    "file": "assets/DocumentUpload-DcN4iXoz.js",
+    "src": "resources/js/Pages/Test/DocumentUpload.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/Pages/Test/NavBar.jsx",
+      "_settings-UVqU3YHX.js"
+    ]
+  },
+  "resources/js/Pages/Test/EditPost.jsx": {
+    "file": "assets/EditPost-CQWsFzN4.js",
+    "src": "resources/js/Pages/Test/EditPost.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/Pages/Test/NavBar.jsx",
+      "_Icon-BRhRccAA.js",
+      "_settings-UVqU3YHX.js"
+    ]
+  },
+  "resources/js/Pages/Test/EditPostA.jsx": {
+    "file": "assets/EditPostA-r05krJsk.js",
+    "src": "resources/js/Pages/Test/EditPostA.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/Pages/Test/NavBar.jsx",
+      "_settings-UVqU3YHX.js"
+    ]
+  },
+  "resources/js/Pages/Test/EmployerProfile.jsx": {
+    "file": "assets/EmployerProfile-CDfadXyb.js",
+    "src": "resources/js/Pages/Test/EmployerProfile.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/Pages/Test/NavBar.jsx",
+      "_settings-UVqU3YHX.js"
+    ]
+  },
+  "resources/js/Pages/Test/Message.jsx": {
+    "file": "assets/Message-BvliFfsh.js",
+    "src": "resources/js/Pages/Test/Message.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/Test/NavBar.jsx",
+      "resources/js/Pages/Test/Components/Chat.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "_settings-UVqU3YHX.js",
+      "resources/js/Pages/Test/Components/SidePanel.jsx",
+      "resources/js/Pages/Test/Components/NewMessage.jsx",
+      "resources/js/Pages/Test/Components/TypeMessage.jsx",
+      "resources/js/Pages/Test/Components/UserPanel.jsx",
+      "resources/js/Pages/Test/Components/MessageContent.jsx"
+    ]
+  },
+  "resources/js/Pages/Test/NavBar.jsx": {
+    "file": "assets/NavBar-u4QaPXqX.js",
+    "src": "resources/js/Pages/Test/NavBar.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "_settings-UVqU3YHX.js"
+    ]
+  },
+  "resources/js/Pages/Test/NewPosting.jsx": {
+    "file": "assets/NewPosting-nyut4BtP.js",
+    "src": "resources/js/Pages/Test/NewPosting.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/Pages/Test/NavBar.jsx",
+      "_Icon-BRhRccAA.js",
+      "_settings-UVqU3YHX.js"
+    ]
+  },
+  "resources/js/Pages/Test/NewPostingA.jsx": {
+    "file": "assets/NewPostingA-DAjZvdfA.js",
+    "src": "resources/js/Pages/Test/NewPostingA.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/Pages/Test/NavBar.jsx",
+      "_settings-UVqU3YHX.js"
+    ]
+  },
+  "resources/js/Pages/Test/ReflectionsForum.jsx": {
+    "file": "assets/ReflectionsForum-DPZuB4Mw.js",
+    "src": "resources/js/Pages/Test/ReflectionsForum.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/Pages/Test/NavBar.jsx",
+      "_settings-UVqU3YHX.js"
+    ]
+  },
+  "resources/js/Pages/Test/ScheduleClasses.jsx": {
+    "file": "assets/ScheduleClasses-pWWHuRE2.js",
+    "src": "resources/js/Pages/Test/ScheduleClasses.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/Pages/Test/NavBar.jsx",
+      "_settings-UVqU3YHX.js"
+    ]
+  },
+  "resources/js/Pages/Test/ScheduleInterviews.jsx": {
+    "file": "assets/ScheduleInterviews-BoLj1R-k.js",
+    "src": "resources/js/Pages/Test/ScheduleInterviews.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/Pages/Test/NavBar.jsx",
+      "_settings-UVqU3YHX.js"
+    ]
+  },
+  "resources/js/Pages/Test/Settings.jsx": {
+    "file": "assets/Settings-5zdfnxMi.js",
+    "src": "resources/js/Pages/Test/Settings.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/Pages/Test/NavBar.jsx",
+      "resources/js/Pages/Test/Components/SettingsPage.jsx",
+      "resources/js/Pages/Test/Components/QuickLinks.jsx",
+      "_settings-UVqU3YHX.js"
+    ]
+  },
+  "resources/js/Pages/Test/StudentProfile.jsx": {
+    "file": "assets/StudentProfile-Dxj_H7Zi.js",
+    "src": "resources/js/Pages/Test/StudentProfile.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/Pages/Test/Components/Profile.jsx",
+      "resources/js/Pages/Test/Components/Matches.jsx",
+      "resources/js/Pages/Test/Components/ReflectionDocuments.jsx",
+      "resources/js/Pages/Test/NavBar.jsx",
+      "_settings-UVqU3YHX.js"
+    ]
+  },
+  "resources/js/Pages/Test/StudentSearch.jsx": {
+    "file": "assets/StudentSearch-9K0A-Sjb.js",
+    "src": "resources/js/Pages/Test/StudentSearch.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/Pages/Test/NavBar.jsx",
+      "_settings-UVqU3YHX.js"
+    ]
+  },
+  "resources/js/Pages/Test/TeacherDashboard.jsx": {
+    "file": "assets/TeacherDashboard-BHuklzw6.js",
+    "src": "resources/js/Pages/Test/TeacherDashboard.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/Pages/Test/Components/AddDocuments.jsx",
+      "resources/js/Pages/Test/Components/StudentsSection.jsx",
+      "resources/js/Pages/Test/Components/StudentStatus.jsx",
+      "resources/js/Pages/Test/Components/AdminPanel.jsx",
+      "resources/js/Pages/Test/NavBar.jsx",
+      "_settings-UVqU3YHX.js"
+    ]
+  },
+  "resources/js/Pages/Test/TeacherProfile.jsx": {
+    "file": "assets/TeacherProfile-CH3iSCJ3.js",
+    "src": "resources/js/Pages/Test/TeacherProfile.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "resources/js/Pages/Test/NavBar.jsx",
+      "_settings-UVqU3YHX.js"
+    ]
+  },
+  "resources/js/Pages/Test/Test.jsx": {
+    "file": "assets/Test-hD3tOLZJ.js",
+    "src": "resources/js/Pages/Test/Test.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/Test/StudentSearch.jsx",
+      "resources/js/Pages/Test/ScheduleInterviews.jsx",
+      "resources/js/Pages/Test/NavBar.jsx",
+      "resources/js/Pages/Test/NewPosting.jsx",
+      "resources/js/Pages/Test/NewPostingA.jsx",
+      "resources/js/Pages/Test/EditPost.jsx",
+      "resources/js/Pages/Test/EditPostA.jsx",
+      "resources/js/Pages/Test/ScheduleClasses.jsx",
+      "resources/js/Pages/Test/DocumentList.jsx",
+      "resources/js/Pages/Test/DocumentUpload.jsx",
+      "resources/js/Pages/Test/TeacherDashboard.jsx",
+      "resources/js/Pages/Test/EmployerProfile.jsx",
+      "resources/js/Pages/Test/TeacherProfile.jsx",
+      "resources/js/Pages/Test/StudentProfile.jsx",
+      "resources/js/Pages/Test/ReflectionsForum.jsx",
+      "resources/js/Pages/Test/Settings.jsx",
+      "resources/js/Pages/Test/Components/Chat.jsx",
+      "_Dropdown-B6Q8ltoj.js",
+      "_index-BFFPeCbz.js",
+      "resources/js/Pages/Test/ChatPage.jsx",
+      "_styled-components.browser.esm-C7o4QOmv.js",
+      "_settings-UVqU3YHX.js",
+      "_Icon-BRhRccAA.js",
+      "resources/js/Pages/Test/Components/AddDocuments.jsx",
+      "resources/js/Pages/Test/Components/StudentsSection.jsx",
+      "resources/js/Pages/Test/Components/StudentStatus.jsx",
+      "resources/js/Pages/Test/Components/AdminPanel.jsx",
+      "resources/js/Pages/Test/Components/Profile.jsx",
+      "resources/js/Pages/Test/Components/Matches.jsx",
+      "resources/js/Pages/Test/Components/ReflectionDocuments.jsx",
+      "resources/js/Pages/Test/Components/SettingsPage.jsx",
+      "resources/js/Pages/Test/Components/QuickLinks.jsx",
+      "resources/js/Pages/Test/Components/SidePanel.jsx",
+      "resources/js/Pages/Test/Components/NewMessage.jsx",
+      "resources/js/Pages/Test/Components/TypeMessage.jsx",
+      "resources/js/Pages/Test/Components/UserPanel.jsx",
+      "resources/js/Pages/Test/Components/MessageContent.jsx",
+      "_transition-Bto7_FgB.js",
+      "resources/js/Pages/Test/Chat.jsx",
+      "_moment-BH_gi4k_.js",
+      "_x-CUwrSU1Y.js"
+    ]
+  },
+  "resources/js/Pages/Test/TestData.jsx": {
+    "file": "assets/TestData-BlNayeqR.js",
+    "src": "resources/js/Pages/Test/TestData.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/app.jsx": {
+    "file": "assets/app-DAlFUNO8.js",
+    "src": "resources/js/app.jsx",
+    "isEntry": true,
+    "dynamicImports": [
+      "resources/js/Pages/Auth/ConfirmPassword.jsx",
+      "resources/js/Pages/Auth/ForgotPassword.jsx",
+      "resources/js/Pages/Auth/Login.jsx",
+      "resources/js/Pages/Auth/Register.jsx",
+      "resources/js/Pages/Auth/ResetPassword.jsx",
+      "resources/js/Pages/Auth/VerifyEmail.jsx",
+      "resources/js/Pages/Employer/AcceptApplicant.jsx",
+      "resources/js/Pages/Employer/Components/ConfirmationModal.jsx",
+      "resources/js/Pages/Employer/Components/NavBar.jsx",
+      "resources/js/Pages/Employer/Components/QuickLinks.jsx",
+      "resources/js/Pages/Employer/Components/SettingsPage.jsx",
+      "resources/js/Pages/Employer/EditPost1.jsx",
+      "resources/js/Pages/Employer/EditPost2.jsx",
+      "resources/js/Pages/Employer/Home.jsx",
+      "resources/js/Pages/Employer/Interviews.jsx",
+      "resources/js/Pages/Employer/Messages/Chat.jsx",
+      "resources/js/Pages/Employer/Messages/Messages.jsx",
+      "resources/js/Pages/Employer/Messages/Messages.styles.jsx",
+      "resources/js/Pages/Employer/Post1.jsx",
+      "resources/js/Pages/Employer/Post2.jsx",
+      "resources/js/Pages/Employer/Profile.jsx",
+      "resources/js/Pages/Employer/Settings.jsx",
+      "resources/js/Pages/Employer/Styling/EditPost1.styles.jsx",
+      "resources/js/Pages/Employer/Styling/EditPost2.styles.jsx",
+      "resources/js/Pages/Employer/Styling/Home.styles.jsx",
+      "resources/js/Pages/Employer/Styling/Interviews.styles.jsx",
+      "resources/js/Pages/Employer/Styling/NavBar.styles.jsx",
+      "resources/js/Pages/Employer/Styling/Post1.styles.jsx",
+      "resources/js/Pages/Employer/Styling/Post2.styles.jsx",
+      "resources/js/Pages/Employer/Styling/Profile.styles.jsx",
+      "resources/js/Pages/Employer/Styling/Settings.styles.jsx",
+      "resources/js/Pages/Employer/Styling/SettingsPage.styles.jsx",
+      "resources/js/Pages/Employer/Styling/SidePanel.styles.jsx",
+      "resources/js/Pages/Employer/Styling/TypeMessage.styles.jsx",
+      "resources/js/Pages/Employer/Styling/UserPanel.styles.jsx",
+      "resources/js/Pages/Employer/Styling/ViewPost.styles.jsx",
+      "resources/js/Pages/Employer/ViewApplicants.jsx",
+      "resources/js/Pages/Employer/ViewPost.jsx",
+      "resources/js/Pages/Home/About.jsx",
+      "resources/js/Pages/Home/ContactUs.jsx",
+      "resources/js/Pages/Home/Guide.jsx",
+      "resources/js/Pages/Home/Landing.jsx",
+      "resources/js/Pages/Profile/Edit.jsx",
+      "resources/js/Pages/Profile/Partials/AddEventModal.jsx",
+      "resources/js/Pages/Profile/Partials/ApplicantModal.jsx",
+      "resources/js/Pages/Profile/Partials/DeleteUserForm.jsx",
+      "resources/js/Pages/Profile/Partials/EditEventModal.jsx",
+      "resources/js/Pages/Profile/Partials/EditJobModal.jsx",
+      "resources/js/Pages/Profile/Partials/UpdatePasswordForm.jsx",
+      "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.jsx",
+      "resources/js/Pages/Profile/Partials/ViewJobModal.jsx",
+      "resources/js/Pages/Student/AcceptInterview.jsx",
+      "resources/js/Pages/Student/Components/ConfirmationModal.jsx",
+      "resources/js/Pages/Student/Components/Matches.jsx",
+      "resources/js/Pages/Student/Components/NavBar.jsx",
+      "resources/js/Pages/Student/Components/ProfileForm.jsx",
+      "resources/js/Pages/Student/Components/QuickLinks.jsx",
+      "resources/js/Pages/Student/Components/SettingsPage.jsx",
+      "resources/js/Pages/Student/Home.jsx",
+      "resources/js/Pages/Student/Interviews.jsx",
+      "resources/js/Pages/Student/Jobs.jsx",
+      "resources/js/Pages/Student/Messages/Chat.jsx",
+      "resources/js/Pages/Student/Messages/Messages.jsx",
+      "resources/js/Pages/Student/Messages/Messages.styles.jsx",
+      "resources/js/Pages/Student/Profile.jsx",
+      "resources/js/Pages/Student/Settings.jsx",
+      "resources/js/Pages/Student/Styling/Chat.styles.jsx",
+      "resources/js/Pages/Student/Styling/Document.styles.jsx",
+      "resources/js/Pages/Student/Styling/Home.styles.jsx",
+      "resources/js/Pages/Student/Styling/Interviews.styles.jsx",
+      "resources/js/Pages/Student/Styling/Jobs.styles.jsx",
+      "resources/js/Pages/Student/Styling/MessageContent.styles.jsx",
+      "resources/js/Pages/Student/Styling/MyReflections.styles.jsx",
+      "resources/js/Pages/Student/Styling/NavBar.styles.jsx",
+      "resources/js/Pages/Student/Styling/NewMessage.styles.jsx",
+      "resources/js/Pages/Student/Styling/Profile.styles.jsx",
+      "resources/js/Pages/Student/Styling/ProfileForm.styles.jsx",
+      "resources/js/Pages/Student/Styling/Reflections.styles.jsx",
+      "resources/js/Pages/Student/Styling/Settings.styles.jsx",
+      "resources/js/Pages/Student/Styling/SettingsPage.styles.jsx",
+      "resources/js/Pages/Student/Styling/SidePanel.styles.jsx",
+      "resources/js/Pages/Student/Styling/TypeMessage.styles.jsx",
+      "resources/js/Pages/Student/Styling/UserPanel.styles.jsx",
+      "resources/js/Pages/Student/ViewApplications.jsx",
+      "resources/js/Pages/Student/ViewPost.jsx",
+      "resources/js/Pages/Test/Chat.jsx",
+      "resources/js/Pages/Test/ChatPage.jsx",
+      "resources/js/Pages/Test/Components/AddDocuments.jsx",
+      "resources/js/Pages/Test/Components/AdminPanel.jsx",
+      "resources/js/Pages/Test/Components/Chat.jsx",
+      "resources/js/Pages/Test/Components/Matches.jsx",
+      "resources/js/Pages/Test/Components/MessageContent.jsx",
+      "resources/js/Pages/Test/Components/NewMessage.jsx",
+      "resources/js/Pages/Test/Components/Profile.jsx",
+      "resources/js/Pages/Test/Components/QuickLinks.jsx",
+      "resources/js/Pages/Test/Components/ReflectionDocuments.jsx",
+      "resources/js/Pages/Test/Components/SettingsPage.jsx",
+      "resources/js/Pages/Test/Components/SidePanel.jsx",
+      "resources/js/Pages/Test/Components/StudentStatus.jsx",
+      "resources/js/Pages/Test/Components/StudentsSection.jsx",
+      "resources/js/Pages/Test/Components/TypeMessage.jsx",
+      "resources/js/Pages/Test/Components/UserPanel.jsx",
+      "resources/js/Pages/Test/DocumentList.jsx",
+      "resources/js/Pages/Test/DocumentUpload.jsx",
+      "resources/js/Pages/Test/EditPost.jsx",
+      "resources/js/Pages/Test/EditPostA.jsx",
+      "resources/js/Pages/Test/EmployerProfile.jsx",
+      "resources/js/Pages/Test/Message.jsx",
+      "resources/js/Pages/Test/NavBar.jsx",
+      "resources/js/Pages/Test/NewPosting.jsx",
+      "resources/js/Pages/Test/NewPostingA.jsx",
+      "resources/js/Pages/Test/ReflectionsForum.jsx",
+      "resources/js/Pages/Test/ScheduleClasses.jsx",
+      "resources/js/Pages/Test/ScheduleInterviews.jsx",
+      "resources/js/Pages/Test/Settings.jsx",
+      "resources/js/Pages/Test/StudentProfile.jsx",
+      "resources/js/Pages/Test/StudentSearch.jsx",
+      "resources/js/Pages/Test/TeacherDashboard.jsx",
+      "resources/js/Pages/Test/TeacherProfile.jsx",
+      "resources/js/Pages/Test/Test.jsx",
+      "resources/js/Pages/Test/TestData.jsx"
+    ],
+    "css": [
+      "assets/app-DIed0D-D.css"
+    ]
+  }
+}
