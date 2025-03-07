@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-axios.defaults.baseURL = "http://127.0.0.1:8000/api/v1";
+const appUrl = import.meta.env.VITE_APP_URL;
+axios.defaults.withCredentials = true;
 
 const initialState = {
     userJobs: [],
@@ -203,7 +204,7 @@ export const getUserJobs = createAsyncThunk(
     "userJobs/getUserJobs",
     async () => {
         const response = await axios({
-            url: "/userjobs",
+            url: `${appUrl}/api/v1/userjobs`,
             method: "GET",
         });
         return response.data.data;
@@ -215,7 +216,7 @@ export const getUserJob = createAsyncThunk(
     async (params) => {
         const { userJobId } = params;
         const response = await axios({
-            url: `/userjobs/${userJobId}`,
+            url: `${appUrl}/api/v1/userjobs/${userJobId}`,
             method: "GET",
         });
         return response.data.data;
@@ -228,7 +229,7 @@ export const postUserJob = createAsyncThunk(
         const { userId, jobsId, resume } = params;
         const status = "Pending";
         const response = await axios({
-            url: "/userjobs",
+            url: `${appUrl}/api/v1/userjobs`,
             method: "POST",
             data: {
                 userId,
@@ -246,7 +247,7 @@ export const putUserJob = createAsyncThunk(
     async (params) => {
         const { userJobsId, userId, jobsId, resume, status } = params;
         const response = await axios({
-            url: `/userjobs/${userJobsId}`,
+            url: `${appUrl}/api/v1/userjobs/${userJobsId}`,
             method: "PUT",
             data: {
                 userId,
@@ -264,7 +265,7 @@ export const patchUserJob = createAsyncThunk(
     async (params) => {
         const { userJobsId, status, message, timeSlots } = params;
         const response = await axios({
-            url: `/userjobs/${userJobsId}`,
+            url: `${appUrl}/api/v1/userjobs/${userJobsId}`,
             method: "PATCH",
             data: {
                 status,
@@ -281,7 +282,7 @@ export const deleteUserJob = createAsyncThunk(
     async (params) => {
         const { userJobId } = params;
         const response = await axios({
-            url: `/userjobs/${userJobId}`,
+            url: `${appUrl}/api/v1/userjobs/${userJobId}`,
             method: "DELETE",
         });
         return response.data.data;
@@ -293,7 +294,7 @@ export const checkUserJob = createAsyncThunk(
     async (params) => {
         const { userId, jobsId } = params;
         const response = await axios({
-            url: `/userjobs?userId[eq]=${userId}&jobsId[eq]=${jobsId}`,
+            url: `${appUrl}/api/v1/userjobs?userId[eq]=${userId}&jobsId[eq]=${jobsId}`,
             method: "GET",
         });
         return response.data.data;
@@ -305,7 +306,7 @@ export const getUserDetails = createAsyncThunk(
     async (params) => {
         const { jobsId } = params;
         const response = await axios({
-            url: `/userjobs/list/${jobsId}`,
+            url: `${appUrl}/api/v1/userjobs/list/${jobsId}`,
             method: "GET",
         });
         return response.data;
@@ -317,7 +318,7 @@ export const getSingleUserDetails = createAsyncThunk(
     async (params) => {
         const { userJobsId } = params;
         const response = await axios({
-            url: `/userjobs/user/${userJobsId}`,
+            url: `${appUrl}/api/v1/userjobs/user/${userJobsId}`,
             method: "GET",
         });
         return response.data;
@@ -328,7 +329,7 @@ export const getJobsDetails = createAsyncThunk(
     "userJobs/getJobsDetails",
     async () => {
         const response = await axios({
-            url: `/userjobs/jobs`,
+            url: `${appUrl}/api/v1/userjobs/jobs`,
             method: "GET",
         });
         return response.data;
@@ -340,7 +341,7 @@ export const getSingleJobDetails = createAsyncThunk(
     async (params) => {
         const { userJobsId } = params;
         const response = await axios({
-            url: `/userjobs/job/${userJobsId}`,
+            url: `${appUrl}/api/v1/userjobs/job/${userJobsId}`,
             method: "GET",
         });
         return response.data;
@@ -351,7 +352,7 @@ export const getInterviews = createAsyncThunk(
     "userJobs/getInterviews",
     async () => {
         const response = await axios({
-            url: `/userjobs/interviews`,
+            url: `${appUrl}/api/v1/userjobs/interviews`,
             method: "GET",
         });
         return response.data;
@@ -362,7 +363,7 @@ export const getScheduledUserJobsForOwner = createAsyncThunk(
     "userJobs/getScheduledUserJobsForOwner",
     async () => {
         const response = await axios({
-            url: `/userjobs/ownerjobs`,
+            url: `${appUrl}/api/v1/userjobs/ownerjobs`,
             method: "GET",
         });
         return response.data;

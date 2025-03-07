@@ -156,7 +156,7 @@ export const updateUserPassword = createAsyncThunk(
 export const deleteUser = createAsyncThunk(
     "user/deleteUser",
     async (userID) => {
-        await axios.delete(`http://127.0.0.1:8000/api/users/${userID}`);
+        await axios.delete(`${appUrl}/api/users/${userID}`);
         return userID;
     }
 );

@@ -38,6 +38,7 @@ import {
     ErrorText,
     ErrorInput,
 } from "./Styling/Post2.styles";
+const appUrl = import.meta.env.VITE_APP_URL;
 
 function Post2() {
     const [userId, setUserId] = useState(null);
@@ -48,7 +49,7 @@ function Post2() {
         const fetchUserId = async () => {
             try {
                 const response = await axios.get(
-                    `http://127.0.0.1:8000/api/user-id`
+                    `${appUrl}/api/user-id`
                 );
                 setUserId(response.data.user.id);
                 dispatch(updateJobFormData({ userId: response.data.user.id }));
