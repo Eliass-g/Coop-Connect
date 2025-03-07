@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 const appUrl = import.meta.env.VITE_APP_URL;
+axios.defaults.withCredentials = true;
 
 const initialState = {
     notifications: [],

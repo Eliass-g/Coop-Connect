@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-axios.defaults.baseURL = "http://127.0.0.1:8000/api/v1";
+const appUrl = import.meta.env.VITE_APP_URL;
 
 const initialState = {
     jobs: [],
@@ -163,7 +163,7 @@ export const jobsSlice = createSlice({
 
 export const getJobs = createAsyncThunk("jobs/getJobs", async () => {
     const response = await axios({
-        url: "/jobs",
+        url: `${appUrl}/api/v1/jobs`,
         method: "GET",
     });
     return response.data.data;
@@ -172,7 +172,7 @@ export const getJobs = createAsyncThunk("jobs/getJobs", async () => {
 export const selectJob = createAsyncThunk("jobs/selectJob", async (params) => {
     const { jobId } = params;
     const response = await axios({
-        url: `/jobs/${jobId}`,
+        url: `${appUrl}/api/v1/jobs/${jobId}`,
         method: "GET",
     });
     return response.data.data;
@@ -183,7 +183,7 @@ export const getJobsforUser = createAsyncThunk(
     async (params) => {
         const { userId } = params;
         const response = await axios({
-            url: `/jobs/user/${userId}`,
+            url: `${appUrl}/api/v1/jobs/user/${userId}`,
             method: "GET",
         });
         return response.data.data;
@@ -195,7 +195,7 @@ export const getJobsforEmployer = createAsyncThunk(
     async (params) => {
         const { userId } = params;
         const response = await axios({
-            url: `/jobs?userId[eq]=${userId}`,
+            url: `${appUrl}/api/v1/jobs?userId[eq]=${userId}`,
             method: "GET",
         });
         return response.data.data;
@@ -207,7 +207,7 @@ export const getUsersForJob = createAsyncThunk(
     async (params) => {
         const { jobId } = params;
         const response = await axios({
-            url: `/jobs?id[eq]=${jobId}&includeUsers=true`,
+            url: `${appUrl}/api/v1/jobs?id[eq]=${jobId}&includeUsers=true`,
             method: "GET",
         });
         return response.data.data;
@@ -219,7 +219,7 @@ export const searchJobsbySkill = createAsyncThunk(
     async (params) => {
         const { skills } = params;
         const response = await axios({
-            url: "/jobs/match",
+            url: `${appUrl}/api/v1/jobs/match`,
             method: "GET",
             params: {
                 skills,
@@ -238,7 +238,7 @@ export const searchJobsBySkillAndLocation = createAsyncThunk(
         const { searchTerm, location } = params;
 
         const response = await axios({
-            url: "/jobs/search",
+            url: `${appUrl}/api/v1/jobs/search`,
             method: "GET",
             params: {
                 searchTerm,
@@ -262,7 +262,7 @@ export const postJob = createAsyncThunk("jobs/postJob", async (params) => {
     } = params;
 
     const response = await axios({
-        url: "/jobs",
+        url: `${appUrl}/api/v1/jobs`,
         method: "POST",
         data: {
             title,
@@ -291,7 +291,7 @@ export const putJob = createAsyncThunk("jobs/putJob", async (params) => {
         userId,
     } = params;
     const response = await axios({
-        url: `/jobs/${jobsId}`,
+        url: `${appUrl}/api/v1/jobs/${jobsId}`,
         method: "PUT",
         data: {
             title,
@@ -319,7 +319,7 @@ export const patchJob = createAsyncThunk("jobs/patchJob", async (params) => {
         company,
     } = params;
     const response = await axios({
-        url: `/jobs/${jobsId}`,
+        url: `${appUrl}/api/v1/jobs/${jobsId}`,
         method: "PATCH",
         data: {
             jobsId,
@@ -339,7 +339,7 @@ export const patchJob = createAsyncThunk("jobs/patchJob", async (params) => {
 export const deleteJob = createAsyncThunk("jobs/deleteJob", async (params) => {
     const { jobId } = params;
     const response = await axios({
-        url: `/jobs/${jobId}`,
+        url: `${appUrl}/api/v1/jobs/${jobId}`,
         method: "DELETE",
     });
     return userId;
@@ -351,7 +351,7 @@ export const applyJob = createAsyncThunk(
         const { userId, jobId, resume } = params;
         const status = "Pending";
         const response = await axios({
-            url: `/userjobs`,
+            url: `/${appUrl}/api/v1userjobs`,
             method: "POST",
             data: { userId, jobId, resume, status },
         });
