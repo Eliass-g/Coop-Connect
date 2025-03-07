@@ -1,1 +1,0 @@
-import{j as s}from"./app-DNWayCnB.js";function a({className:t="",disabled:n,children:o,...r}){return s.jsx("button",{...r,className:`button button-default text-transform-none ${t}`,disabled:n,children:o})}export{a as P};

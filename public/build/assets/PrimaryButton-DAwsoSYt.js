@@ -1,0 +1,1 @@
+import{j as s}from"./app-C5_nSkG0.js";function a({className:t="",disabled:n,children:o,...r}){return s.jsx("button",{...r,className:`button button-default text-transform-none ${t}`,disabled:n,children:o})}export{a as P};
