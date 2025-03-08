@@ -18,7 +18,7 @@ use App\Http\Controllers\NotificationController;
 |
 */
 
-Route::middleware('web')->group(function () {
+Route::middleware(['web', 'auth'])->group(function () {
 
 
     Route::post('/messages/send', [MessageController::class, 'sendMessage']);
