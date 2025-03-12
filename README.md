@@ -1,12 +1,12 @@
 <div align="center">
 
-<img src="https://github.com/Eliass-g/CoOpConnect/blob/database-readme-tweaks/storage/COOPCONNECTLOGO.png" alt="Co-op Connect Logo" width="400">
+<img src="https://github.com/Eliass-g/Coop-Connect/blob/main/storage/COOPCONNECTLOGO.png" alt="Co-op Connect Logo" width="400">
 
 #
 
 Co-op Connect is a web application that connects students with employers for co-op job opportunities. Students can apply for jobs, while employers can manage job postings and student applications.
 
-![App Demo](https://github.com/Eliass-g/CoOpConnect/blob/database-readme-tweaks/storage/Coop%20Connect%20Runthrough.gif)
+![App Demo](https://github.com/Eliass-g/Coop-Connect/blob/main/storage/Coop%20Connect%20Runthrough.gif)
 
 ## 📽️ Video Walkthrough
 
